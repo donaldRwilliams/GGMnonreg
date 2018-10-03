@@ -1,1 +1,3 @@
-exportPattern("^[[:alpha:]]+")
+# created by hand
+export(GGMregress)
+export(GGMboot)
