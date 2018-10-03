@@ -25,5 +25,5 @@ GGMboot <- function(X, sims, alpha){
   mat_mean[upper.tri(mat_mean)] <-  means
   mat_mean[lower.tri(mat_mean)] <- t(mat_mean)[lower.tri(mat_mean)]
 
-  list(mat_selected = mat_selected, mat_mean =  mat_mean)
+  list(mat_selected = mat_selected, mat_mean =  mat_mean, boot_results = boot_results)
 }

@@ -10,6 +10,15 @@
 #' @examples
 GGMregress <- function(X, IC, method){
   # scale data
+
+  if( IC != "AIC" && IC != "BIC" ){
+    stop("IC must be AIC or BIC")
+  }
+
+  if( method != "forward" && method != "backward"  && method != "exhaustive"){
+    stop("method must be foward, backward, or exhaustive")
+  }
+
   X <- scale(X, scale = T)
   n <- nrow(X)
   p <- ncol(X)
