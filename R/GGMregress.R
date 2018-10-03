@@ -4,10 +4,19 @@
 #' @param IC Information criteria (AIC or BIC)
 #' @param method Subsect selection method
 #'
-#' @return
+#' @return pcor_and    partial correlations matrix with "and-rule"
+#' @return pcor_or     partial correlations matrix with "or-rule"
+#' @return adj_and     adjacency matrix with "and-rule"
+#' @return adj_or      adjacency matrix with "or-rule"
 #' @export
 #'
 #' @examples
+#'
+#' fit <- GGMregress(X, IC = "BIC", method = "forward")
+#'
+#'fit$pcor_and # partial correlation matrix with "and-rule"
+#'
+#' fit$adj_and # partial correlation matrix with "and-rule"
 GGMregress <- function(X, IC, method){
   # scale data
 

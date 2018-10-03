@@ -13,6 +13,23 @@ GGMregress(X, IC, method)
 
 \item{method}{Subsect selection method}
 }
+\value{
+pcor_and partial correlations matrix with "and-rule"
+
+pcor_or partial correlations matrix with "or-rule"
+
+adj_and  adjacency matrix with "and-rule"
+
+adj_or  adjacency matrix with "or-rule"
+}
 \description{
 Title
+}
+\examples{
+
+fit <- GGMregress(X, IC = "BIC", method = "forward")
+
+fit$pcor_and # partial correlation matrix with "and-rule"
+
+fit$adj_and # partial correlation matrix with "and-rule"
 }
