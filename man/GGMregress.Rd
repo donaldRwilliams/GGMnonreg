@@ -14,13 +14,13 @@ GGMregress(X, IC, method)
 \item{method}{Subsect selection method}
 }
 \value{
-pcor_and partial correlations matrix with "and-rule"
+pcor_and    partial correlations matrix with "and-rule"
 
-pcor_or partial correlations matrix with "or-rule"
+pcor_or     partial correlations matrix with "or-rule"
 
-adj_and  adjacency matrix with "and-rule"
+adj_and     adjacency matrix with "and-rule"
 
-adj_or  adjacency matrix with "or-rule"
+adj_or      adjacency matrix with "or-rule"
 }
 \description{
 Title

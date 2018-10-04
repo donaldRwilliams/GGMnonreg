@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param X Data matrix (n times p)
+#' @param X Data matrix (dimensions n \times p)
 #' @param sims number of bootstrap samples
 #' @param alpha type I error rate (correspondig to 1 - specificity)
 #'

@@ -7,11 +7,11 @@
 GGMboot(X, sims, alpha)
 }
 \arguments{
-\item{X}{Data matrix (n times p)}
+\item{X}{Data matrix (dimensions n by p)}
 
-\item{sims}{number of bootstrap samples}
+\item{sims}{Number of bootstrap samples}
 
-\item{alpha}{type I error rate (correspondig to 1 - specificity)}
+\item{alpha}{Desired type I error rate (correspondig to 1 - specificity)}
 }
 \description{
 Title
