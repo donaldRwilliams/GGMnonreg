@@ -1,13 +1,19 @@
-#' Title
-#'
+#' Non-parametric bootstrap
 #' @param X Data matrix (dimensions n \times p)
 #' @param sims number of bootstrap samples
-#' @param alpha type I error rate (correspondig to 1 - specificity)
+#' @param alpha type I error rate (correspondig to approximately 1 - specificity)
 #'
-#' @return
+#' @return mat_selected adjacency matrix
+#' @return mat_mean mean of the bootstrap samples
+#' @return boot_results bootstrap samples
 #' @export
 #'
 #' @examples
+#'
+#' fit <- GGMboot(X, sims = 1000, alpha = 0.01)
+#'
+#' # adjacency matrix
+#' fit_boot$mat_selected
 GGMboot <- function(X, sims, alpha){
   mat_selected <- mat_mean <- matrix(0, ncol(X), ncol(X))
   lw_bound <- alpha / 2

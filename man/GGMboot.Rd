@@ -2,17 +2,31 @@
 % Please edit documentation in R/GGMboot.R
 \name{GGMboot}
 \alias{GGMboot}
-\title{Title}
+\title{Non-parametric bootstrap}
 \usage{
 GGMboot(X, sims, alpha)
 }
 \arguments{
-\item{X}{Data matrix (dimensions n by p)}
+\item{X}{Data matrix (dimensions n \times p)}
 
-\item{sims}{Number of bootstrap samples}
+\item{sims}{number of bootstrap samples}
 
-\item{alpha}{Desired type I error rate (correspondig to 1 - specificity)}
+\item{alpha}{type I error rate (correspondig to approximately 1 - specificity)}
+}
+\value{
+mat_selected adjacency matrix
+
+mat_mean mean of the bootstrap samples
+
+boot_results bootstrap samples
 }
 \description{
-Title
+Non-parametric bootstrap
+}
+\examples{
+
+fit <- GGMboot(X, sims = 1000, alpha = 0.01)
+
+# adjacency matrix
+fit_boot$mat_selected
 }

@@ -2,7 +2,8 @@
 % Please edit documentation in R/GGMregress.R
 \name{GGMregress}
 \alias{GGMregress}
-\title{Title}
+\title{Title
+Odinary least squares}
 \usage{
 GGMregress(X, IC, method)
 }
@@ -24,12 +25,16 @@ adj_or      adjacency matrix with "or-rule"
 }
 \description{
 Title
+Odinary least squares
 }
 \examples{
 
 fit <- GGMregress(X, IC = "BIC", method = "forward")
 
-fit$pcor_and # partial correlation matrix with "and-rule"
+partial correlation matrix with "and-rule"
+fit$pcor_and
 
-fit$adj_and # partial correlation matrix with "and-rule"
+partial correlation matrix with "and-rule"
+fit$adj_and
+
 }

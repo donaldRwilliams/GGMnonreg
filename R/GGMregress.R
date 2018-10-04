@@ -1,4 +1,5 @@
 #' Title
+#'Odinary least squares
 #'
 #' @param X Data Matrix (dimensions n by p)
 #' @param IC Information criteria (AIC or BIC)
@@ -14,9 +15,12 @@
 #'
 #' fit <- GGMregress(X, IC = "BIC", method = "forward")
 #'
-#'fit$pcor_and # partial correlation matrix with "and-rule"
+#' partial correlation matrix with "and-rule"
+#' fit$pcor_and
 #'
-#' fit$adj_and # partial correlation matrix with "and-rule"
+#' partial correlation matrix with "and-rule"
+#' fit$adj_and
+#'
 GGMregress <- function(X, IC, method){
   # scale data
 
