@@ -1,5 +1,4 @@
-#' Title
-#'Odinary least squares
+#'Ordinary least squares
 #'
 #' @param X Data Matrix (dimensions n by p)
 #' @param IC Information criteria (AIC or BIC)

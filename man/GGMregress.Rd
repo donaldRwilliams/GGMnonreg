@@ -2,8 +2,7 @@
 % Please edit documentation in R/GGMregress.R
 \name{GGMregress}
 \alias{GGMregress}
-\title{Title
-Odinary least squares}
+\title{Ordinary least squares}
 \usage{
 GGMregress(X, IC, method)
 }
@@ -24,8 +23,7 @@ adj_and     adjacency matrix with "and-rule"
 adj_or      adjacency matrix with "or-rule"
 }
 \description{
-Title
-Odinary least squares
+Ordinary least squares
 }
 \examples{
 
