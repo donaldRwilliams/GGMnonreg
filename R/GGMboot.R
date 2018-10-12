@@ -1,5 +1,5 @@
 #' Non-parametric bootstrap
-#' @param X Data matrix (dimensions n \times p)
+#' @param X Data matrix (dimensions n by p)
 #' @param sims number of bootstrap samples
 #' @param alpha type I error rate (correspondig to approximately 1 - specificity)
 #'

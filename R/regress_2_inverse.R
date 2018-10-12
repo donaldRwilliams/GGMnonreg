@@ -1,6 +1,6 @@
 #' regression to inverse covariance matrix
 #'
-#' @param x data matrix (dimensions n times p)
+#' @param x data matrix (dimensions n by p)
 #'
 #' @return inverse-cov Inverse of the covariance matrix (i.e., the precision matrix)
 #' @return cov_matrix Covariance matrix
