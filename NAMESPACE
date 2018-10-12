@@ -1,3 +1,4 @@
 # created by hand
 export(GGMregress)
 export(GGMboot)
+export(Diagnostic)
