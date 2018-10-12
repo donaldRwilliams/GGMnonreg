@@ -29,10 +29,10 @@ Ordinary least squares
 
 fit <- GGMregress(X, IC = "BIC", method = "forward")
 
-partial correlation matrix with "and-rule"
+# partial correlation matrix with "and-rule"
 fit$pcor_and
 
-partial correlation matrix with "and-rule"
+# partial correlation matrix with "and-rule"
 fit$adj_and
 
 }
