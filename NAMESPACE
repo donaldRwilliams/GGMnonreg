@@ -2,3 +2,4 @@
 export(GGMregress)
 export(GGMboot)
 export(Diagnostic)
+export(regress_2_inverse)
