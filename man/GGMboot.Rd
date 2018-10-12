@@ -7,7 +7,7 @@
 GGMboot(X, sims, alpha)
 }
 \arguments{
-\item{X}{Data matrix (dimensions n \times p)}
+\item{X}{Data matrix (dimensions n by p)}
 
 \item{sims}{number of bootstrap samples}
 
