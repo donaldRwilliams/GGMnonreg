@@ -7,7 +7,7 @@
 regress_2_inverse(x)
 }
 \arguments{
-\item{x}{data matrix (dimensions n times p)}
+\item{x}{data matrix (dimensions n by p)}
 }
 \value{
 inverse-cov Inverse of the covariance matrix (i.e., the precision matrix)
