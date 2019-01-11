@@ -17,19 +17,37 @@
 #'
 #'
 regress_2_inverse <- function(x){
+
+  # remove mean structure
   X <- scale(x, scale = F)
+
+  # number of variables
   p <- ncol(x)
 
+  # matrix storage
   mat <- matrix(0, p, p)
 
   for(i in 1:p){
 
-    fit <-  lm(X[,i] ~ X[,-i])
-    mat[i,-i] <-   (- 1 * coefficients(fit)[-1]) / var(residuals(fit))
-    mat[i,i] <- 1 / var(residuals(fit))
+    # fit regression model
+    coef <- solve(t(X[,-i]) %*%  X[,-i]) %*% t(X[,-i]) %*% X[,i]
 
+    # fitted values
+    fitted <- X[,-i] %*% coef
 
-    }
+    # residual variance
+    res_var <- as.numeric(var(X[,i] - fitted))
+
+    # off-diagonal elements
+    off_diagonal <- (coef / res_var) * -1
+
+    # diagonal elements
+    mat[i,i] <- diagonal <- 1 / res_var
+
+    # off diagonal elements
+    mat[i,-i] <- off_diagonal
+}
+
 list(inverse_cov = mat, cov_matrix = solve(mat))
 
 
