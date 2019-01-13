@@ -30,8 +30,13 @@ Diagnostic = function(ThetaEst,Theta){
 
   MCC = (TP*TN - FP*FN)/sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
 
-  lista = data.frame("Sp" = Specificity, "Sen" = Sensitivity, "Fall" = Fallout, "Pre" = Precision ,"MCC" = MCC)
+  FDR = FP / (FP + TP)
+  returned_object <- data.frame(Specificity = Specificity,
+                                Sensitivity = Sensitivity,
+                                Fallout = Fallout,
+                                Precision = Precision,
+                                FDR = FDR)
 
-  return(lista)
+  return(returned_object)
 
 }
