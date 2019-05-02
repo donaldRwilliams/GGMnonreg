@@ -58,7 +58,7 @@ ci_par_cor <- function(alpha, par_cors, s, n) {
 
   c_dat <- do.call(rbind.data.frame, CI_ls)
   colnames(c_dat) <- c("low", "up")
-  c_dat$pcar <- unlist(par_cor)
+  c_dat$pcor <- unlist(par_cor)
   diag(mat) <- 1
   mat[upper.tri(mat)] <- unlist(cov)
   pmat[upper.tri(pmat)] <- unlist(pvalues)
