@@ -14,13 +14,28 @@
 #'
 #' fit <- GGMregress(X, IC = "BIC", method = "forward")
 #'
-#' partial correlation matrix with "and-rule"
+#' # partial correlation matrix with "and-rule"
 #' fit$pcor_and
 #'
-#' partial correlation matrix with "and-rule"
+#' # partial correlation matrix with "and-rule"
 #' fit$adj_and
 #'
-GGMregress <- function(X, IC, method){
+GGMregress <- function(X, IC = c("BIC", "AIC"), method = c("forward", "backward", "exhaustive")){
+  # Check arguments:
+  IC <- match.arg(IC) # Note BIC is default onw
+  method <- match.arg(method)
+
+  # Check data and remove missings:
+  if (is.matrix(X)){
+    X <- as.data.frame(X)
+  }
+  if (!is.data.frame(X)){
+    stop("'X' is not a data frame")
+  }
+
+  # Listwise missingness removal:
+  X <- na.omit(X)
+
   # scale data
 
   if( IC != "AIC" && IC != "BIC" ){
@@ -31,7 +46,7 @@ GGMregress <- function(X, IC, method){
     stop("method must be foward, backward, or exhaustive")
   }
 
-  X <- scale(X, scale = T)
+  X <- scale(X, scale = TRUE)
   n <- nrow(X)
   p <- ncol(X)
 
@@ -40,7 +55,7 @@ GGMregress <- function(X, IC, method){
   colnames(X) <- 1:p
 
   test <- lapply(1:p, function(x) bestglm::bestglm(cbind.data.frame(X[,-x], X[,x]),
-                                                   method = method, IC = IC, intercept = F)$BestModel$coefficients)
+                                                   method = method, IC = IC, intercept = FALSE)$BestModel$coefficients)
 
   for(i in 1:p){
     mat1[i,names(test[[i]])] <- test[[i]]
