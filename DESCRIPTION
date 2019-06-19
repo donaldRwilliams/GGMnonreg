@@ -8,8 +8,8 @@ Description: This package uses non-regularized methods to estimate partial corre
   where sevearl decision rules are implemented to determine conditional (in)dependence structures. 
   The current methods use multiple regression, with AIC or BIC model selection, a non-parameteric 
   bootstrap approach to directly estimated the precison matrix, and Fisher Z-transformed partial correlations.
-License: What license is it under?
+License: GPL-2
 Encoding: UTF-8
-Imports: bestglm
+Imports: bestglm, Matrix
 LazyData: true
 RoxygenNote: 6.1.1

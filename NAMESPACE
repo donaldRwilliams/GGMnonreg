@@ -6,3 +6,8 @@ export(regress_2_inverse)
 export(mle)
 export(KL)
 export(parcor_fisher_z)
+
+importFrom("stats", "cov2cor", "na.omit", "pnorm", "qnorm", "quantile",
+             "var")
+import(bestglm)
+importFrom("Matrix","forceSymmetric")

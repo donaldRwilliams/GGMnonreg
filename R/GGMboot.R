@@ -14,7 +14,20 @@
 #'
 #' # adjacency matrix
 #' fit_boot$mat_selected
-GGMboot <- function(X, sims, alpha){
+GGMboot <- function(X, sims = 1000, alpha = 0.01){
+  # Check data and remove missings:
+  if (is.matrix(X)){
+    X <- as.data.frame(X)
+  }
+  if (!is.data.frame(X)){
+    stop("'X' is not a data frame")
+  }
+
+  # Listwise missingness removal:
+  X <- na.omit(X)
+
+
+
   mat_selected <- mat_mean <- matrix(0, ncol(X), ncol(X))
   lw_bound <- alpha / 2
   up_bound <- 1 -   lw_bound
