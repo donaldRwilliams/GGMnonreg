@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param Theta
-#' @param hatTheta
-#'
-#' @return
-#' @export
-#'
-#' @examples
 KL = function(Theta,hatTheta){
   p = ncol(Theta)
 

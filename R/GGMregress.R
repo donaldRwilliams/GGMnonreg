@@ -1,4 +1,4 @@
-#'Ordinary least squares
+#' Network with Multiple Regression (Ordinary Least Squares)
 #'
 #' @param X Data Matrix (dimensions n by p)
 #' @param IC Information criteria (AIC or BIC)
@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'
-#' fit <- GGMregress(X, IC = "BIC", method = "forward")
+#' fit <- GGM_regression(X, IC = "BIC", method = "forward")
 #'
 #' partial correlation matrix with "and-rule"
 #' fit$pcor_and
@@ -20,7 +20,7 @@
 #' partial correlation matrix with "and-rule"
 #' fit$adj_and
 #'
-GGMregress <- function(X, IC, method){
+GGM_regression <- function(X, IC, method){
   # scale data
 
   if( IC != "AIC" && IC != "BIC" ){
@@ -40,7 +40,7 @@ GGMregress <- function(X, IC, method){
   colnames(X) <- 1:p
 
   test <- lapply(1:p, function(x) bestglm::bestglm(cbind.data.frame(X[,-x], X[,x]),
-                                                   method = method, IC = IC, intercept = F)$BestModel$coefficients)
+                                  method = method, IC = IC, intercept = F)$BestModel$coefficients)
 
   for(i in 1:p){
     mat1[i,names(test[[i]])] <- test[[i]]
@@ -65,7 +65,10 @@ GGMregress <- function(X, IC, method){
   adj_and <- ifelse(mat_and == 0, 0, 1)
   adj_or  <- ifelse(mat_or == 0, 0, 1)
 
-  list(pcor_and = mat_and, pcor_or = mat_or, adj_or = adj_or, adj_and = adj_and)
+  list(pcor_and = mat_and,
+       pcor_or = mat_or,
+       adj_or = adj_or,
+       adj_and = adj_and)
 
 }
 

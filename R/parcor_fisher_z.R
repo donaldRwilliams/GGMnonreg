@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-parcor_fisher_z <- function(X, alpha, FDR = NULL){
+GGM_fisher_z <- function(X, alpha, FDR = NULL){
 
 
   n <- nrow(X)
