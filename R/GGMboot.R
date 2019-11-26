@@ -15,7 +15,6 @@
 #'
 #'
 #' @examples
-#'
 #'# data
 #'X <- GGMnonreg::ptsd
 #'
@@ -47,6 +46,10 @@ GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
 
   boot_pcor <- do.call(rbind, lapply(1:iter, function(x) boot_results[[x]]$upper_tri))
 
+  boot_inv <- do.call(rbind, lapply(1:iter, function(x) {temp <- boot_results[[x]]$inv_cov;
+                                                         temp[upper.tri(temp)]}))
+
+
   quantiles <- t(apply(boot_pcor, MARGIN = 2,
                        quantile, probs = c(lw_bound, up_bound)))
 
@@ -65,6 +68,7 @@ GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
                           adj_selected = mat_selected,
                           pcor_mean =  mat_mean,
                           boot_results = boot_results,
+                          boot_inv = boot_inv,
                           dat = X, iter = iter,
                           p = p, alpha = alpha)
 
@@ -89,6 +93,7 @@ GGM_bootstrap <- function(...) {
 #' @title Summary method for a \code{GGM_bootstrap} object
 #' @param object An object of class \code{GGM_bootstrap}
 #' @export
+#' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
 #' fit <- GGM_bootstrap(X)
 #' summary(fit)
@@ -109,6 +114,7 @@ summary.GGM_bootstrap <- function(object, ...){
 #' @title Print method for a \code{GGM_bootstrap} object
 #' @param object An object of class \code{GGM_bootstrap}
 #' @export
+#' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
 #' fit <- GGM_bootstrap(X)
 #' fit

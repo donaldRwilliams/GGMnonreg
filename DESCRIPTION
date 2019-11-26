@@ -16,5 +16,6 @@ Imports: bestglm,
   GGally (>= 1.4.0),
   network (>= 1.15),
   sna,
+  Matrix
 LazyData: true
 RoxygenNote: 6.1.1

@@ -2,13 +2,16 @@
 % Please edit documentation in R/parcor_fisher_z.R
 \name{GGM_fisher_z}
 \alias{GGM_fisher_z}
-\title{Title}
+\title{S3 GGM_fisher_z method}
 \usage{
-GGM_fisher_z(X, alpha, FDR = NULL)
+GGM_fisher_z(...)
 }
 \arguments{
-\item{FDR}{}
+\item{...}{currently not used}
 }
 \description{
-Title
+S3 GGM_fisher_z method
+}
+\seealso{
+\code{\link{GGM_fisher_z.default}}
 }

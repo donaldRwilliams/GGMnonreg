@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param ThetaEst Estimated adjacency  matrix
-#' @param Theta True adjacency  matrix
-#'
-#' @return Edge identification diagonstic (Specificity, Sensitivity, Fallout, Precision, MCC)
-#' @export
-#'
-#' @examples
 Diagnostic = function(ThetaEst,Theta){
 
   # Kuismin, M., & Sillanpää, M. J. (2016). Use of Wishart prior and simple extensions for

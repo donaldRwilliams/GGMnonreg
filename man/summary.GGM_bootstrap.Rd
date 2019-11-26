@@ -12,3 +12,8 @@
 \description{
 Summary method for a \code{GGM_bootstrap} object
 }
+\examples{
+X <- GGMnonreg::ptsd[, 1:5]
+fit <- GGM_bootstrap(X)
+summary(fit)
+}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mle.R
 \name{mle}
 \alias{mle}
-\title{Maximum likelihood precision and covariance matrices}
+\title{Maximum Likelihood (Inverse) Covariance Matrix}
 \usage{
 mle(X)
 }
@@ -15,5 +15,11 @@ inv_cov_mle MLE precision matrix
 cov_mle MLE covariance matrix
 }
 \description{
-Maximum likelihood precision and covariance matrices
+Maximum Likelihood (Inverse) Covariance Matrix
+}
+\examples{
+# data
+X <- GGMnonreg::ptsd
+
+mle(X)
 }

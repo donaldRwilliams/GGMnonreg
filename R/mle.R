@@ -1,4 +1,4 @@
-#' Maximum likelihood precision and covariance matrices
+#' Maximum Likelihood (Inverse) Covariance Matrix
 #'
 #' @param X Data Matrix (dimensions n by p)
 #'
@@ -7,6 +7,10 @@
 #' @export
 #'
 #' @examples
+#'# data
+#'X <- GGMnonreg::ptsd
+#'
+#'mle(X)
 mle <- function(X){
       inv_cov_mle <- svd_inv_helper(X)
       cov_mle <- solve(inv_cov_mle)

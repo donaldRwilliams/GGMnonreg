@@ -27,7 +27,6 @@ list of class GGM_bootstrap
 Network with a Non-parametric Bootstrap
 }
 \examples{
-
 # data
 X <- GGMnonreg::ptsd
 
