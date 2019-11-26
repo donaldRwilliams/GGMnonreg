@@ -2,37 +2,16 @@
 % Please edit documentation in R/GGMregress.R
 \name{GGM_regression}
 \alias{GGM_regression}
-\title{Network with Multiple Regression (Ordinary Least Squares)}
+\title{S3 GGM_regression method}
 \usage{
-GGM_regression(X, IC, method)
+GGM_regression(...)
 }
 \arguments{
-\item{X}{Data Matrix (dimensions n by p)}
-
-\item{IC}{Information criteria (AIC or BIC)}
-
-\item{method}{Subsect selection method}
-}
-\value{
-pcor_and    partial correlations matrix with "and-rule"
-
-pcor_or     partial correlations matrix with "or-rule"
-
-adj_and     adjacency matrix with "and-rule"
-
-adj_or      adjacency matrix with "or-rule"
+\item{...}{currently not used}
 }
 \description{
-Network with Multiple Regression (Ordinary Least Squares)
+S3 GGM_regression method
 }
-\examples{
-
-fit <- GGM_regression(X, IC = "BIC", method = "forward")
-
-partial correlation matrix with "and-rule"
-fit$pcor_and
-
-partial correlation matrix with "and-rule"
-fit$adj_and
-
+\seealso{
+\code{\link{GGM_regression.default}}
 }
