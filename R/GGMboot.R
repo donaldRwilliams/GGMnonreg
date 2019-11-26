@@ -65,7 +65,8 @@ GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
                           adj_selected = mat_selected,
                           pcor_mean =  mat_mean,
                           boot_results = boot_results,
-                          dat = X, iter = iter, p = p)
+                          dat = X, iter = iter,
+                          p = p, alpha = alpha)
 
   class(returned_object) <- "GGM_bootstrap"
   return(returned_object)
@@ -84,6 +85,41 @@ GGM_bootstrap <- function(...) {
   UseMethod("GGM_bootstrap")
 }
 
+#' @name summary.GGM_bootstrap
+#' @title Summary method for a \code{GGM_bootstrap} object
+#' @param object An object of class \code{GGM_bootstrap}
+#' @export
+#' X <- GGMnonreg::ptsd[, 1:5]
+#' fit <- GGM_bootstrap(X)
+#' summary(fit)
+summary.GGM_bootstrap <- function(object, ...){
+  x <- object
+  cat("GGMnonreg: Non-regularized GGMs \n")
+  cat("Method: Non-parameteric Bootstrap \n")
+  cat(paste("Alpha level:", x$alpha, "\n"))
+  cat(paste("Samples:", x$iter, "\n"))
+  cat("----\n\n")
+  cat("Selected Network:\n\n")
+  colnames(x$pcor_selected) <- 1:x$p
+  row.names(x$pcor_selected) <- 1:x$p
+  print(x$pcor_selected)
+}
+
+#' @name print.GGM_bootstrap
+#' @title Print method for a \code{GGM_bootstrap} object
+#' @param object An object of class \code{GGM_bootstrap}
+#' @export
+#' X <- GGMnonreg::ptsd[, 1:5]
+#' fit <- GGM_bootstrap(X)
+#' fit
+print.GGM_bootstrap <- function(x,...){
+  cat("GGMnonreg: Non-regularized GGMs \n")
+  cat("Method: Non-parameteric Bootstrap \n")
+  cat(paste("Alpha level:", x$alpha, "\n"))
+  cat(paste("Samples:", x$iter, "\n"))
+  cat("----\n")
+  cat(date())
+}
 
 
 #' Plot \code{GGM_bootstrap} Network
