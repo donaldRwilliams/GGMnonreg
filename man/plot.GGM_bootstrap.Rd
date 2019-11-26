@@ -49,7 +49,7 @@ fit$pcor_selected
 
 # selected adjacency
 fit$adj_selected
-plt <- plot(E,
+plt <- plot(fit,
             node_labels = letters[1:20],
             node_labels_color = "white",
             node_groups = rep(c("1", "2", "3", "4"), each = 5),
