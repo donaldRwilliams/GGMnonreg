@@ -1,6 +1,6 @@
 #' Network with a Non-parametric Bootstrap
 #' @param X data matrix (dimensions n by p)
-#' @param sims number of bootstrap samples
+#' @param iter number of bootstrap samples
 #' @param alpha desired type I error rate (correspondig to approximately 1 - specificity)
 #'
 #' @return list of class GGM_bootstrap
@@ -27,24 +27,30 @@
 #'
 #'# selected adjacency
 #'fit$adj_selected
+#'
+#'# plot results
+#'plot(fit)
+GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
 
-GGM_bootstrap.default <- function(X, sims = 1000, alpha = 0.05){
 
+  X <- as.matrix(scale(na.omit(X)))
 
-  X <- as.matrix(na.omit(X))
   p <- ncol(X)
 
   mat_selected <- mat_mean <- matrix(0, p, p)
+
   lw_bound <- alpha / 2
+
   up_bound <- 1 -   lw_bound
 
-  boot_results <-  t(replicate(sims,  boot_inv_helper(X)$upper_tri, simplify = T))
+  boot_results <- lapply(1:iter, function(x) boot_inv_helper(X))
 
+  boot_pcor <- do.call(rbind, lapply(1:iter, function(x) boot_results[[x]]$upper_tri))
 
-  quantiles <- t(apply(boot_results, MARGIN = 2,
+  quantiles <- t(apply(boot_pcor, MARGIN = 2,
                        quantile, probs = c(lw_bound, up_bound)))
 
-  means <-  t(apply(boot_results, MARGIN = 2,  mean))
+  means <-  t(apply(boot_pcor, MARGIN = 2,  mean))
 
   mat_selected[upper.tri(mat_selected)] <- mapply(quantile_helper,
                                                   x = quantiles[,1],
@@ -59,7 +65,7 @@ GGM_bootstrap.default <- function(X, sims = 1000, alpha = 0.05){
                           adj_selected = mat_selected,
                           pcor_mean =  mat_mean,
                           boot_results = boot_results,
-                          dat = X)
+                          dat = X, iter = iter, p = p)
 
   class(returned_object) <- "GGM_bootstrap"
   return(returned_object)
@@ -84,7 +90,7 @@ GGM_bootstrap <- function(...) {
 #'
 #' @param x object of class \code{GGM_bootstrap}
 #' @param layout network layout (\link[sna]{gplot.layout})
-#' @param edge_colors color theme for positive and negative edges
+#' @param edge_colors color theme for positive and negative edges ("classic", "color_blind", or "vivid")
 #' @param node_labels node labels
 #' @param node_labels_color node labels color
 #' @param node_groups node group indicator
@@ -97,9 +103,22 @@ GGM_bootstrap <- function(...) {
 #' @importFrom network network.vertex.names<- set.edge.value set.edge.attribute %e% %v%<-
 #' @importFrom sna gplot.layout.circle
 #' @return object of class \code{ggplot}
+#'
+#' @note See palette options here \url{http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually#use-rcolorbrewer-palettes}.
 #' @export
 #'
 #' @examples
+#'# data
+#'X <- GGMnonreg::ptsd
+#'
+#'# fit model
+#'fit <- GGM_bootstrap(X)
+#'
+#'# selected partials
+#'fit$pcor_selected
+#'
+#'# selected adjacency
+#'fit$adj_selected
 #' plt <- plot(E,
 #'             node_labels = letters[1:20],
 #'             node_labels_color = "white",

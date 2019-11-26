@@ -14,7 +14,7 @@
 
 \item{layout}{network layout (\link[sna]{gplot.layout})}
 
-\item{edge_colors}{color theme for positive and negative edges}
+\item{edge_colors}{color theme for positive and negative edges ("classic", "color_blind", or "vivid")}
 
 \item{node_labels}{node labels}
 
@@ -34,7 +34,21 @@ object of class \code{ggplot}
 \description{
 Plot \code{GGM_bootstrap} Network
 }
+\note{
+See palette options here \url{http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually#use-rcolorbrewer-palettes}.
+}
 \examples{
+# data
+X <- GGMnonreg::ptsd
+
+# fit model
+fit <- GGM_bootstrap(X)
+
+# selected partials
+fit$pcor_selected
+
+# selected adjacency
+fit$adj_selected
 plt <- plot(E,
             node_labels = letters[1:20],
             node_labels_color = "white",

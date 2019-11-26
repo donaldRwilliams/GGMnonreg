@@ -4,12 +4,12 @@
 \alias{GGM_bootstrap.default}
 \title{Network with a Non-parametric Bootstrap}
 \usage{
-\method{GGM_bootstrap}{default}(X, sims = 1000, alpha = 0.05)
+\method{GGM_bootstrap}{default}(X, iter = 1000, alpha = 0.05)
 }
 \arguments{
 \item{X}{data matrix (dimensions n by p)}
 
-\item{sims}{number of bootstrap samples}
+\item{iter}{number of bootstrap samples}
 
 \item{alpha}{desired type I error rate (correspondig to approximately 1 - specificity)}
 }
@@ -39,4 +39,7 @@ fit$pcor_selected
 
 # selected adjacency
 fit$adj_selected
+
+# plot results
+plot(fit)
 }
