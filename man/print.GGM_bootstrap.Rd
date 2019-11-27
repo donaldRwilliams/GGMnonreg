@@ -7,6 +7,8 @@
 \method{print}{GGM_bootstrap}(x, ...)
 }
 \arguments{
+\item{...}{currently ignored}
+
 \item{object}{An object of class \code{GGM_bootstrap}}
 }
 \description{

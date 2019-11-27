@@ -92,6 +92,7 @@ GGM_bootstrap <- function(...) {
 #' @name summary.GGM_bootstrap
 #' @title Summary method for a \code{GGM_bootstrap} object
 #' @param object An object of class \code{GGM_bootstrap}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
@@ -113,6 +114,7 @@ summary.GGM_bootstrap <- function(object, ...){
 #' @name print.GGM_bootstrap
 #' @title Print method for a \code{GGM_bootstrap} object
 #' @param object An object of class \code{GGM_bootstrap}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]

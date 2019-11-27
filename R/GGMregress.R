@@ -10,6 +10,17 @@
 #' be selected in one regrssion models, whereas, for the later, each edge must be selected in both regression models.
 #' Setting \code{rule = "and"} should result in a network with fewer connections.
 #' @examples
+#'# data
+#'X <- GGMnonreg::ptsd
+#'
+#'# fit model
+#'fit <- GGM_regression(X)
+#'
+#'# selected partials
+#'fit$pcor_selected
+#'
+#'# selected adjacency
+#'fit$adj_selected
 GGM_regression.default <- function(X, IC = "BIC",
                                    method = "exhaustive",
                                    rule = "and"){
@@ -29,13 +40,14 @@ GGM_regression.default <- function(X, IC = "BIC",
 
   mat1 <- mat2 <- mat_or <- matrix(0, p, p)
   colnames(mat1) <- paste("X", 1:p, sep = "")
-  colnames(X) <- 1:p
+  colnames(X) <-  paste("X", 1:p, sep = "")
 
-  fit <- lapply(1:p, function(x) bestglm::bestglm(cbind.data.frame(X[,-x], X[,x]),
-                                  method = method, IC = IC, intercept = F)$BestModel$coefficients)
+  fit_models <- lapply(1:p, function(x) bestglm::bestglm(cbind.data.frame(X[,-x], X[,x]),
+                                  method = method, IC = IC, intercept = F))
 
+  estimates <- lapply(1:p, function(x) fit_models[[x]]$BestModel$coefficients)
   for(i in 1:p){
-    mat1[i,names(fit[[i]])] <- fit[[i]]
+    mat1[i,names(estimates[[i]])] <- estimates[[i]]
 
   }
 
@@ -60,15 +72,15 @@ GGM_regression.default <- function(X, IC = "BIC",
 if(rule == "or"){
   returned_object <- list(pcor_selected = mat_or,
        adj_selected = adj_or,
-       p = p, IC = IC, rule = rule,
-       regression_results = fit)
+       p = p, IC = IC, rule = rule, method = method,
+       regression_results = fit_models, dat = X)
 
 
 }  else if (rule == "and"){
   returned_object <- list(pcor_selected = mat_and,
        adj_selected = adj_and,
-       p = p, IC = IC, rule = rule,
-       regression_results = fit)
+       p = p, IC = IC, rule = rule, method = method,
+       regression_results = fit_models, dat = X)
 
 }
   class(returned_object) <- "GGM_regression"

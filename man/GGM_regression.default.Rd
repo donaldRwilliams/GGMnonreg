@@ -24,3 +24,16 @@ The \code{rule} arguement can either be \code{or} or \code{and}. For the former,
 be selected in one regrssion models, whereas, for the later, each edge must be selected in both regression models.
 Setting \code{rule = "and"} should result in a network with fewer connections.
 }
+\examples{
+# data
+X <- GGMnonreg::ptsd
+
+# fit model
+fit <- GGM_regression(X)
+
+# selected partials
+fit$pcor_selected
+
+# selected adjacency
+fit$adj_selected
+}
