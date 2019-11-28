@@ -1,9 +1,9 @@
 #' Precision Matrix to Multiple Regression
 #' @name coef.estimate
 #' @description There is a direct correspondence between the covariance matrix and multiple regression. In the case of GGMs, it is possible
-#' to estimate the edge set with multiple regression (i.e., neighborhood selection). In *GGMnonreg*, the precision matrix is first sampled from, and then
-#' each draws is converted to the corresponding coefficients and error variances. This results in a posterior distribution. This function can be used
-#' to perform multiple regression.
+#' to estimate the edge set with multiple regression (i.e., neighborhood selection). In \strong{GGMnonreg}, the precision matrix
+#' is first bootstrapped, and then each sample is converted to the corresponding coefficients and error variances.
+#' This results in bootstrap distributions for a multiple regression.
 #'
 #' @param object object of class \code{estimate} (analytic = F)
 #' @param ci confidence interval used in the summary output
@@ -68,7 +68,8 @@ print.coef.GGM_bootstrap <- function(x,..){
 
   node_printed <-  x$nodewise[[x$node]]
   colnames(node_printed) <- c("Node", "Estimate", "Est.Error",
-                                           paste(c("lb.", "ub."), gsub("*0.","", x$ci), "%", sep = ""))
+                                           paste(c("lb.", "ub."),
+                                                 gsub("*0.","", x$ci), "%", sep = ""))
 
   print(round(node_printed, 3), row.names = FALSE)
 }

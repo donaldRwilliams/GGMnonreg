@@ -55,6 +55,8 @@ GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
 
   means <-  t(apply(boot_pcor, MARGIN = 2,  mean))
 
+  dat_res <- cbind.data.frame(mean = t(means), quantiles)
+
   mat_selected[upper.tri(mat_selected)] <- mapply(quantile_helper,
                                                   x = quantiles[,1],
                                                   y = quantiles[,2])
@@ -70,7 +72,8 @@ GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
                           boot_results = boot_results,
                           boot_inv = boot_inv,
                           dat = X, iter = iter,
-                          p = p, alpha = alpha)
+                          p = p, alpha = alpha,
+                          dat_res = dat_res)
 
   class(returned_object) <- "GGM_bootstrap"
   return(returned_object)
