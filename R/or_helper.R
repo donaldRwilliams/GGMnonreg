@@ -1,3 +1,5 @@
+#' @importFrom stats na.omit quantile cov2cor pnorm qnorm sd var
+#' @importFrom utils setTxtProgressBar txtProgressBar
 or_helper <- function(x, y){
   ifelse(x * y == 0, max(abs(x), abs(y)), sqrt(abs(x) * abs(y)))
 }

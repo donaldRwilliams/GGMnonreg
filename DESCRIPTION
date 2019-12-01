@@ -1,13 +1,12 @@
 Package: GGMnonreg
 Type: Package
-Title: Estimate non-regularized Gaussian graphical models (partial correlation networks)
-Version: 0.1.0
+Title: Estimate non-regularized Gaussian graphical models (partial correlation "networks")
+Version: 1.0.0
 Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu",role = c("aut", "cre"))
 Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
-Description: This package uses non-regularized methods to estimate partial correlation matrices, 
-  where sevearl decision rules are implemented to determine conditional (in)dependence structures. 
-  The current methods use multiple regression, with AIC or BIC model selection, a non-parameteric 
-  bootstrap approach to directly estimated the precison matrix, and Fisher Z-transformed partial correlations.
+Description: This package uses non-regularized methods to estimate partial correlation matrices. 
+  The current methods consist of multiple regression, with AIC or BIC model selection, a non-parameteric 
+  bootstrap approach to directly estimated the precison matrix, and Fisher z transformed partial correlations.
 Depends: R (>= 3.5.0)
 License: GPL-2
 Encoding: UTF-8

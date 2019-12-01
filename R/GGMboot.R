@@ -2,7 +2,7 @@
 #' @param X data matrix (dimensions n by p)
 #' @param iter number of bootstrap samples
 #' @param alpha desired type I error rate (correspondig to approximately 1 - specificity)
-#'
+#' @param ... currently ignored
 #' @return list of class GGM_bootstrap
 #' \itemize{
 #' \item \code{pcor_selected} selected partial correlation matrix
@@ -11,6 +11,7 @@
 #' \item \code{boot_results} matrix of bootstrap samples
 #' \item \code{dat} data
 #' }
+#'
 #' @export
 #'
 #'
@@ -29,10 +30,10 @@
 #'
 #'# plot results
 #'plot(fit)
-GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05){
+GGM_bootstrap.default <- function(X, iter = 1000, alpha = 0.05, ...){
 
 
-  X <- as.matrix(scale(na.omit(X)))
+  X <- as.matrix(scale(stats::na.omit(X)))
 
   p <- ncol(X)
 
@@ -116,7 +117,7 @@ summary.GGM_bootstrap <- function(object, ...){
 
 #' @name print.GGM_bootstrap
 #' @title Print method for a \code{GGM_bootstrap} object
-#' @param object An object of class \code{GGM_bootstrap}
+#' @param x An object of class \code{GGM_bootstrap}
 #' @param ... currently ignored
 #' @export
 #' @examples
@@ -150,7 +151,6 @@ print.GGM_bootstrap <- function(x,...){
 #' @importFrom network network.vertex.names<- set.edge.value set.edge.attribute %e% %v%<-
 #' @importFrom sna gplot.layout.circle
 #' @return object of class \code{ggplot}
-#'
 #' @note See palette options here \url{http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually#use-rcolorbrewer-palettes}.
 #' @export
 #'

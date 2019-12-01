@@ -3,6 +3,8 @@
 #' @param X data matrix (dimensions n by p)
 #' @param alpha desired type I error rate (correspondig to approximately 1 - specificity)
 #' @param FDR false discovery rate control (see notes)
+#' @param ... currently ignored
+#'
 #' @importFrom Matrix forceSymmetric
 #' @importFrom stats p.adjust
 #'
@@ -36,7 +38,7 @@
 #'
 #'# plot results
 #'plot(fit)
-GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE){
+GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE,...){
 
 
   n <- nrow(X)
@@ -55,13 +57,13 @@ GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE){
 
   mle_pcors <- ci_par_cor(alpha = alpha, par_cors = pc, n = n, s = p - 1)
 
-  mle_inv <- mle_parcors$sig_mat * mle_inv
+  mle_inv <- mle_pcors$sig_mat * mle_inv
 
 
 
   if(isTRUE(FDR)){
     mat_fdr <- matrix(0, p, p)
-    pvalues <- mle_parcors$pmat[upper.tri(mle_parcors$pmat)]
+    pvalues <- mle_pcors$pmat[upper.tri(mle_pcors$pmat)]
     mat_fdr[upper.tri(mat_fdr)] <- ifelse(stats::p.adjust(pvalues, method = "fdr") < alpha, 1, 0)
     mat_fdr <- as.matrix(Matrix::forceSymmetric(mat_fdr))
     pcor_selected <- pc * mat_fdr
@@ -104,6 +106,7 @@ GGM_fisher_z <- function(...) {
 #' @name summary.GGM_fisher_z
 #' @title Summary method for a \code{GGM_fisher_z} object
 #' @param object An object of class \code{GGM_fisher_z}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
@@ -124,7 +127,8 @@ summary.GGM_fisher_z <- function(object, ...){
 
 #' @name print.GGM_fisher_z
 #' @title Print method for a \code{GGM_fisher_z} object
-#' @param object An object of class \code{GGM_fisher_z}
+#' @param x An object of class \code{GGM_fisher_z}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]

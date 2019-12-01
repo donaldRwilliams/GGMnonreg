@@ -3,6 +3,8 @@
 #' @description S3 pcor_summary method
 #' @param object object of class \code{GGM_fisher_z} or \code{GGM_bootstrap}
 #' @param ... not currently used
+#'
+#'
 #' @return \code{select} works with the following methods:
 #' \itemize{
 #' \item \code{\link{GGM_fisher_z}}
@@ -35,7 +37,7 @@ pcor_summary.GGM_fisher_z <- function(object,...){
   x <- object
   mat <- matrix(0, x$p, x$p)
   res <- x$fisher_z_results$cis
-  mat[] <-unlist( lapply(1:p, function(x) paste(1:p,x, sep = "--")))
+  mat[] <-unlist( lapply(1:x$p, function(z) paste(1:x$p,z, sep = "--")))
   edge_names <- mat[upper.tri(mat)]
   ci <- 1 - x$alpha
   edge_summary <- data.frame(Edge = edge_names,
@@ -78,17 +80,15 @@ print.pcor_summary.GGM_fisher_z <- function(x,...){
   print(x$edge_summary, row.names = FALSE)
 }
 
-
-
 #' Plot \code{pcor_summary.GGM_fisher_z} Edges
 #'
-#' @param object object of class \object{pcor_summary.GGM_fisher_z }
+#' @param x object of class \code{pcor_summary.GGM_fisher_z }
 #' @param size point size
 #' @param color point color
 #' @param customize \code{"GGMnonreg"} for customized plot and \code{user} for a bare plot to be further
 #' customized
 #' @param ... currently ignored
-#'
+#' @import ggplot2
 #' @return a \code{ggplot} object
 #' @export
 #' @examples
@@ -104,20 +104,28 @@ print.pcor_summary.GGM_fisher_z <- function(x,...){
 #'# plot
 #'plot(pcor_summ)
 
-plot.pcor_summary.GGM_fisher_z <- function(object,
+plot.pcor_summary.GGM_fisher_z <- function(x,
                                            size = 1,
                                            color = "black",
-                                           customize = "GGMnonreg",...){
+                                           customize = "GGMnonreg",
+                                           ...){
+
+  # visible binding
+  Edge <- NA
+  Estimate <- NA
+  sig <- NA
+
+  object <- x
   dat <- object$edge_summary
 
   dat <- dat[order(dat$Estimate),]
   dat$Edge <- factor(dat$Edge, labels = dat$Edge, levels = dat$Edge)
-  dat$sig <- as.factor(ifelse(dat$`lb.%` < 0 & dat$`ub.%` > 0, 0, 1))
+  dat$sig <- as.factor(ifelse(dat[,3] < 0 & dat[,4]> 0, 0, 1))
 
   plt <- ggplot(dat, aes(x = Edge,
                          y = Estimate)) +
-    geom_errorbar(aes(ymin = dat$`lb.%`,
-                      ymax = dat$`ub.%`, color = sig),
+    geom_errorbar(aes(ymin = dat[,3],
+                      ymax = dat[,4], color = sig),
                   width = 0) +
     geom_point(size = size, color = color)
   if(customize == "GGMnonreg"){
@@ -163,15 +171,18 @@ pcor_summary.GGM_bootstrap <- function(object,...){
   x <- object
   mat <- matrix(0, x$p, x$p)
   res <- x$fisher_z_results$cis
-  mat[] <-unlist( lapply(1:p, function(x) paste(1:p,x, sep = "--")))
+  mat[] <-unlist( lapply(1:x$p, function(z) paste(1:x$p,z, sep = "--")))
   edge_names <- mat[upper.tri(mat)]
   ci <- 1 - x$alpha
+
+
   edge_summary <- data.frame(Edge = edge_names,
                              Estimate = round(x$dat_res$mean,3),
                              low = round(x$dat_res[,2],3),
                              up = round(x$dat_res[,3], 3))
   colnames(edge_summary) <- c("Edge", "Estimate",
-                              paste(c("lb.", "ub."), gsub("*0.","", ci), "%", sep = ""))
+                              paste(c("lb.", "ub."), gsub("*0.","", ci),
+                                    "%", sep = ""))
 
   returned_object <- list(edge_summary = edge_summary, object = object)
   class(returned_object) <- "pcor_summary.GGM_bootstrap"
@@ -212,7 +223,7 @@ print.pcor_summary.GGM_bootstrap <- function(x,...){
 
 #' Plot \code{pcor_summary.GGM_bootstrap} Edges
 #'
-#' @param object object of class \object{pcor_summary.GGM_bootstrap}
+#' @param x object of class \code{pcor_summary.GGM_bootstrap}
 #' @param size point size
 #' @param color point color
 #' @param customize \code{"GGMnonreg"} for customized plot and \code{user} for a bare plot to be further
@@ -234,20 +245,27 @@ print.pcor_summary.GGM_bootstrap <- function(x,...){
 #'# plot
 #'plot(pcor_summ)
 
-plot.pcor_summary.GGM_bootstrap <- function(object,
+plot.pcor_summary.GGM_bootstrap <- function(x,
                                            size = 1,
                                            color = "black",
-                                           customize = "GGMnonreg",...){
-  dat <- object$edge_summary
+                                           customize = "GGMnonreg",
+                                           ...){
 
-  dat <- dat[order(dat$Estimate),]
-  dat$Edge <- factor(dat$Edge, labels = dat$Edge, levels = dat$Edge)
-  dat$sig <- as.factor(ifelse(dat$`lb.%` < 0 & dat$`ub.%` > 0, 0, 1))
+  # visible binding
+  Edge <- NA
+  Estimate <- NA
+  sig <- NA
+
+  object <- x
+  dat <- object$edge_summary
+  dat <- dat[order(dat[,2]),]
+  dat$Edge <- factor(dat$Edge, labels = dat[,1], levels = dat[,1])
+  dat$sig <- as.factor(ifelse(dat[,3] < 0 & dat[,4] > 0, 0, 1))
 
   plt <- ggplot(dat, aes(x = Edge,
                          y = Estimate)) +
-    geom_errorbar(aes(ymin = dat$`lb.%`,
-                      ymax = dat$`ub.%`, color = sig),
+    geom_errorbar(aes(ymin = dat[,3],
+                      ymax = dat[,4], color = sig),
                   width = 0) +
     geom_point(size = size, color = color)
   if(customize == "GGMnonreg"){

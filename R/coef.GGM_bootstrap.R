@@ -7,8 +7,9 @@
 #'
 #' @param object object of class \code{estimate} (analytic = F)
 #' @param ci confidence interval used in the summary output
+#' @param node which variable (node) to summarise
 #' @return list of class \code{coef.estimate}:
-#'
+#' @param ... currently ignored
 #' @examples
 #'# data
 #' X <- scale(GGMnonreg::ptsd)
@@ -19,7 +20,7 @@
 #'# summary for predicting the first variable
 #' coef(fit, node = 1)
 #' @export
-coef.GGM_bootstrap <- function(object, node = 1, ci = 0.95){
+coef.GGM_bootstrap <- function(object, node = 1, ci = 0.95,...){
 
   inv_to_coef <- list()
   p <- object$p
@@ -58,13 +59,13 @@ coef.GGM_bootstrap <- function(object, node = 1, ci = 0.95){
 
 #' @name print.coef.GGM_bootstrap
 #' @title  Print method for \code{coef.GGM_bootstrap} objects
-#' @param object An object of class \code{coef.GGM_bootstrap}
+#' @param x An object of class \code{coef.GGM_bootstrap}
 #' @param ... currently ignored
 #'
 #' @seealso \code{\link{coef.GGM_bootstrap}}
 #'
 #' @export
-print.coef.GGM_bootstrap <- function(x,..){
+print.coef.GGM_bootstrap <- function(x,...){
 
   node_printed <-  x$nodewise[[x$node]]
   colnames(node_printed) <- c("Node", "Estimate", "Est.Error",

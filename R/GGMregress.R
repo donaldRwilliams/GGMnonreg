@@ -4,6 +4,7 @@
 #' @param IC information criterion (\code{AIC} or \code{BIC})
 #' @param method subsect selection method (\code{forward}, \code{backward}, or \code{exhaustive})
 #' @param rule decision rule (see notes)
+#' @param ... currently ignored
 #' @export
 #'
 #' @note The \code{rule} arguement can either be \code{or} or \code{and}. For the former, only the edge only needs to
@@ -23,7 +24,7 @@
 #'fit$adj_selected
 GGM_regression.default <- function(X, IC = "BIC",
                                    method = "exhaustive",
-                                   rule = "and"){
+                                   rule = "and",...){
   # scale data
 
   if( IC != "AIC" && IC != "BIC" ){
@@ -104,6 +105,7 @@ GGM_regression <- function(...) {
 #' @name summary.GGM_regression
 #' @title Summary method for a \code{GGM_regression} object
 #' @param object An object of class \code{GGM_regression}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
@@ -125,7 +127,8 @@ summary.GGM_regression <- function(object, ...){
 
 #' @name print.GGM_regression
 #' @title Print method for a \code{GGM_regression} object
-#' @param object An object of class \code{GGM_regression}
+#' @param x An object of class \code{GGM_regression}
+#' @param ... currently ignored
 #' @export
 #' @examples
 #' X <- GGMnonreg::ptsd[, 1:5]
