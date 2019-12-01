@@ -1,6 +1,6 @@
 Package: GGMnonreg
 Type: Package
-Title: Estimate non-regularized Gaussian graphical models (partial correlation "networks")
+Title: Non-regularized Gaussian graphical models (partial correlation "networks")
 Version: 1.0.0
 Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu",role = c("aut", "cre"))
 Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
