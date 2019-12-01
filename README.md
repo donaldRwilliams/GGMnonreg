@@ -1,6 +1,6 @@
 # GGMnonreg
 
-This pacakge estimates Gaussian graphical models (i.e., partial correlation networks), specifically in low dimensional settings that are common in the social-behavioral sciences (*p* < *n*). The current methods use multiple regression or a non-parametric boostrap.
+This packagge estimates Gaussian graphical models (i.e., partial correlation networks), specifically in low dimensional settings that are common in the social-behavioral sciences (*p* < *n*). The current methods use multiple regression or a non-parametric boostrap.
 
 Download package here:
 
