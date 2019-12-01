@@ -4,6 +4,16 @@ or_helper <- function(x, y){
   ifelse(x * y == 0, max(abs(x), abs(y)), sqrt(abs(x) * abs(y)))
 }
 
+# fisher z to r
+z2r <- function (z) {
+  (exp(2 * z) - 1)/(1 + exp(2 * z))
+}
+
+fisher_z <- function(rho){
+  .5 * log(( 1 + rho )/ ( 1 - rho ))
+}
+
+
 svd_inv_helper <- function(X){
   n = nrow(X)
   X <- scale(X, scale = F)
