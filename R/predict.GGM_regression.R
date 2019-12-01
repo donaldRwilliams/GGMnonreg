@@ -273,3 +273,95 @@ print.summary.predict.GGM_regression <- function(x,...){
   }
 }
 
+
+#' Plot \code{predict.GGM_regression} Object
+#'
+#' @param x object of class \code{predict.GGM_regression}
+#' @param ci confidence interval
+#' @param color point color
+#' @param size point size
+#' @param ... currently ignored
+#'
+#' @return \code{ggplot} object
+#' @export
+#'
+#' @examples
+#'# data
+#' X <- GGMnonreg::ptsd[,1:5]
+#'
+#'# fit model
+#' fit <- GGM_regression(X)
+#'
+#'# predict
+#'net_pred <- predict(fit, iter = 10)
+#'
+#'#plot
+#'plot(net_pred)
+plot.predict.GGM_regression <- function(x,
+                                        ci = 0.95,
+                                        color = "black",
+                                        size = 1,...){
+
+  # summarise predict
+  net_summ <- summary(x, ci = ci)
+
+  # visible binding
+  Node <- NA
+  Estimate <- NA
+  sig <- NA
+
+  if(isFALSE(x$newdata)){
+
+    R2_dat <-  net_summ$R2_dat[order(net_summ$R2_dat$Estimate),]
+    mse_dat <-  net_summ$mse_dat[order(net_summ$mse_dat$Estimate),]
+
+    R2_dat$Node  <- factor(R2_dat$Node,
+                           labels = R2_dat$Node,
+                           levels = R2_dat$Node)
+
+    mse_dat$Node  <- factor(mse_dat$Node,
+                            labels = mse_dat$Node,
+                            levels = mse_dat$Node)
+
+    R2_plt <-  ggplot(R2_dat, aes(x = Node,
+                                  y = Estimate)) +
+      geom_errorbar(aes(ymin = R2_dat[,4],
+                        ymax = R2_dat[,5]),
+                    width = 0) +
+      geom_point(size = size, color = color) +
+      coord_flip() +
+      ylab("Variance Explained")
+
+    mse_plt <-  ggplot(mse_dat, aes(x = Node,
+                                    y = Estimate)) +
+      geom_errorbar(aes(ymin = mse_dat[,4],
+                        ymax = mse_dat[,5]),
+                    width = 0) +
+      geom_point(size = size, color = color) +
+      coord_flip() +
+      ylab("Mean Squared Error")
+
+    plts <- list(R2_plt = R2_plt, mse_plt = mse_plt)
+
+  } else {
+
+    mse_dat <-  net_summ$mse_dat[order(net_summ$mse_dat$Estimate),]
+    mse_dat$Node  <- factor(mse_dat$Node,
+                            labels = mse_dat$Node,
+                            levels = mse_dat$Node)
+
+    mse_plt <-  ggplot(mse_dat, aes(x = Node,
+                                    y = Estimate)) +
+      geom_errorbar(aes(ymin = mse_dat[,4],
+                        ymax = mse_dat[,5]),
+                    width = 0) +
+      geom_point(size = size, color = color) +
+      coord_flip() +
+      ylab("Mean Squared Error")
+
+    plts <- list( mse_plt = mse_plt)
+  }
+  return(plts)
+}
+
+
