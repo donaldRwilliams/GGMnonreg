@@ -2,6 +2,7 @@ Package: GGMnonreg
 Type: Package
 Title: Non-regularized Gaussian graphical models (partial correlation "networks")
 Version: 1.0.0
+Date: 2019-12-01
 Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu",role = c("aut", "cre"))
 Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
 Description: This package uses non-regularized methods to estimate partial correlation matrices. 
