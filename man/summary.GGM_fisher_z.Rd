@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{object}{An object of class \code{GGM_fisher_z}}
+
+\item{...}{currently ignored}
 }
 \description{
 Summary method for a \code{GGM_fisher_z} object

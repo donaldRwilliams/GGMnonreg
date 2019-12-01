@@ -4,7 +4,7 @@
 \alias{GGM_bootstrap.default}
 \title{Network with a Non-parametric Bootstrap}
 \usage{
-\method{GGM_bootstrap}{default}(X, iter = 1000, alpha = 0.05)
+\method{GGM_bootstrap}{default}(X, iter = 1000, alpha = 0.05, ...)
 }
 \arguments{
 \item{X}{data matrix (dimensions n by p)}
@@ -12,6 +12,8 @@
 \item{iter}{number of bootstrap samples}
 
 \item{alpha}{desired type I error rate (correspondig to approximately 1 - specificity)}
+
+\item{...}{currently ignored}
 }
 \value{
 list of class GGM_bootstrap
