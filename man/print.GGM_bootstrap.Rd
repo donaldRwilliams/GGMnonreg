@@ -7,9 +7,9 @@
 \method{print}{GGM_bootstrap}(x, ...)
 }
 \arguments{
-\item{...}{currently ignored}
+\item{x}{An object of class \code{GGM_bootstrap}}
 
-\item{object}{An object of class \code{GGM_bootstrap}}
+\item{...}{currently ignored}
 }
 \description{
 Print method for a \code{GGM_bootstrap} object

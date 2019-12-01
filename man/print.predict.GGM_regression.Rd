@@ -22,6 +22,6 @@ X <- GGMnonreg::ptsd[, 1:5]
 fit <- GGM_regression(X)
 
 # predict
-net_pred <- predict(fit)
+net_pred <- predict(fit, iter = 10)
 net_pred
 }

@@ -4,7 +4,7 @@
 \alias{GGM_fisher_z.default}
 \title{Network with Fisher Z Transformation}
 \usage{
-\method{GGM_fisher_z}{default}(X, alpha = 0.05, FDR = FALSE)
+\method{GGM_fisher_z}{default}(X, alpha = 0.05, FDR = FALSE, ...)
 }
 \arguments{
 \item{X}{data matrix (dimensions n by p)}
@@ -12,6 +12,8 @@
 \item{alpha}{desired type I error rate (correspondig to approximately 1 - specificity)}
 
 \item{FDR}{false discovery rate control (see notes)}
+
+\item{...}{currently ignored}
 }
 \value{
 list of class GGM_fisher_z

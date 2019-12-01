@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{object}{An object of class \code{GGM_regression}}
+
+\item{...}{currently ignored}
 }
 \description{
 Summary method for a \code{GGM_regression} object

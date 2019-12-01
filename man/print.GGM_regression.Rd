@@ -7,7 +7,9 @@
 \method{print}{GGM_regression}(x, ...)
 }
 \arguments{
-\item{object}{An object of class \code{GGM_regression}}
+\item{x}{An object of class \code{GGM_regression}}
+
+\item{...}{currently ignored}
 }
 \description{
 Print method for a \code{GGM_regression} object

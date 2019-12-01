@@ -4,11 +4,11 @@
 \alias{plot.pcor_summary.GGM_bootstrap}
 \title{Plot \code{pcor_summary.GGM_bootstrap} Edges}
 \usage{
-\method{plot}{pcor_summary.GGM_bootstrap}(object, size = 1,
-  color = "black", customize = "GGMnonreg", ...)
+\method{plot}{pcor_summary.GGM_bootstrap}(x, size = 1, color = "black",
+  customize = "GGMnonreg", ...)
 }
 \arguments{
-\item{object}{object of class \object{pcor_summary.GGM_bootstrap}}
+\item{x}{object of class \code{pcor_summary.GGM_bootstrap}}
 
 \item{size}{point size}
 

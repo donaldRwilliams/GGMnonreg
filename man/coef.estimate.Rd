@@ -5,12 +5,16 @@
 \alias{coef.GGM_bootstrap}
 \title{Precision Matrix to Multiple Regression}
 \usage{
-\method{coef}{GGM_bootstrap}(object, node = 1, ci = 0.95)
+\method{coef}{GGM_bootstrap}(object, node = 1, ci = 0.95, ...)
 }
 \arguments{
 \item{object}{object of class \code{estimate} (analytic = F)}
 
+\item{node}{which variable (node) to summarise}
+
 \item{ci}{confidence interval used in the summary output}
+
+\item{...}{currently ignored}
 }
 \value{
 list of class \code{coef.estimate}:

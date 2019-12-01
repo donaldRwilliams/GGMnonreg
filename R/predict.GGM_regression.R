@@ -25,15 +25,19 @@
 #'
 #' @examples
 #'# data
-#'X <- GGMnonreg::ptsd
+#'X <- GGMnonreg::ptsd[,1:5]
 #'
 #'# fit model
-#'fit <- GGM_bootstrap(X)
+#'fit <- GGM_regression(X)
 #'
 #'# predict
-#'net_pred <- predict(fit, iter = 50)
+#'net_pred <- predict(fit, iter = 10)
 #'net_pred
-predict.GGM_regression <- function(object, new_data = NULL, resample = TRUE, iter = 500,...){
+predict.GGM_regression <- function(object,
+                                   new_data = NULL,
+                                   resample = TRUE,
+                                   iter = 500,
+                                   ...){
 
   dat <- object$dat
   p <- ncol(dat)
@@ -131,7 +135,7 @@ predict.GGM_regression <- function(object, new_data = NULL, resample = TRUE, ite
 #' fit <- GGM_regression(X)
 #'
 #' # predict
-#' net_pred <- predict(fit)
+#' net_pred <- predict(fit, iter = 10)
 #' net_pred
 print.predict.GGM_regression <- function(x,...){
   cat("GGMnonreg: Non-regularized GGMs \n")
@@ -146,7 +150,10 @@ print.predict.GGM_regression <- function(x,...){
 #' @name summary.predict.GGM_regression
 #' @title Summary method for a \code{GGM_regression} object
 #' @param object object of class \code{GGM_regression}
+#' @param ci confidence interval
+#' @param ... currently ignored
 #' @return data frame(s) including the summarized bootstrap samples
+
 #' @export
 #' @examples
 #' # data
@@ -156,7 +163,7 @@ print.predict.GGM_regression <- function(x,...){
 #' fit <- GGM_regression(X)
 #'
 #' # predict
-#' net_pred <- predict(fit, iter = 25)
+#' net_pred <- predict(fit, iter = 10)
 #' net_pred_summ <- summary(net_pred)
 #' net_pred_summ
 summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
@@ -240,7 +247,7 @@ summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
 #' fit <- GGM_regression(X)
 #'
 #' # predict
-#' net_pred <- predict(fit, iter = 25)
+#' net_pred <- predict(fit, iter = 10)
 #' net_pred_summ <- summary(net_pred)
 #' net_pred_summ
 print.summary.predict.GGM_regression <- function(x,...){

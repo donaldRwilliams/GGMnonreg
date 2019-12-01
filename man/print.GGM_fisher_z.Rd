@@ -7,7 +7,9 @@
 \method{print}{GGM_fisher_z}(x, ...)
 }
 \arguments{
-\item{object}{An object of class \code{GGM_fisher_z}}
+\item{x}{An object of class \code{GGM_fisher_z}}
+
+\item{...}{currently ignored}
 }
 \description{
 Print method for a \code{GGM_fisher_z} object

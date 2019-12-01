@@ -8,6 +8,10 @@
 }
 \arguments{
 \item{object}{object of class \code{GGM_regression}}
+
+\item{ci}{confidence interval}
+
+\item{...}{currently ignored}
 }
 \value{
 data frame(s) including the summarized bootstrap samples
@@ -23,7 +27,7 @@ X <- GGMnonreg::ptsd[, 1:5]
 fit <- GGM_regression(X)
 
 # predict
-net_pred <- predict(fit, iter = 25)
+net_pred <- predict(fit, iter = 10)
 net_pred_summ <- summary(net_pred)
 net_pred_summ
 }

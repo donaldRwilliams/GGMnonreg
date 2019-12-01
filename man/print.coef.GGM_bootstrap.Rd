@@ -4,10 +4,10 @@
 \alias{print.coef.GGM_bootstrap}
 \title{Print method for \code{coef.GGM_bootstrap} objects}
 \usage{
-\method{print}{coef.GGM_bootstrap}(x, ..)
+\method{print}{coef.GGM_bootstrap}(x, ...)
 }
 \arguments{
-\item{object}{An object of class \code{coef.GGM_bootstrap}}
+\item{x}{An object of class \code{coef.GGM_bootstrap}}
 
 \item{...}{currently ignored}
 }

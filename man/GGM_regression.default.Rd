@@ -5,7 +5,7 @@
 \title{Network with Multiple Regression (Ordinary Least Squares)}
 \usage{
 \method{GGM_regression}{default}(X, IC = "BIC", method = "exhaustive",
-  rule = "and")
+  rule = "and", ...)
 }
 \arguments{
 \item{X}{data Matrix (dimensions n by p)}
@@ -15,6 +15,8 @@
 \item{method}{subsect selection method (\code{forward}, \code{backward}, or \code{exhaustive})}
 
 \item{rule}{decision rule (see notes)}
+
+\item{...}{currently ignored}
 }
 \description{
 Network with Multiple Regression (Ordinary Least Squares)

@@ -4,11 +4,11 @@
 \alias{plot.pcor_summary.GGM_fisher_z}
 \title{Plot \code{pcor_summary.GGM_fisher_z} Edges}
 \usage{
-\method{plot}{pcor_summary.GGM_fisher_z}(object, size = 1,
-  color = "black", customize = "GGMnonreg", ...)
+\method{plot}{pcor_summary.GGM_fisher_z}(x, size = 1, color = "black",
+  customize = "GGMnonreg", ...)
 }
 \arguments{
-\item{object}{object of class \object{pcor_summary.GGM_fisher_z }}
+\item{x}{object of class \code{pcor_summary.GGM_fisher_z }}
 
 \item{size}{point size}
 

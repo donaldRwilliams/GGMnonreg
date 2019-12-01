@@ -41,12 +41,12 @@ in the future
 }
 \examples{
 # data
-X <- GGMnonreg::ptsd
+X <- GGMnonreg::ptsd[,1:5]
 
 # fit model
-fit <- GGM_bootstrap(X)
+fit <- GGM_regression(X)
 
 # predict
-net_pred <- predict(fit, iter = 50)
+net_pred <- predict(fit, iter = 10)
 net_pred
 }
