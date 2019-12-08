@@ -252,7 +252,7 @@ summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
 #' net_pred_summ
 print.summary.predict.GGM_regression <- function(x,...){
   cat("GGMnonreg: Non-regularized GGMs \n")
-  cat("Method: Mulitple Regression \n")
+  cat("Method: Multiple Regression \n")
   cat(paste("Information Criterion:", x$object$reg_object$IC, "\n"))
   cat(paste("Rule:", x$object$reg_object$rule, "\n"))
   cat(paste("New Data:", x$object$newdata, "\n"))
