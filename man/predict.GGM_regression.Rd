@@ -4,8 +4,7 @@
 \alias{predict.GGM_regression}
 \title{Network Predictability}
 \usage{
-\method{predict}{GGM_regression}(object, new_data = NULL,
-  resample = TRUE, iter = 500, ...)
+\method{predict}{GGM_regression}(object, new_data = NULL, resample = TRUE, iter = 500, ...)
 }
 \arguments{
 \item{object}{an object of class \code{GGM_regression}}

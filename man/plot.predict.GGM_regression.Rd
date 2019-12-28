@@ -4,8 +4,7 @@
 \alias{plot.predict.GGM_regression}
 \title{Plot \code{predict.GGM_regression} Object}
 \usage{
-\method{plot}{predict.GGM_regression}(x, ci = 0.95, color = "black",
-  size = 1, ...)
+\method{plot}{predict.GGM_regression}(x, ci = 0.95, color = "black", size = 1, ...)
 }
 \arguments{
 \item{x}{object of class \code{predict.GGM_regression}}

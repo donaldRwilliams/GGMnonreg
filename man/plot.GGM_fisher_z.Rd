@@ -4,10 +4,17 @@
 \alias{plot.GGM_fisher_z}
 \title{Plot \code{GGM_fisher_z} Network}
 \usage{
-\method{plot}{GGM_fisher_z}(x, layout = "circle",
-  edge_colors = "classic", node_labels = NULL,
-  node_labels_color = "black", node_groups = NULL,
-  node_outer_size = 12, node_inner_size = 11, ...)
+\method{plot}{GGM_fisher_z}(
+  x,
+  layout = "circle",
+  edge_colors = "classic",
+  node_labels = NULL,
+  node_labels_color = "black",
+  node_groups = NULL,
+  node_outer_size = 12,
+  node_inner_size = 11,
+  ...
+)
 }
 \arguments{
 \item{x}{object of class \code{GGM_fisher_z}}

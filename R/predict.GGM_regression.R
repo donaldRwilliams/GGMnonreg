@@ -185,9 +185,7 @@ summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
                            Est.Error =  R2_sd,
                            CI = t(R2_quantiles))
 
-      colnames(R2_dat) <- c("Node", "Estimate", "Est.Error",
-                            paste(c("lb.", "ub."), gsub("*0.","", ci),
-                                  "%", sep = ""))
+      colnames(R2_dat) <- c("Node", "Estimate", "Est.Error", "ci.lb", "ci.ub")
 
 
 
@@ -201,9 +199,7 @@ summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
                             Est.Error =  mse_sd,
                             CI = t(mse_quantiles))
 
-      colnames(mse_dat) <- c("Node", "Estimate", "Est.Error",
-                             paste(c("lb.", "ub."), gsub("*0.","", ci),
-                                   "%", sep = ""))
+      colnames(mse_dat) <- c("Node", "Estimate", "Est.Error", "ci.lb", "ci.ub")
 
       returned_object <- list(R2_dat = R2_dat,
                               mse_dat = mse_dat,
@@ -220,9 +216,7 @@ summary.predict.GGM_regression <- function(object, ci = 0.95, ...){
                             Est.Error =  mse_sd,
                             CI = t(mse_quantiles))
 
-      colnames(mse_dat) <- c("Node", "Estimate", "Est.Error",
-                             paste(c("lb.", "ub."), gsub("*0.","", ci),
-                                   "%", sep = ""))
+      colnames(mse_dat) <- c("Node", "Estimate", "Est.Error", "ci.lb", "ci.ub")
 
 
       returned_object <- list(mse_dat = mse_dat,

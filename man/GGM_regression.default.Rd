@@ -4,8 +4,7 @@
 \alias{GGM_regression.default}
 \title{Network with Multiple Regression (Ordinary Least Squares)}
 \usage{
-\method{GGM_regression}{default}(X, IC = "BIC", method = "exhaustive",
-  rule = "and", ...)
+\method{GGM_regression}{default}(X, IC = "BIC", method = "exhaustive", rule = "and", ...)
 }
 \arguments{
 \item{X}{data Matrix (dimensions n by p)}

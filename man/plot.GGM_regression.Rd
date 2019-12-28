@@ -4,10 +4,17 @@
 \alias{plot.GGM_regression}
 \title{Plot \code{GGM_regression} Network}
 \usage{
-\method{plot}{GGM_regression}(x, layout = "circle",
-  edge_colors = "classic", node_labels = NULL,
-  node_labels_color = "black", node_groups = NULL,
-  node_outer_size = 12, node_inner_size = 11, ...)
+\method{plot}{GGM_regression}(
+  x,
+  layout = "circle",
+  edge_colors = "classic",
+  node_labels = NULL,
+  node_labels_color = "black",
+  node_groups = NULL,
+  node_outer_size = 12,
+  node_inner_size = 11,
+  ...
+)
 }
 \arguments{
 \item{x}{object of class \code{GGM_regression}}

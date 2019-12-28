@@ -4,10 +4,17 @@
 \alias{plot.GGM_bootstrap}
 \title{Plot \code{GGM_bootstrap} Network}
 \usage{
-\method{plot}{GGM_bootstrap}(x, layout = "circle",
-  edge_colors = "classic", node_labels = NULL,
-  node_labels_color = "black", node_groups = NULL,
-  node_outer_size = 12, node_inner_size = 11, ...)
+\method{plot}{GGM_bootstrap}(
+  x,
+  layout = "circle",
+  edge_colors = "classic",
+  node_labels = NULL,
+  node_labels_color = "black",
+  node_groups = NULL,
+  node_outer_size = 12,
+  node_inner_size = 11,
+  ...
+)
 }
 \arguments{
 \item{x}{object of class \code{GGM_bootstrap}}
