@@ -21,7 +21,7 @@
 #' specificity, that is 1- alpha, which is the false positive rate. On the other hand, when \code{FDR = FALSE},
 #' the false discovery rate is controlled at the desired alpha level. This is
 #' the proporiton of "discoveries" (included edges) that are actually false positives.
-#' @export
+
 #'
 #' @examples
 #'# data
@@ -38,7 +38,8 @@
 #'
 #'# plot results
 #'plot(fit)
-GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE,...){
+#' @export
+GGM_fisher_z <- function(X, alpha = 0.05, FDR = FALSE,...){
 
 
   n <- nrow(X)
@@ -55,7 +56,7 @@ GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE,...){
   ## standardize and revese sign = partial correaltions
   pc  <-  as.matrix(cov2cor(mle_inv))  * - 1
 
-  mle_pcors <- ci_par_cor(alpha = alpha, par_cors = pc, n = n, s = p - 1)
+  mle_pcors <- ci_par_cor(alpha = alpha, par_cors = pc, n = n, s = p - 2)
 
   mle_inv <- mle_pcors$sig_mat * mle_inv
 
@@ -89,17 +90,6 @@ GGM_fisher_z.default <- function(X, alpha = 0.05, FDR = FALSE,...){
   returned_object
 
 
-}
-
-#' @title S3 GGM_fisher_z method
-#' @name GGM_fisher_z
-#' @param ... currently not used
-#'
-#' @description S3 GGM_fisher_z method
-#' @seealso \code{\link{GGM_fisher_z.default}}
-#' @export
-GGM_fisher_z <- function(...) {
-  UseMethod("GGM_fisher_z")
 }
 
 

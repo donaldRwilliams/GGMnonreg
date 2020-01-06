@@ -2,16 +2,51 @@
 % Please edit documentation in R/parcor_fisher_z.R
 \name{GGM_fisher_z}
 \alias{GGM_fisher_z}
-\title{S3 GGM_fisher_z method}
+\title{Network with Fisher Z Transformation}
 \usage{
-GGM_fisher_z(...)
+GGM_fisher_z(X, alpha = 0.05, FDR = FALSE, ...)
 }
 \arguments{
-\item{...}{currently not used}
+\item{X}{data matrix (dimensions n by p)}
+
+\item{alpha}{desired type I error rate (correspondig to approximately 1 - specificity)}
+
+\item{FDR}{false discovery rate control (see notes)}
+
+\item{...}{currently ignored}
+}
+\value{
+list of class GGM_fisher_z
+\itemize{
+\item \code{pcor_selected} selected partial correlation matrix
+\item \code{adj_selected} adjacency matrix
+\item \code{pcor_mean} saturated matrix (bootstrap mean)
+\item \code{boot_results} matrix of bootstrap samples
+\item \code{dat} data
+}
 }
 \description{
-S3 GGM_fisher_z method
+Network with Fisher Z Transformation
 }
-\seealso{
-\code{\link{GGM_fisher_z.default}}
+\note{
+When \code{FDR = FALSE}, this results in a customary significance test with the desired alpha level. This can be used to control
+specificity, that is 1- alpha, which is the false positive rate. On the other hand, when \code{FDR = FALSE},
+the false discovery rate is controlled at the desired alpha level. This is
+the proporiton of "discoveries" (included edges) that are actually false positives.
+}
+\examples{
+# data
+X <- GGMnonreg::ptsd
+
+# fit model
+fit <- GGM_fisher_z(X)
+
+# selected partials
+fit$pcor_selected
+
+# selected adjacency
+fit$adj_selected
+
+# plot results
+plot(fit)
 }
