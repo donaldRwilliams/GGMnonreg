@@ -43,7 +43,7 @@ ci_par_cor <- function(alpha, par_cors, s, n) {
   # s: p - 1 (controlled for)
   # alpha: confidence level
   # par_cors: partial correlations
-  mat <- pmat <- matrix(0,nrow =  s + 1, ncol = s + 1)
+  mat <- pmat <- matrix(0,nrow =  s + 2, ncol = s + 2)
   CI_ls <- list()
   par_cor <- par_cors[upper.tri(par_cors)]
   cov <- list()
