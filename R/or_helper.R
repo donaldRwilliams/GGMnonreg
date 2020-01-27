@@ -1,5 +1,49 @@
 #' @importFrom stats na.omit quantile cov2cor pnorm qnorm sd var
 #' @importFrom utils setTxtProgressBar txtProgressBar
+power_z <- function(r, n, c = 0,
+                    type = "pearson",
+                    compare = FALSE,
+                    alpha = 0.05){
+
+  # abs r
+  r <- abs(r)
+
+  # fisher z
+  z <- atanh(r)
+
+  if(type == "pearson"){
+    # variance of z
+    var_z <- 1 / (n - c - 3)
+
+  } else if(type == "spearman"){
+
+    var_z <- (1 + r^2/2) / (n - c - 3)
+
+  } else{
+
+    stop("invalid type (must be pearson or spearman)")
+  }
+
+
+  # differnece ?
+  if(compare == TRUE){
+
+    var_z <- var_z * 2
+
+  }
+
+  # z score
+  z_score <- z/ sqrt(var_z)
+
+  # quantile
+  q <- stats::qnorm(1 - alpha / 2)
+
+  # power
+  1 - stats::pnorm(q - z_score)
+
+}
+
+
 or_helper <- function(x, y){
   ifelse(x * y == 0, max(abs(x), abs(y)), sqrt(abs(x) * abs(y)))
 }
@@ -80,4 +124,36 @@ ci_par_cor <- function(alpha, par_cors, s, n) {
 
   list(sig_mat = mat, par_cors = par_cors, par_sig = mat * par_cors,
        cis = c_dat, cov_prob = unlist(cov), pmat = pmat)
+}
+
+performance <- function(Estimate, True){
+
+  True <- as.matrix(True)
+  Estimate <- as.matrix(Estimate)
+
+  # True Negative
+  TN <- ifelse(True[upper.tri(True)] == 0 & Estimate[upper.tri(Estimate)] == 0, 1, 0); TN <- sum(TN)
+  # False Positive
+  FP <- ifelse(True[upper.tri(True)] == 0 & Estimate[upper.tri(Estimate)] != 0, 1, 0); FP <- sum(FP)
+  # True Positive
+  TP <- ifelse(True[upper.tri(True)] != 0 & Estimate[upper.tri(Estimate)] != 0, 1, 0); TP <- sum(TP)
+  # False Negatives
+  FN <- ifelse(True[upper.tri(True)] != 0 & Estimate[upper.tri(Estimate)] == 0, 1, 0); FN <- sum(FN)
+
+  Specificity <- TN/(TN + FP)
+  Sensitivity <- TP/(TP + FN)
+  Precision <- TP/(TP + FP)
+
+  Recall <- TP / (TP + FN)
+
+  F1_score <- 2 * ((Precision * Recall) / (Precision + Recall))
+
+  MCC <- (TP*TN - FP*FN)/sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
+
+  results <- c(Specificity, Sensitivity, Precision, Recall,  F1_score, MCC)
+  results_name <- c("Specificity", "Sensitivity", "Precision", "Recall",  "F1_score", "MCC")
+  results <- cbind.data.frame(measure = results_name, score = results)
+  list(results = results)
+
+
 }

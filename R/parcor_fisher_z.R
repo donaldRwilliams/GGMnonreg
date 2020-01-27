@@ -91,8 +91,6 @@ GGM_fisher_z <- function(X, alpha = 0.05, FDR = FALSE,...){
 
 
 }
-
-
 #' @name summary.GGM_fisher_z
 #' @title Summary method for a \code{GGM_fisher_z} object
 #' @param object An object of class \code{GGM_fisher_z}

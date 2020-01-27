@@ -15,6 +15,7 @@ Imports: bestglm,
   ggplot2  (>= 3.2.1), 
   GGally (>= 1.4.0),
   network (>= 1.15),
+  poibin (>= 1.5),
   sna,
   Matrix
 LazyData: true
