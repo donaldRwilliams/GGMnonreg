@@ -5,7 +5,7 @@
 #' @param alpha desired type I error rate (corresponding to approximately 1 - specificity)
 #' @param control_precision should precision be controlled ?
 #' This corresponds to controlling 1 - the false discovery rate (FDR). Default it \code{NULL}.
-#' @param precision desired precision (1 - FDR). Defaul is 0.90 (1 - 0.9 = FDR of 0.1).
+#' @param precision desired precision (1 - FDR). Default is 0.90 (1 - 0.9 = FDR of 0.1).
 #'
 #' @return list containing the adjacency matrix (0's and 1's), partial correlation differences, and an
 #' 'adjacency' matrix containing the partial correlation differences.

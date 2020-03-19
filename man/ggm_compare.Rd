@@ -22,7 +22,7 @@ ggm_compare(
 \item{control_precision}{should precision be controlled ?
 This corresponds to controlling 1 - the false discovery rate (FDR). Default it \code{NULL}.}
 
-\item{precision}{desired precision (1 - FDR). Defaul is 0.90 (1 - 0.9 = FDR of 0.1).}
+\item{precision}{desired precision (1 - FDR). Default is 0.90 (1 - 0.9 = FDR of 0.1).}
 }
 \value{
 list containing the adjacency matrix (0's and 1's), partial correlation differences, and an
