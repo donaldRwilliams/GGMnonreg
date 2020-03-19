@@ -20,7 +20,7 @@ ggm_compare(
 \item{alpha}{desired type I error rate (corresponding to approximately 1 - specificity)}
 
 \item{control_precision}{should precision be controlled ?
-This corresponds to controlling 1 - the false discovery rate (FDR). Default it \code{NULL}.}
+This corresponds to controlling 1 - the false discovery rate (FDR). Default is \code{NULL}.}
 
 \item{precision}{desired precision (1 - FDR). Default is 0.90 (1 - 0.9 = FDR of 0.1).}
 }
@@ -30,4 +30,17 @@ list containing the adjacency matrix (0's and 1's), partial correlation differen
 }
 \description{
 Compare Gaussian Graphical Models
+}
+\examples{
+true <- gen_pcors(20, edge_prob = 0.3)
+Y1 <- MASS::mvrnorm(100,
+                    mu = rep(0, 20),
+                    Sigma = true$cors)
+
+Y2 <- MASS::mvrnorm(100,
+                   mu = rep(0, 20),
+                   Sigma = diag(20))
+
+fit <- ggm_compare(Y1, Y2, precision = 0.80,
+                   control_precision = TRUE)
 }
