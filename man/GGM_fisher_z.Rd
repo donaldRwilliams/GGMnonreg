@@ -9,7 +9,7 @@ GGM_fisher_z(X, alpha = 0.05, FDR = FALSE, ...)
 \arguments{
 \item{X}{data matrix (dimensions n by p)}
 
-\item{alpha}{desired type I error rate (correspondig to approximately 1 - specificity)}
+\item{alpha}{desired type I error rate (corresponding to approximately 1 - specificity)}
 
 \item{FDR}{false discovery rate control (see notes)}
 

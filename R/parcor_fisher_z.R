@@ -1,7 +1,7 @@
 #' Network with Fisher Z Transformation
 #'
 #' @param X data matrix (dimensions n by p)
-#' @param alpha desired type I error rate (correspondig to approximately 1 - specificity)
+#' @param alpha desired type I error rate (corresponding to approximately 1 - specificity)
 #' @param FDR false discovery rate control (see notes)
 #' @param ... currently ignored
 #'
