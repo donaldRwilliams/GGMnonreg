@@ -1,7 +1,7 @@
 #' Compare Gaussian Graphical Models
 #'
 #' @param Y_g1 data matrix or data frame of dimensions n by p (group 1)
-#' @param Y_g2 data matrix or data frame of dimensions n by p (group 1)
+#' @param Y_g2 data matrix or data frame of dimensions n by p (group 2)
 #' @param alpha desired type I error rate (corresponding to approximately 1 - specificity)
 #' @param control_precision should precision be controlled ?
 #' This corresponds to controlling 1 - the false discovery rate (FDR). Default is \code{NULL}.

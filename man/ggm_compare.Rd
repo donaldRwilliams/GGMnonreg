@@ -15,7 +15,7 @@ ggm_compare(
 \arguments{
 \item{Y_g1}{data matrix or data frame of dimensions n by p (group 1)}
 
-\item{Y_g2}{data matrix or data frame of dimensions n by p (group 1)}
+\item{Y_g2}{data matrix or data frame of dimensions n by p (group 2)}
 
 \item{alpha}{desired type I error rate (corresponding to approximately 1 - specificity)}
 
