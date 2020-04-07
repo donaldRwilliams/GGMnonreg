@@ -4,12 +4,14 @@
 \alias{GGM_fisher_z}
 \title{Network with Fisher Z Transformation}
 \usage{
-GGM_fisher_z(X, alpha = 0.05, FDR = FALSE, ...)
+GGM_fisher_z(X, alpha = 0.05, positive_manifold = FALSE, FDR = FALSE, ...)
 }
 \arguments{
 \item{X}{data matrix (dimensions n by p)}
 
 \item{alpha}{desired type I error rate (corresponding to approximately 1 - specificity)}
+
+\item{positive_manifold}{set to TRUE to test the expectation that the edges are positive}
 
 \item{FDR}{false discovery rate control (see notes)}
 

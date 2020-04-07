@@ -2,6 +2,7 @@
 #'
 #' @param X data matrix (dimensions n by p)
 #' @param alpha desired type I error rate (corresponding to approximately 1 - specificity)
+#' @param  positive_manifold set to TRUE to test the expectation that the edges are positive
 #' @param FDR false discovery rate control (see notes)
 #' @param ... currently ignored
 #'
@@ -39,12 +40,18 @@
 #'# plot results
 #'plot(fit)
 #' @export
-GGM_fisher_z <- function(X, alpha = 0.05, FDR = FALSE,...){
+GGM_fisher_z <- function(X, alpha = 0.05,
+                         positive_manifold = FALSE,
+                         FDR = FALSE,...){
 
 
   n <- nrow(X)
   p <- ncol(X)
   mle_hat <- mle(X)
+
+  if(isTRUE(positive_manifold)){
+    alpha  <- alpha * 2
+  }
 
   ## compute maximum likelihood estimator for covariance matrix
   mle_cov <- mle_hat$cov_mle
@@ -79,12 +86,26 @@ GGM_fisher_z <- function(X, alpha = 0.05, FDR = FALSE,...){
     diag(mle_pcors$par_sig) <- 0
     diag(mle_pcors$sig_mat) <- 0
 
-    returned_object <- list(pcor_selected = mle_pcors$par_sig,
-                            adj_selected = mle_pcors$sig_mat,
-                            p = p, alpha = alpha, dat = X,
-                            fisher_z_results = mle_pcors, FDR = FDR)
+    if(isTRUE(positive_manifold)){
+      pcor_selected = ifelse( mle_pcors$par_sig < 0, 0,
+                              mle_pcors$par_sig)
 
-  }
+      returned_object <- list(pcor_selected = pcor_selected,
+                            adj_selected = ifelse(pcor_selected == 0, 0, 1),
+                            p = p, alpha = alpha, dat = X,
+                            fisher_z_results = mle_pcors,
+                            FDR = FDR, positive_manifold = TRUE)
+
+    } else {
+
+      returned_object <- list(pcor_selected = mle_pcors$par_sig,
+                              adj_selected = mle_pcors$sig_mat,
+                              p = p, alpha = alpha, dat = X,
+                              fisher_z_results = mle_pcors, FDR = FDR)
+    }
+
+
+    }
 
   class(returned_object) <- "GGM_fisher_z"
   returned_object
