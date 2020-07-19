@@ -2,20 +2,81 @@
 #'
 #' @name GGMmeta
 #'
-#' @param R
-#' @param data
-#' @param fz
-#' @param fz_var
-#' @param n
-#' @param metafor_opts
-#' @param method
-#' @param alpha
-#' @param blup
-#' @param p_adjust
-#' @param store
-#' @param progress
+#' @description Function to fit meta-analytic fixed- or random-effects models for Gaussian graphical
+#' models (i.e., a meta-analysis specifically for partial correlations)
 #'
-#' @return
+#' @param R A list containing correlation matrices of dimensions \emph{p} by \emph{p}
+#'          (at least two are required). Note that this is required if \code{data} or
+#'          \code{fz} is not provided.
+#'
+#' @param data A list containing data matrices of dimensions \emph{n} by \emph{p}
+#'             (at least two are required). Note that this is required if \code{R}
+#'             or \code{fz} is not provided.
+#'
+#' @param fz A matrix of Fisher-z transformed partial correlations. Each column should be
+#'           the upper-triangular elements of a partial correlation matrix for a given
+#'           study. This is required if \code{R} and \code{data} are not supplied.
+#'
+#' @param fz_var A matrix of the variances for the Fisher-z transformed partial correlation.
+#'
+#' @param n Numeric vector. The sample sizes if \code{R} is supplied.
+#'
+#' @param metafor_opts A list of options passed to \code{\link[metafor]{rma}}. The current default
+#'                     is to fit a fixed-effects meta-analysis. See \strong{Details}.
+#'
+#' @param method Character string. Which correlation coefficient should be computed.
+#'               One of "pearson" (default), "kendall", or "spearman": can be abbreviated.
+#'
+#' @param alpha Numeric. The desired type I error rate.
+#'
+#' @param blup Logical. Should the study specifc random effects be computed (defaults to \code{FALSE})?. This
+#'             provide a graph based on the Best Linear Unbiased Predictions \code{\link[metafor]{blup}}.
+#'
+#' @param p_adjust Character string. Correction method for the p-values \code{\link[stats]{p.adjust}}.
+#'                 The default is \code{"fdr"} (false discovery rate, i.e., 1 minus precision).
+#'
+#' @param store Logical. Should the meta-analyses be saved (defaults to \code{FALSE})?
+#'
+#' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
+#'
+#' @importFrom stats p.adjust cor
+#' @importFrom metafor rma blup
+#' @importFrom utils txtProgressBar setTxtProgressBar
+#'
+#'
+#' @return An object of class \code{GGMmeta}, including
+#'
+#' \itemize{
+#' \item \code{one}
+#' }
+#'
+#' @details
+#' It is commonly thought that random-effects models are needed in the presence of
+#' between-study variance. This is incorrect, as a fixed-effects model can be used
+#' and has nominal error rate. The key difference is the desired inference: a
+#' fixed-effects model is concerned with only the included studies whereas a
+#' random-effects model generalizes to the "population" of studies. Because this function
+#' is likely to be used with few studies, generalizing is perhaps a bit ambitous. Hence,
+#' the current default is to fit a fixed-effects model which provides inference about about
+#' the average effect for those studies included in the analysis.
+#'
+#'
+#' @examples
+#'
+#' # change to REML to get study specific graphs
+#' meta_fit <- GGMmeta(R = list(ptsd_cor1,
+#'                           ptsd_cor2,
+#'                           ptsd_cor3,
+#'                           ptsd_cor4),
+#'                           n = c(526, 365, 926, 956),
+#'                           blup = TRUE,
+#'                           metafor_opts = list(method = "REML"))
+#'
+#' # overall effect (fdr correction)
+#' qgraph::qgraph(meta_fit$wadj_correct)
+#'
+#' # shrunken networks (study one)
+#' qgraph::qgraph(meta_fit$wadj_study[[1]])
 #' @export
 GGMmeta <- function(R = list(),
                     data = list(),
@@ -32,9 +93,9 @@ GGMmeta <- function(R = list(),
 
   if(is.null(fz) & is.null(fz_var)){
 
-  # assing lists
-  data <- data
-  R <- R
+    # assing lists
+    data <- data
+    R <- R
 
   # check for correlation or data matrices
   if (length(R) != 0) {
@@ -46,7 +107,9 @@ GGMmeta <- function(R = list(),
     if(is.null(n)){
       stop("missing a vector including the sample size for each group, e.g., `n = c(100, 500, 1000)` )")
     }
+
   } else {
+
     groups <- length(data)
     p <- ncol(data[[1]])
     k <- p - 2;
@@ -63,7 +126,7 @@ GGMmeta <- function(R = list(),
     if(type == "data"){
       Yg <- data[[g]];
 
-      pcors <- cor_2_pcor(cor(x = Yg,
+      pcors <- cor_2_pcor(stats::cor(x = Yg,
                               method = method));
     } else {
 
@@ -98,7 +161,7 @@ GGMmeta <- function(R = list(),
 
   if(progress){
     message("Fitting Meta-Analyses")
-    pb <- txtProgressBar(min = 0, max = relations, style = 3)
+    pb <- utils::txtProgressBar(min = 0, max = relations, style = 3)
   }
   metas <- lapply(1:relations, function(x) {
 
@@ -107,7 +170,7 @@ GGMmeta <- function(R = list(),
                                         vi = fz_var[x,]),
                                    metafor_opts)))
     if(progress){
-    setTxtProgressBar(pb, x)
+    utils::setTxtProgressBar(pb, x)
     }
     fit
     })
@@ -178,7 +241,7 @@ GGMmeta <- function(R = list(),
       mat_z <- symm_mat(mat_z)
       adj <- ifelse(abs(mat_z) > 1.959964, 1, 0)
       wadj <- mat_mu * adj
-      pcor_study[[i]] <-
+      pcor_study[[i]] <- mat_mu
       adj_study[[i]] <- adj
       wadj_study[[i]] <- wadj
     }
@@ -188,7 +251,7 @@ GGMmeta <- function(R = list(),
 
   if(!store){
     metas <- NULL
-
+    blups <- NULL
   }
 
   returned_object <- list(
@@ -196,12 +259,13 @@ GGMmeta <- function(R = list(),
     wadj_correct = wadj_correct,
     wadj_nocorrect = wadj_nocorrect,
     adj_correct = adj_correct,
-    wadj_nocorrect = wadj_nocorrect,
+    adj_nocorrect = adj_nocorrect,
     meta_results = meta_results,
     metas = metas,
     pcor_study = pcor_study,
     adj_study = adj_study,
-    wadj_study = wadj_study)
+    wadj_study = wadj_study,
+    blup = blups)
 
   returned_object
 }
