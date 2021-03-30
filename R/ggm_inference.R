@@ -32,6 +32,7 @@
 #' @importFrom corpcor cor2pcor
 #' @importFrom psych polychoric
 #' @importFrom stats quantile cor
+#' @importFrom MASS mvrnorm
 #'
 ggm_inference <- function(Y, alpha = 0.05,
                           B = 500,
@@ -86,6 +87,8 @@ ggm_inference <- function(Y, alpha = 0.05,
                           return(pcors)
 
                         }
+
+  parallel::stopCluster(cl)
 
   cis <- apply(boot_samps, 2, function(x){
     stats::quantile(x, probs = c(ci_lower, ci_upper))

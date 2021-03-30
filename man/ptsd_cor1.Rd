@@ -9,7 +9,7 @@ A correlation matrix with 16 variables
 }
 \description{
 A correlation matrix that includes 16 variables. The correlation matrix was estimated from 526
-individuals \insertCite{fried2018replicability}{BGGM}.
+individuals \insertCite{fried2018replicability}{GGMnonreg}.
 }
 \details{
 \itemize{

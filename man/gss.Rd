@@ -6,8 +6,8 @@
 \title{Data: 1994 General Social Survey}
 \format{
 A data frame containing 1190 observations (n = 1190) and 6 variables (p = 6) measured on the binary scale
-        \insertCite{fowlkes1988evaluating}{BGGM}. The variable descriptions were copied from
-        \insertCite{@section 4, @hoff2007extending;textual}{BGGM}
+        \insertCite{fowlkes1988evaluating}{GGMnonreg}. The variable descriptions were copied from
+        \insertCite{@section 4, @hoff2007extending;textual}{GGMnonreg}
 }
 \usage{
 data("gss")

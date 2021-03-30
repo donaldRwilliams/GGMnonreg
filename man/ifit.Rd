@@ -6,7 +6,7 @@
 \title{Data: ifit Intensive Longitudinal Data}
 \format{
 A data frame containing 197 observations and 8 variables. The data have been used in
-\insertCite{o2020use}{BGGM} and  \insertCite{williams2019bayesian}{BGGM}
+\insertCite{o2020use}{GGMnonreg} and  \insertCite{williams2019bayesian}{GGMnonreg}
 }
 \usage{
 data("ifit")

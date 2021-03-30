@@ -11,7 +11,7 @@ A dataframe with 221 rows and 20 variables
 data("ptsd")
 }
 \description{
-A dataset containing items that measure Post-traumatic stress disorder symptoms \insertCite{armour2017network}{BGGM}.
+A dataset containing items that measure Post-traumatic stress disorder symptoms \insertCite{armour2017network}{GGMnonreg}.
 There are 20 variables (\emph{p}) and  221 observations (\emph{n}).
 }
 \details{

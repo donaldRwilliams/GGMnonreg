@@ -12,7 +12,7 @@ data("bfi")
 }
 \description{
 This dataset and the corresponding documentation was taken from the \strong{psych} package. We refer users to that
-package for further details \insertCite{psych}{BGGM}.
+package for further details \insertCite{psych}{GGMnonreg}.
 }
 \details{
 \itemize{

@@ -17,12 +17,15 @@ Imports:
   ggplot2  (>= 3.2.1), 
   GGally (>= 1.4.0),
   network (>= 1.15),
-  metafor,
   poibin (>= 1.5),
   sna,
   Matrix,
   parallel,
   doSNOW,
+  foreach,
+  corpcor,
+  psych,
+  MASS
 suggests:
  qgraph
 LazyData: true

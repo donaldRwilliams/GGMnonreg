@@ -6,9 +6,9 @@
 \title{Data: Women and Mathematics}
 \format{
 A data frame containing 1190 observations (n = 1190) and 6 variables (p = 6) measured on the binary scale
-        \insertCite{fowlkes1988evaluating}{BGGM}. These data have been analyzed in \insertCite{tarantola2004mcmc;textual}{BGGM}
-        and in \insertCite{madigan1994model}{BGGM}. The variable descriptions were copied from  (section 5.2 )
-        \insertCite{@section 5.2, @talhouk2012efficient}{BGGM}
+        \insertCite{fowlkes1988evaluating}{GGMnonreg}. These data have been analyzed in \insertCite{tarantola2004mcmc;textual}{GGMnonreg}
+        and in \insertCite{madigan1994model}{GGMnonreg}. The variable descriptions were copied from  (section 5.2 )
+        \insertCite{@section 5.2, @talhouk2012efficient}{GGMnonreg}
 }
 \usage{
 data("women_math")
