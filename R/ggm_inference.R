@@ -36,7 +36,7 @@
 #' @importFrom foreach foreach `%dopar%`
 #' @importFrom corpcor cor2pcor
 #' @importFrom psych polychoric
-#' @importFrom stats quantile cor
+#' @importFrom stats quantile cor p.adjust
 #' @importFrom MASS mvrnorm
 #'
 ggm_inference <- function(Y,

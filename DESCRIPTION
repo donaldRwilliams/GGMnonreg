@@ -25,7 +25,8 @@ Imports:
   foreach,
   corpcor,
   psych,
-  MASS
+  MASS,
+  stats
 suggests:
  qgraph
 LazyData: true
