@@ -4,7 +4,7 @@
 # GGMnonreg
 
 [![Build
-Status](https://travis-ci.com/donaldRwilliams/GGMnonreg.svg?branch=master)](https://travis-ci.com/donaldRwilliams/GGMnonreg)
+Status](https://travis-ci.org/donaldRwilliams/GGMnonreg.svg?branch=master)](https://travis-ci.org/donaldRwilliams/GGMnonreg)
 
 The goal of **GGMnonreg** is to estimate non-regularized Gaussian
 graphical models.
