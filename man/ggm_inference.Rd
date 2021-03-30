@@ -9,7 +9,7 @@ ggm_inference(
   alpha = 0.05,
   control_precision = FALSE,
   boot = TRUE,
-  B = 500,
+  B = 1000,
   cores = 2,
   method = "pearson"
 )

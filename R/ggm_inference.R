@@ -43,7 +43,7 @@ ggm_inference <- function(Y,
                           alpha = 0.05,
                           control_precision = FALSE,
                           boot = TRUE,
-                          B = 500,
+                          B = 1000,
                           cores = 2,
                           method = "pearson"){
 
@@ -124,7 +124,8 @@ ggm_inference <- function(Y,
                             pcors = pcors,
                             boot_samps = boot_samps,
                             boot_mean = boot_mean,
-                            cis = cis)
+                            cis = cis,
+                            n = n, p = p)
   } else {
 
     if(!method %in% c("pearson", "spearman")){
@@ -132,6 +133,7 @@ ggm_inference <- function(Y,
     }
 
     pcors <- corpcor::cor2pcor(cor(Y, method = method))
+
     z <- abs(GGMnonreg::fisher_r_to_z(pcors)[upper.tri(diag(p))])
 
     if(method == "spearman"){
@@ -159,7 +161,8 @@ ggm_inference <- function(Y,
 
     returned_object <- list(wadj = wadj,
                             adj = adj,
-                            pcors = pcors)
+                            pcors = pcors,
+                            n = n, p = p)
 
   }
 
