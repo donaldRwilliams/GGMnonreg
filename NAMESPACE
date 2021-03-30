@@ -2,7 +2,9 @@
 
 export(fisher_r_to_z)
 export(ggm_inference)
+export(ggm_search)
 importFrom(MASS,mvrnorm)
+importFrom(bestglm,bestglm)
 importFrom(corpcor,cor2pcor)
 importFrom(doSNOW,registerDoSNOW)
 importFrom(foreach,`%dopar%`)

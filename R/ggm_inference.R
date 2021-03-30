@@ -138,6 +138,7 @@ ggm_inference <- function(Y,
     z <- abs(GGMnonreg::fisher_r_to_z(pcors)[upper.tri(diag(p))])
 
     if(method == "spearman"){
+
       test_stat <- z / sqrt(1.06 / (n - p - 2 - 3))
 
     } else {
@@ -156,7 +157,7 @@ ggm_inference <- function(Y,
 
     adj[upper.tri(diag(p))] <- ifelse(p_values < alpha, 1, 0)
 
-    adj <- GGMnonreg:::symm_mat(adj)
+    adj <- symm_mat(adj)
 
     wadj <- adj * pcors
 

@@ -8,17 +8,12 @@ Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
 Description: This package uses non-regularized methods to estimate partial correlation matrices. 
   The current methods consist of multiple regression with AIC or BIC model selection, a non-parameteric 
   bootstrap approach to directly estimate the precision matrix, and Fisher z transformed partial correlations.
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.0.0)
 License: GPL-2
 Encoding: UTF-8
 Imports: 
-  Rdpack (>= 0.11-1),
+  Rdpack (>= 2.1),
   bestglm, 
-  ggplot2  (>= 3.2.1), 
-  GGally (>= 1.4.0),
-  network (>= 1.15),
-  poibin (>= 1.5),
-  sna,
   Matrix,
   parallel,
   doSNOW,
@@ -26,7 +21,8 @@ Imports:
   corpcor,
   psych,
   MASS,
-  stats
+  stats,
+  bestglm (>= 0.37.3)
 suggests:
  qgraph
 LazyData: true
