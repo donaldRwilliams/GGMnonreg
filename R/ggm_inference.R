@@ -125,7 +125,8 @@ ggm_inference <- function(Y,
                             boot_samps = boot_samps,
                             boot_mean = boot_mean,
                             cis = cis,
-                            n = n, p = p)
+                            n = n, p = p,
+                            Y = Y)
   } else {
 
     if(!method %in% c("pearson", "spearman")){
@@ -162,7 +163,8 @@ ggm_inference <- function(Y,
     returned_object <- list(wadj = wadj,
                             adj = adj,
                             pcors = pcors,
-                            n = n, p = p)
+                            n = n, p = p,
+                            Y = Y)
 
   }
 
