@@ -11,12 +11,20 @@ Description: This package uses non-regularized methods to estimate partial corre
 Depends: R (>= 3.5.0)
 License: GPL-2
 Encoding: UTF-8
-Imports: bestglm, 
+Imports: 
+  Rdpack (>= 0.11-1),
+  bestglm, 
   ggplot2  (>= 3.2.1), 
   GGally (>= 1.4.0),
   network (>= 1.15),
+  metafor,
   poibin (>= 1.5),
   sna,
-  Matrix
+  Matrix,
+  parallel,
+  doSNOW,
+suggests:
+ qgraph
 LazyData: true
-RoxygenNote: 7.0.2
+RdMacros: Rdpack
+RoxygenNote: 7.1.1
