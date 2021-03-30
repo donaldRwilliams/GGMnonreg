@@ -6,6 +6,14 @@ symm_mat <- function (x) {
   x
 }
 
+z2r <- function (z) {
+  (exp(2 * z) - 1)/(1 + exp(2 * z))
+}
+
+fisher_z <- function(rho){
+  .5 * log(( 1 + rho )/ ( 1 - rho ))
+}
+
 csws_labels <- ifelse(1:35 %in% c(7,10,16,24,29),
                       "Family Support",
                       ifelse(1:35 %in% c(3,12,20,25,35),

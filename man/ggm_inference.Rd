@@ -4,13 +4,26 @@
 \alias{ggm_inference}
 \title{Gaussian graphical model: statistical inference}
 \usage{
-ggm_inference(Y, alpha = 0.05, B = 500, cores = 2, method = "pearson")
+ggm_inference(
+  Y,
+  alpha = 0.05,
+  control_precision = FALSE,
+  boot = TRUE,
+  B = 500,
+  cores = 2,
+  method = "pearson"
+)
 }
 \arguments{
 \item{Y}{The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).}
 
 \item{alpha}{The desired significance level (defaults to \code{0.05}). Note that
 1 - alpha corresponds to specificity.}
+
+\item{control_precision}{Logical. Should precision (i.e., 1 - false discovery rate)
+be controlled at the level alpha (defaults to \code{FALSE}) ?}
+
+\item{boot}{Logical. Should a non-parametric bootstrap be employed (defaults to \code{TRUE})?}
 
 \item{B}{Integer. Number of bootstrap replicates (defaults to \code{1000}).}
 

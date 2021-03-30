@@ -5,6 +5,11 @@
 #' @param alpha The desired significance level (defaults to \code{0.05}). Note that
 #'              1 - alpha corresponds to specificity.
 #'
+#' @param control_precision Logical. Should precision (i.e., 1 - false discovery rate)
+#'                          be controlled at the level alpha (defaults to \code{FALSE}) ?
+#'
+#' @param boot Logical. Should a non-parametric bootstrap be employed (defaults to \code{TRUE})?
+#'
 #' @param B Integer. Number of bootstrap replicates (defaults to \code{1000}).
 #'
 #' @param cores Integer. Number of cores to be used when executing in parallel.
@@ -34,7 +39,10 @@
 #' @importFrom stats quantile cor
 #' @importFrom MASS mvrnorm
 #'
-ggm_inference <- function(Y, alpha = 0.05,
+ggm_inference <- function(Y,
+                          alpha = 0.05,
+                          control_precision = FALSE,
+                          boot = TRUE,
                           B = 500,
                           cores = 2,
                           method = "pearson"){
@@ -53,66 +61,109 @@ ggm_inference <- function(Y, alpha = 0.05,
 
   pcors <- matrix(0, p, p)
 
-  cl <- parallel::makeCluster(cores)
+  if(boot){
+    if(control_precision){
+      warning("can't control precision when 'boot = TRUE'")
+    }
+    cl <- parallel::makeCluster(cores)
 
-  doSNOW::registerDoSNOW(cl)
+    doSNOW::registerDoSNOW(cl)
 
-  pb <- utils::txtProgressBar(max = B, style = 3)
+    pb <- utils::txtProgressBar(max = B, style = 3)
 
-  progress <- function(n) utils::setTxtProgressBar(pb, n)
+    progress <- function(n) utils::setTxtProgressBar(pb, n)
 
-  opts <- list(progress = progress)
+    opts <- list(progress = progress)
 
-  boot_samps <- foreach::foreach(i = 1:B, .combine = rbind,
-                        .options.snow = opts) %dopar%{
+    boot_samps <- foreach::foreach(i = 1:B, .combine = rbind,
+                                   .options.snow = opts) %dopar%{
 
 
-                          if(method == "polychoric"){
+                                     if(method == "polychoric"){
 
-                            pcors <-  corpcor::cor2pcor(
-                              psych::polychoric(Y[sample(1:n, size = n, replace = TRUE),])$rho
-                            )
+                                       pcors <-  corpcor::cor2pcor(
+                                         psych::polychoric(Y[sample(1:n, size = n, replace = TRUE),])$rho
+                                       )
 
-                          } else {
+                                     } else {
 
-                            pcors <- corpcor::cor2pcor(
-                              stats::cor(
-                                Y[sample(1:n, size = n, replace = TRUE),],
-                                method = method
-                              )
-                            )
-                          }
+                                       pcors <- corpcor::cor2pcor(
+                                         stats::cor(
+                                           Y[sample(1:n, size = n, replace = TRUE),],
+                                           method = method
+                                         )
+                                       )
+                                     }
 
-                          pcors <- pcors[upper.tri(diag(p))]
-                          return(pcors)
+                                     pcors <- pcors[upper.tri(diag(p))]
+                                     return(pcors)
 
-                        }
+                                   }
 
-  parallel::stopCluster(cl)
+    parallel::stopCluster(cl)
 
-  cis <- apply(boot_samps, 2, function(x){
-    stats::quantile(x, probs = c(ci_lower, ci_upper))
-  })
+    cis <- apply(boot_samps, 2, function(x){
+      stats::quantile(x, probs = c(ci_lower, ci_upper))
+    })
 
-  cis <- t(cis)
+    cis <- t(cis)
 
-  boot_mean <- colMeans(boot_samps)
+    boot_mean <- colMeans(boot_samps)
 
-  adj[upper.tri(diag(p))] <- ifelse(cis[,1] < 0 & cis[,2] > 0, 0, 1)
+    adj[upper.tri(diag(p))] <- ifelse(cis[,1] < 0 & cis[,2] > 0, 0, 1)
 
-  adj <- symm_mat(adj)
+    adj <- symm_mat(adj)
 
-  pcors[upper.tri(diag(p))] <- boot_mean
-  pcors <- symm_mat(pcors)
+    pcors[upper.tri(diag(p))] <- boot_mean
+    pcors <- symm_mat(pcors)
 
-  wadj <- pcors * adj
+    wadj <- pcors * adj
 
-  returned_object <- list(wadj = wadj,
-                          adj = adj,
-                          pcors = pcors,
-                          boot_samps = boot_samps,
-                          cis = cis)
+    returned_object <- list(wadj = wadj,
+                            adj = adj,
+                            pcors = pcors,
+                            boot_samps = boot_samps,
+                            boot_mean = boot_mean,
+                            cis = cis)
+  } else {
+
+    if(!method %in% c("pearson", "spearman")){
+      stop("analytic solution only available for 'pearson' and 'spearman'")
+    }
+
+    pcors <- corpcor::cor2pcor(cor(Y, method = method))
+    z <- abs(GGMnonreg::fisher_r_to_z(pcors)[upper.tri(diag(p))])
+
+    if(method == "spearman"){
+      test_stat <- z / sqrt(1.06 / (n - p - 2 - 3))
+
+    } else {
+
+      test_stat <- z / sqrt(1 / (n - p - 2 - 3))
+
+    }
+
+    p_values <- pnorm(test_stat, lower.tail = F) * 2
+
+    if(control_precision){
+
+      p_values <-  p.adjust(p_values, method = "fdr")
+
+    }
+
+    adj[upper.tri(diag(p))] <- ifelse(p_values < alpha, 1, 0)
+
+    adj <- GGMnonreg:::symm_mat(adj)
+
+    wadj <- adj * pcors
+
+    returned_object <- list(wadj = wadj,
+                            adj = adj,
+                            pcors = pcors)
+
+  }
 
   return(returned_object)
 
 }
+
