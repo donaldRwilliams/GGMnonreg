@@ -78,5 +78,28 @@ ggm_search <- function(Y, IC = "BIC", method = "forward") {
     n = n,
     Y = Y
   )
+
+  class(returned_object) <- c("ggmnonreg",
+                              "ggm_search")
   return(returned_object)
+
 }
+
+
+#' Print \code{ggmnonreg} Object
+#'
+#' @param x An object of class \code{ggmnonreg}
+#'
+#' @param ... Currently ignored
+#'
+#' @export
+print.ggmnonreg <- function(x,...){
+  colnames(x$wadj) <- 1:ncol(x$wadj)
+  if(is(x, "ggm_search")){
+    print(as.data.frame(x$wadj), ...)
+  } else if(is(x, "ggm_inference")){
+    print(as.data.frame(x$wadj),...)
+  }
+}
+
+

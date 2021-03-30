@@ -169,6 +169,8 @@ ggm_inference <- function(Y,
 
   }
 
+  class(returned_object) <- c("ggmnonreg",
+                              "ggm_inference")
   return(returned_object)
 
 }
