@@ -18,3 +18,5 @@ You can install the development version from
 # install.packages("devtools")
 devtools::install_github("donaldRwilliams/GGMnonreg")
 ```
+
+## Examples
