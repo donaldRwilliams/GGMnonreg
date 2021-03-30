@@ -20,3 +20,7 @@ devtools::install_github("donaldRwilliams/GGMnonreg")
 ```
 
 ## Examples
+
+``` r
+test
+```
