@@ -22,5 +22,5 @@ devtools::install_github("donaldRwilliams/GGMnonreg")
 ## Examples
 
 ``` r
-testing
+testing new
 ```
