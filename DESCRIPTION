@@ -24,7 +24,8 @@ Imports:
   MASS,
   stats,
   methods,
-  ggplot2
+  ggplot2,
+  GGMncv
 suggests:
  qgraph
 LazyData: true
