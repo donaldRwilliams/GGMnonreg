@@ -15,6 +15,7 @@ Imports:
   Rdpack,
   bestglm (>= 0.37.3), 
   Matrix,
+  poibin,
   parallel,
   doSNOW,
   foreach,
@@ -23,6 +24,7 @@ Imports:
   MASS,
   stats,
   methods,
+  ggplot2
 suggests:
  qgraph
 LazyData: true

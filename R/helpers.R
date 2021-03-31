@@ -14,6 +14,50 @@ fisher_z <- function(rho){
   .5 * log(( 1 + rho )/ ( 1 - rho ))
 }
 
+power_z <- function(r, n, c = 0,
+                    type = "pearson",
+                    compare = FALSE,
+                    alpha = 0.05){
+
+  # abs r
+  r <- abs(r)
+
+  # fisher z
+  z <- fisher_r_to_z(r)
+
+  if(type == "pearson"){
+    # variance of z
+    var_z <- 1 / (n - c - 3)
+
+  } else if(type == "spearman"){
+
+    var_z <- (1 + r^2/2) / (n - c - 3)
+
+  } else{
+
+    stop("invalid type (must be pearson or spearman)")
+  }
+
+
+  # differnece ?
+  if(compare == TRUE){
+
+    var_z <- var_z * 2
+
+  }
+
+  # z score
+  z_score <- z/ sqrt(var_z)
+
+  # quantile
+  q <- stats::qnorm(1 - alpha / 2)
+
+  # power
+  1 - stats::pnorm(q - z_score)
+
+}
+
+
 csws_labels <- ifelse(1:35 %in% c(7,10,16,24,29),
                       "Family Support",
                       ifelse(1:35 %in% c(3,12,20,25,35),

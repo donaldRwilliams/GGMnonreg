@@ -14,8 +14,8 @@
 #'
 #' @param cores Integer. Number of cores to be used when executing in parallel.
 #'
-#' @param method Character string. Which type of correlation coefficientis
-#'               to be computed. Options incluce \code{"pearson"} (default),
+#' @param method Character string. Which type of correlation coefficients
+#'               to be computed. Options include \code{"pearson"} (default),
 #'               \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.
 #'
 #' @return An object of class \code{ggm_inference}

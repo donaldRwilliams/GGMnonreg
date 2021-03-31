@@ -29,8 +29,8 @@ be controlled at the level alpha (defaults to \code{FALSE}) ?}
 
 \item{cores}{Integer. Number of cores to be used when executing in parallel.}
 
-\item{method}{Character string. Which type of correlation coefficientis
-to be computed. Options incluce \code{"pearson"} (default),
+\item{method}{Character string. Which type of correlation coefficients
+to be computed. Options include \code{"pearson"} (default),
 \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.}
 }
 \value{

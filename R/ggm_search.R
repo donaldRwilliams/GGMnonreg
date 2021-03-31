@@ -95,11 +95,15 @@ ggm_search <- function(Y, IC = "BIC", method = "forward") {
 #' @export
 #' @importFrom methods is
 print.ggmnonreg <- function(x,...){
-  colnames(x$wadj) <- 1:ncol(x$wadj)
+
   if(is(x, "ggm_search")){
+    colnames(x$wadj) <- 1:ncol(x$wadj)
     print(as.data.frame(x$wadj), ...)
   } else if(is(x, "ggm_inference")){
+    colnames(x$wadj) <- 1:ncol(x$wadj)
     print(as.data.frame(x$wadj),...)
+  } else if(is(x, "enr")){
+    print_enr(x,...)
   }
 }
 
