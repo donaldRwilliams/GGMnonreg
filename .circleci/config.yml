@@ -1,16 +1,17 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/main
     docker:
-      - image: rocker/verse:4.0.0
+      - image: appsilon/ci-base:1.0
     steps:
       - checkout
       - run:
-          name: Install package dependencies
-          command: R -e "devtools::install_deps(dep = TRUE)"
+          command: |
+            R -e 'devtools::install_deps(dependencies = TRUE)'
       - run:
-          name: Build package
-          command: R CMD build .
-      - run:
-          name: Check package
-          command: R CMD check *tar.gz
+          command: |
+            R -e 'devtools::check()'
+      - store_artifacts:
+          path: man/
+          destination: man

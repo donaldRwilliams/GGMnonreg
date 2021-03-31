@@ -3,7 +3,7 @@ Type: Package
 Title: Non-regularized Gaussian graphical models (a.k.a., partial correlation networks)
 Version: 1.0.0
 Date: 2019-12-01
-Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu",role = c("aut", "cre"))
+Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
 Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
 Description: This package uses non-regularized methods to estimate partial correlation matrices. 
   The current methods consist of multiple regression with AIC or BIC model selection, a non-parameteric 
@@ -13,7 +13,7 @@ License: GPL-2
 Encoding: UTF-8
 Imports: 
   Rdpack,
-  bestglm, 
+  bestglm (>= 0.37.3), 
   Matrix,
   parallel,
   doSNOW,
@@ -22,7 +22,7 @@ Imports:
   psych,
   MASS,
   stats,
-  bestglm (>= 0.37.3)
+  methods,
 suggests:
  qgraph
 LazyData: true

@@ -93,6 +93,7 @@ ggm_search <- function(Y, IC = "BIC", method = "forward") {
 #' @param ... Currently ignored
 #'
 #' @export
+#' @importFrom methods is
 print.ggmnonreg <- function(x,...){
   colnames(x$wadj) <- 1:ncol(x$wadj)
   if(is(x, "ggm_search")){
