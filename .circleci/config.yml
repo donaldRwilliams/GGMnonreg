@@ -7,9 +7,6 @@ jobs:
       - checkout
       - run:
           command: |
-            R -e 'devtools::install_deps(dependencies = TRUE)'
-      - run:
-          command: |
             R -e 'devtools::check()'
       - store_artifacts:
           path: man/
