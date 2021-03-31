@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/main
     docker:
-      - image: appsilon/ci-base:1.0
+      - image: rocker/verse:4.0.0
     steps:
       - checkout
       - run:
@@ -15,3 +14,4 @@ jobs:
       - store_artifacts:
           path: man/
           destination: man
+
