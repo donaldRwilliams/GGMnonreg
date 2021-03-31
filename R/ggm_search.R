@@ -102,7 +102,11 @@ ggm_search <- function(x, IC = "BIC",
 
     }
 
-    wadj <- sqrt(betas * t(betas)) * sign(betas)
+    # taken from parcor (not on CRAN)
+    Dummy=betas*t(betas)
+    Dummy[Dummy<0] <- 0
+    Dummy[Dummy>1] <- 1
+    wadj <- sign(betas)*sqrt(Dummy)
     adj <- ifelse(wadj == 0, 0, 1)
 
 
