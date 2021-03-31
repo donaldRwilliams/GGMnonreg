@@ -7,7 +7,8 @@
 status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
 
 The goal of **GGMnonreg** is to estimate non-regularized Gaussian
-graphical models.
+graphical models. Note that the title is a bit of a misnomer, in that
+Ising and Mixed graphical models are also supported.
 
 ## Installation
 
@@ -17,10 +18,4 @@ You can install the development version from
 ``` r
 # install.packages("devtools")
 devtools::install_github("donaldRwilliams/GGMnonreg")
-```
-
-## Examples
-
-``` r
-testing new
 ```
