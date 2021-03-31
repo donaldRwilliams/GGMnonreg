@@ -3,8 +3,9 @@
 
 # GGMnonreg
 
-\[\[Build
-Status\]\[\[CircleCI\](<https://circleci.com/gh/circleci/circleci-docs.svg?style=shield>\](<https://circleci.com/gh/circleci/circleci-docs>)
+<!-- badges: start --> [![CircleCI build
+status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
+<!-- badges: end -->
 
 The goal of **GGMnonreg** is to estimate non-regularized Gaussian
 graphical models.
