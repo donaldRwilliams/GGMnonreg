@@ -14,6 +14,9 @@ Encoding: UTF-8
 Imports: 
   Rdpack,
   bestglm (>= 0.37.3), 
+  GGally (>= 1.4.0),
+  network (>= 1.15),
+  sna (>= 2.5),
   Matrix,
   poibin,
   parallel,
