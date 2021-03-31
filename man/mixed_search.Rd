@@ -30,7 +30,7 @@ Only backwards selection is currently implemented.
 # data
 Y <- ifelse( ptsd[,1:5] == 0, 0, 1)
 
-# search data
+# search data (ising model)
 fit <- mixed_search(Y, data_type = rep("b", 5))
 }
 }
