@@ -51,7 +51,6 @@
 #' }
 #'
 #' @importFrom bestglm bestglm
-#' @importFrom GGMncv ggmncv
 ggm_search <- function(x, IC = "BIC",
                        type = "neighborhood_selection",
                        method = "forward",
