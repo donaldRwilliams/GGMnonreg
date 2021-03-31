@@ -23,5 +23,8 @@ print.ggmnonreg <- function(x,...){
   } else if(is(x, "ising_search")){
     colnames(x$wadj) <- 1:ncol(x$wadj)
     print(as.data.frame(x$wadj), ...)
+  } else if(is(x, "mixed_search")){
+    colnames(x$wadj) <- 1:ncol(x$wadj)
+    print(as.data.frame(x$wadj), ...)
   }
 }
