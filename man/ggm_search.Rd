@@ -4,17 +4,29 @@
 \alias{ggm_search}
 \title{Gaussian graphical model: automated search}
 \usage{
-ggm_search(Y, IC = "BIC", method = "forward")
+ggm_search(
+  x,
+  IC = "BIC",
+  type = "neighborhood_selection",
+  method = "forward",
+  n = NULL
+)
 }
 \arguments{
-\item{Y}{The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).}
+\item{x}{A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) or
+a correlation matrix of dimensions \emph{p} by \emph{p}.}
 
 \item{IC}{Character string. The desired information criterion. Options include
 \code{"AIC"} and \code{"BIC"} (default).}
 
-\item{method}{Character string. The desired subsect selection method
+\item{type}{Character string. Which search method should be used? The options included
+\code{"regression"} and \code{"approx_L0"}. See details.}
+
+\item{method}{Character string. The desired subset selection method
 Options includes \code{"forward"} (default), \code{"backward"},
 and \code{"exhaustive"}.}
+
+\item{n}{Integer. Sample size. Required if a correlation matrix is provided.}
 }
 \value{
 An object of class \code{ggm_search}.
@@ -22,8 +34,22 @@ An object of class \code{ggm_search}.
 \description{
 Gaussian graphical model: automated search
 }
+\details{
+\code{type = "neighborhood_selection"} was described in
+\insertCite{williams2019nonregularized;textual}{GGMnonreg}
+and \code{type = "approx_L0"} was described in \insertCite{williams2020beyond;textual}{GGMnonreg}.
+The penalty for \code{type = "approx_L0"} is called seamless L0 \insertCite{dicker2013variable}{GGMnonreg}
+}
 \note{
-Multiple regression is used to estimate the graph.
+\code{type = "neighborhood_selection"} employs multiple regression to estimate
+the graph (requires the data), whereas \code{type = "approx_L0"} directly estimates
+the precision matrix (data or a correlation matrix are acceptable). If
+data is provided and \code{type = "approx_L0"}, by default Pearson correlations are
+used. For another correlation coefficient, provide the desired correlation matrix.
+
+\code{type = "approx_L0"} is a continuous approximation to (non-regularized)
+best subset model selection. This is accomplished by using regularization, but
+the penalty (approximately) mimics non-regularized estimation.
 }
 \examples{
 \donttest{
@@ -34,4 +60,7 @@ Y <- ptsd
 fit <- ggm_search(Y)
 }
 
+}
+\references{
+\insertAllCited{}
 }
