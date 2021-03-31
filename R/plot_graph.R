@@ -2,7 +2,7 @@
 #'
 #' @description  Visualize the conditional (in)dependence structure.
 #'
-#' @param x An object of class \code{graph} obtained from \code{\link[GGMncv]{get_graph}}.
+#' @param x An object of class \code{graph} obtained from \code{\link[GGMnonreg]{get_graph}}.
 #'
 #' @param layout Character string. Which graph layout (defaults is \code{circle}) ?
 #'               See \link[sna]{gplot.layout}.
@@ -40,6 +40,14 @@
 #' @importFrom sna gplot.layout.circle
 #'
 #' @examples
+#' # data
+#' Y <- ptsd
+#'
+#' # estimate graph
+#' fit <- ggm_inference(Y, boot = FALSE)
+#'
+#' # get info for plotting
+#' plot(get_graph(fit))
 plot.graph <- function(x,
                        layout = "circle",
                        neg_col = "#D55E00",
@@ -110,13 +118,21 @@ plot.graph <- function(x,
 #' @description Extract the necessary ingredients to visualize the conditional
 #'              dependence structure.
 #'
-#' @param x An object of class \code{ggmncv}
+#' @param x An object of class \code{ggmnonreg}
 #'
 #' @return A list including two matrices (the weighted adjacency and adjacency matrices)
 #'
 #' @export
 #'
 #' @examples
+#' # data
+#' Y <- ptsd
+#'
+#' # estimate graph
+#' fit <- ggm_inference(Y, boot = FALSE)
+#'
+#' # get info for plotting
+#' get_graph(fit)
 get_graph <- function(x){
   returned_object <- list(P = x$wadj, adj = x$adj)
   class(returned_object) <- "graph"

@@ -1,6 +1,5 @@
 #' @importFrom stats na.omit quantile cov2cor pnorm qnorm sd var
 #' @importFrom utils setTxtProgressBar txtProgressBar
-
 symm_mat <- function (x) {
   x[lower.tri(x)] <- t(x)[lower.tri(x)]
   x
@@ -96,4 +95,5 @@ rsa_labels <- ifelse(1:33 %in% c(1, 4, 5, 32),
                                                  "Social Competence", "Structured Style")))))
 
 
+globalVariables(c("p", "n"))
 

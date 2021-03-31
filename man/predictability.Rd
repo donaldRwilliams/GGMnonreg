@@ -29,7 +29,7 @@ Y <- ptsd
 fit <- ggm_inference(Y, boot = FALSE)
 
 # predictability
-r2 <- predictability(x)
+r2 <- predictability(fit)
 
 # print
 r2

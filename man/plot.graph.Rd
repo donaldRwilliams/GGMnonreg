@@ -18,7 +18,7 @@
 )
 }
 \arguments{
-\item{x}{An object of class \code{graph} obtained from \code{\link[GGMncv]{get_graph}}.}
+\item{x}{An object of class \code{graph} obtained from \code{\link[GGMnonreg]{get_graph}}.}
 
 \item{layout}{Character string. Which graph layout (defaults is \code{circle}) ?
 See \link[sna]{gplot.layout}.}
@@ -50,4 +50,14 @@ An object of class \code{ggplot}
 }
 \description{
 Visualize the conditional (in)dependence structure.
+}
+\examples{
+# data
+Y <- ptsd
+
+# estimate graph
+fit <- ggm_inference(Y, boot = FALSE)
+
+# get info for plotting
+plot(get_graph(fit))
 }

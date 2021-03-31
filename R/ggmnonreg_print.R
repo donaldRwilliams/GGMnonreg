@@ -18,5 +18,7 @@ print.ggmnonreg <- function(x,...){
     print_enr(x,...)
   } else if(is(x, "predictability")){
     print_r2(round(x$r2, 2),...)
+  } else if(is(x, "eip")){
+    print_eip(x, 2)
   }
 }

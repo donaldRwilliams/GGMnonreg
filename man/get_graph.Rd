@@ -7,7 +7,7 @@
 get_graph(x)
 }
 \arguments{
-\item{x}{An object of class \code{ggmncv}}
+\item{x}{An object of class \code{ggmnonreg}}
 }
 \value{
 A list including two matrices (the weighted adjacency and adjacency matrices)
@@ -15,4 +15,14 @@ A list including two matrices (the weighted adjacency and adjacency matrices)
 \description{
 Extract the necessary ingredients to visualize the conditional
              dependence structure.
+}
+\examples{
+# data
+Y <- ptsd
+
+# estimate graph
+fit <- ggm_inference(Y, boot = FALSE)
+
+# get info for plotting
+get_graph(fit)
 }
