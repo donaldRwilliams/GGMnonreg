@@ -28,3 +28,7 @@ still fail. For example, for larger \code{p}, to have
 large partial correlations this requires a sparse GGM
 (accomplished by setting \code{edge_prob} to a small value).
 }
+\examples{
+
+true_net <- gen_net(p = 10)
+}

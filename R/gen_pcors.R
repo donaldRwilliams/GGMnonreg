@@ -18,11 +18,14 @@
 #'
 #' @export
 #'
+#' @importFrom stats runif
+#'
 #' @examples
-gen_net <- function(p = 20,
-                      edge_prob = 0.3,
-                      lb = 0.05,
-                      ub = 0.3) {
+#'
+#' true_net <- gen_net(p = 10)
+gen_net <- function(p = 20, edge_prob = 0.3,
+                    lb = 0.05,
+                    ub = 0.3) {
   d <- -1
 
   trys <- 0
@@ -45,7 +48,7 @@ gen_net <- function(p = 20,
     }
 
     mat[upper.tri(mat)] <- sample(pool, size = effects)
-    pcs <- BGGM:::symmteric_mat(mat)
+    pcs <- symm_mat(mat)
     pcs <- -pcs
     diag(pcs) <- -diag(pcs)
     d <- det(pcs)
@@ -63,10 +66,9 @@ gen_net <- function(p = 20,
   adj <- ifelse(pcs == 0, 0, 1)
 
   returned_object <- list(
-    pcors = pcors,
+    pcors = pcors * adj,
     cors = cors,
     trys = trys,
-    pcs = pcs,
     adj = adj
   )
 
