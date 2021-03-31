@@ -20,5 +20,8 @@ print.ggmnonreg <- function(x,...){
     print_r2(round(x$r2, 2),...)
   } else if(is(x, "eip")){
     print_eip(x, 2)
+  } else if(is(x, "ising_search")){
+    colnames(x$wadj) <- 1:ncol(x$wadj)
+    print(as.data.frame(x$wadj), ...)
   }
 }
