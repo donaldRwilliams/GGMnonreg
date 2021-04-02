@@ -17,7 +17,7 @@ data.
 
 More recently, graphical modeling has emerged in psychology (Epskamp et
 al. 2018), where the data is typically long or low-dimensional (*p* \<
-*n*, Donald R Williams et al. 2019, @williams\_rethinking). The primary
+*n*; Donald R. Williams et al. 2019, @williams\_rethinking). The primary
 purpose of **GGMnonreg** is to provide methods specifically for
 low-dimensional data (e.g., those common to psychopathology networks).
 
@@ -36,7 +36,7 @@ The following are also included
 
   - Expected network replicability (Williams 2020)
   - Compare Gaussian graphical models
-  - Measure of parameter uncertainty (Donald R Williams et al. 2019)
+  - Measure of parameter uncertainty (Donald R. Williams et al. 2019)
   - Edge inclusion “probabilities”
   - Network visualization with **ggplot2** (Wickham 2016)
   - Constrained precision matrix (the network, given an assumed graph)
@@ -101,7 +101,7 @@ Mathematical and Statistical Psychology*.
 
 <div id="ref-williams2019nonregularized">
 
-Williams, Donald R, Mijke Rhemtulla, Anna C Wysocki, and Philippe Rast.
+Williams, Donald R., Mijke Rhemtulla, Anna C Wysocki, and Philippe Rast.
 2019. “On Nonregularized Estimation of Psychological Networks.”
 *Multivariate Behavioral Research* 54 (5): 719–50.
 <https://doi.org/10.1080/00273171.2019.1575716>.

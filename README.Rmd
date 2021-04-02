@@ -27,7 +27,7 @@ Graphical modeling is quite common in fields with *wide* data, that is, when the
 variables than observations. Accordingly, many regularization-based approaches have been developed for those kinds of data.
 
 More recently, graphical modeling has emerged in psychology [@Epskamp2018ggm], where the data 
-is typically long or low-dimensional [*p* < *n*, @williams2019nonregularized, @williams_rethinking]. The primary purpose of  **GGMnonreg** is to provide methods specifically for low-dimensional data 
+is typically long or low-dimensional [*p* < *n*; @williams2019nonregularized, @williams_rethinking]. The primary purpose of  **GGMnonreg** is to provide methods specifically for low-dimensional data 
 (e.g., those common to psychopathology networks).
 
 ## Supported Models
