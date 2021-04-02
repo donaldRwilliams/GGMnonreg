@@ -17,9 +17,9 @@ data.
 
 More recently, graphical modeling has emerged in psychology (Epskamp et
 al. 2018), where the data is typically long or low-dimensional (*p* \<
-*n*, Williams et al. 2019, williams\_rethinking). The primary purpose of
-**GGMnonreg** is to provide methods specifically for low-dimensional
-data (e.g., those common to psychopathology networks).
+*n*, Donald R Williams et al. 2019, @williams\_rethinking). The primary
+purpose of **GGMnonreg** is to provide methods specifically for
+low-dimensional data (e.g., those common to psychopathology networks).
 
 ## Supported Models
 
@@ -36,7 +36,7 @@ The following are also included
 
   - Expected network replicability (Williams 2020)
   - Compare Gaussian graphical models
-  - Measure of parameter uncertainty (Williams et al. 2019)
+  - Measure of parameter uncertainty (Donald R Williams et al. 2019)
   - Edge inclusion “probabilities”
   - Network visualization with **ggplot2** (Wickham 2016)
   - Constrained precision matrix (the network, given an assumed graph)
@@ -87,6 +87,15 @@ Springer-Verlag New York. <http://ggplot2.org>.
 Williams, Donald R. 2020. “Learning to Live with Sampling Variability:
 Expected Replicability in Partial Correlation Networks.” *PsyArXiv*.
 <https://doi.org/10.31234/osf.io/fb4sa>.
+
+</div>
+
+<div id="ref-williams_rethinking">
+
+Williams, Donald R., and Philippe Rast. 2019. “Back to the basics:
+Rethinking partial correlation network methodology.” *British Journal of
+Mathematical and Statistical Psychology*.
+<https://doi.org/10.1111/bmsp.12173>.
 
 </div>
 
