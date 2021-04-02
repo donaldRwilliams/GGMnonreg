@@ -14,6 +14,8 @@ to be computed. Options include \code{"pearson"} (default),
 \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.}
 
 \item{B}{Integer. Number of bootstrap replicates (defaults to \code{1000}).}
+
+\item{progress.}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
 An object of class \code{eip}.

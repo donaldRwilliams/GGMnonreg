@@ -109,8 +109,8 @@ These can then be plotted with, say, **ggplot2** (let to the user).
 ## Edge Inclusion
 When mining data, or performing an automatic search, it is difficult to make inference on the
 network parameters (e.g., confidence are not easily computed). To summarize data mining,
-**GGMnonreg** provide edge inclusion "probabilities" (proportion bootstrap samples for 
-which each relation was detected)
+**GGMnonreg** provides edge inclusion "probabilities" (proportion bootstrap samples for 
+which each relation was detected).
 
 ```{r}
 # data
@@ -118,7 +118,7 @@ Y <- na.omit(bfi[,1:5])
 
 # fit model
 fit <-  eip(Y, method = "spearman", 
-            B  = 100)
+            B  = 100, progress = FALSE)
 
 fit
 ```
