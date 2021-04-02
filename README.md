@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# GGMnonreg
+<img src="man/figures/imgfile.png" width = 200 />
+
+# GGMnonreg: Non-regularized Gaussian Graphical Models
 
 [![CircleCI build
 status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
@@ -119,16 +121,16 @@ fit <- ggm_inference(Y, boot = TRUE,
 
 confint(fit)
 #>              2.5%        97.5%
-#>  [1,] -0.29330126 -0.221095444
-#>  [2,] -0.15212430 -0.067563547
-#>  [3,]  0.26123276  0.330169373
-#>  [4,] -0.04205889  0.032208513
-#>  [5,]  0.12368860  0.201685005
-#>  [6,]  0.13015237  0.205145191
-#>  [7,] -0.06223576  0.008476599
-#>  [8,]  0.10393804  0.184975833
-#>  [9,]  0.33827309  0.415629221
-#> [10,]  0.08046885  0.160784272
+#>  [1,] -0.28209839 -0.221835743
+#>  [2,] -0.14518204 -0.070989373
+#>  [3,]  0.25579255  0.328797716
+#>  [4,] -0.03960491  0.026135794
+#>  [5,]  0.12215231  0.204478744
+#>  [6,]  0.13431698  0.216145848
+#>  [7,] -0.07021953  0.009854325
+#>  [8,]  0.11074243  0.184346818
+#>  [9,]  0.34708388  0.407623009
+#> [10,]  0.08859311  0.152140837
 ```
 
 These can then be plotted with, say, **ggplot2** (left to the user).
@@ -157,7 +159,7 @@ fit
 #> 4  0.02
 #> 5  1.00
 #> 6  1.00
-#> 7  0.33
+#> 7  0.28
 #> 8  1.00
 #> 9  1.00
 #> 10 1.00
@@ -287,8 +289,8 @@ cbind.data.frame(
 #> 2       1.000    1.000
 #> 3       1.000    1.000
 #> 4       1.000    1.000
-#> 5       0.907    0.912
-#> 6       0.053    0.052
+#> 5       0.910    0.912
+#> 6       0.059    0.052
 #> 7       0.000    0.000
 #> 8       0.000    0.000
 #> 9       0.000    0.000
@@ -296,7 +298,7 @@ cbind.data.frame(
 
 # average replicability (simulation)
 mean(R / length(index))
-#> [1] 0.4478547
+#> [1] 0.4488205
 
 # average replicability (analytic)
 fit_enr$ave_pwr
