@@ -12,7 +12,8 @@ Ising and mixed graphical models are also supported.
 
 Graphical modeling is quite common in fields with *wide* data, that is,
 when there are more variables than observations. Accordingly, many
-methods have been developed for those kinds of data.
+regularization-based approaches have been developed for those kinds of
+data.
 
 More recently, graphical modeling has emerged in psychology (Epskamp et
 al. 2018), where the data is typically long or low-dimensional \[*p* \<

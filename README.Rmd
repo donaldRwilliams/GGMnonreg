@@ -24,8 +24,7 @@ The goal of **GGMnonreg** is to estimate non-regularized Gaussian graphical mode
 the title is a bit of a misnomer, in that Ising and mixed graphical models are also supported.
 
 Graphical modeling is quite common in fields with *wide* data, that is, when there are more 
-variables than observations. Accordingly, many methods have been developed for those kinds of 
-data. 
+variables than observations. Accordingly, many regularization-based approaches have been developed for those kinds of data.
 
 More recently, graphical modeling has emerged in psychology [@Epskamp2018ggm], where the data 
 is typically long or low-dimensional [*p* < *n*, @williams2019nonregularized; williams_rethinking]. The primary purpose of  **GGMnonreg** is to provide methods specifically for low-dimensional data 
