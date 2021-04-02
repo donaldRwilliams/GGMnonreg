@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: inst/REFERENCES.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -20,10 +21,36 @@ knitr::opts_chunk$set(
 
 
 The goal of **GGMnonreg** is to estimate non-regularized Gaussian graphical models. Note that 
-the title is a bit of a misnomer, in that Ising and Mixed graphical models are also supported.
+the title is a bit of a misnomer, in that Ising and mixed graphical models are also supported.
+
+Graphical modeling is quite common in fields with *wide* data, that is, when there are more 
+variables than observations. Accordingly, many methods have been developed for those kinds of 
+data. 
+
+More recently, graphical modeling has emerged in psychology [@Epskamp2018ggm], where the data 
+is typically long or low-dimensional [*p* < *n*, @williams2019nonregularized; williams_rethinking]. The primary purpose of  **GGMnonreg** is to provide methods specifically for low-dimensional data 
+(e.g., those common to psychopathology networks).
+
+## Supported Models
+* Gaussian graphical model. The following data types are supported.
+  + Gaussian 
+  + Ordinal
+  + Binary
+* Ising model [@marsman_2018]
+* Mixed graphical model
+
+## Additional methods
+The following are also included
+
+* Expected network replicability [@williams2020learning]
+* Compare Gaussian graphical models
+* Measure of parameter uncertainty [@williams2019nonregularized]
+* Edge inclusion "probabilities"
+* Network visualization with **ggplot2** [@ggplotpackage]
+* Constrained precision matrix [@hastie2009elements]
+* Predictability ($R^2$)
 
 ## Installation
-
 You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
@@ -31,3 +58,4 @@ You can install the development version from [GitHub](https://github.com/) with:
 devtools::install_github("donaldRwilliams/GGMnonreg")
 ```
 
+## References
