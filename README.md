@@ -13,9 +13,9 @@ Ising and mixed graphical models are also supported.
 Graphical modeling is quite common in fields with *wide* data, that is,
 when there are more variables than observations. Accordingly, many
 regularization-based approaches have been developed for those kinds of
-data. There are key drawbacks of these method, including, but not
-limited to, the fact that obtaining a valid measure of parameter
-uncertainty is very (very) difficult.
+data. There are key drawbacks of regularization when the goal is
+inference, including, but not limited to, the fact that obtaining a
+valid measure of parameter uncertainty is very (very) difficult.
 
 More recently, graphical modeling has emerged in psychology (Epskamp et
 al. 2018), where the data is typically long or low-dimensional (*p* \<
