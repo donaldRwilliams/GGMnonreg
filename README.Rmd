@@ -47,8 +47,8 @@ The following are also included
 * Measure of parameter uncertainty [@williams2019nonregularized]
 * Edge inclusion "probabilities"
 * Network visualization with **ggplot2** [@ggplotpackage]
-* Constrained precision matrix [@hastie2009elements]
-* Predictability ($R^2$)
+* Constrained precision matrix (the network, given an assumed graph)
+* Predictability (variance explained)
 
 ## Installation
 You can install the development version from [GitHub](https://github.com/) with:

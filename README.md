@@ -38,8 +38,8 @@ The following are also included
   - Measure of parameter uncertainty (Williams et al. 2019)
   - Edge inclusion “probabilities”
   - Network visualization with **ggplot2** (Wickham 2016)
-  - Constrained precision matrix (Hastie, Tibshirani, and Friedman 2009)
-  - Predictability (\(R^2\))
+  - Constrained precision matrix (the network, given an assumed graph)
+  - Predictability (variance explained)
 
 ## Installation
 
@@ -61,14 +61,6 @@ Epskamp, Sacha, Lourens J. Waldorp, Rene Mottus, and Denny Borsboom.
 2018. “The Gaussian Graphical Model in Cross-Sectional and Time-Series
 Data.” *Multivariate Behavioral Research* 53 (4): 453–80.
 <https://doi.org/10.1080/00273171.2018.1454823>.
-
-</div>
-
-<div id="ref-hastie2009elements">
-
-Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. *The
-Elements of Statistical Learning: Data Mining, Inference, and
-Prediction*. Springer Science & Business Media.
 
 </div>
 
