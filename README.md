@@ -16,9 +16,9 @@ regularization-based approaches have been developed for those kinds of
 data.
 
 More recently, graphical modeling has emerged in psychology (Epskamp et
-al. 2018), where the data is typically long or low-dimensional \[*p* \<
-*n*, Williams et al. (2019); williams\_rethinking\]. The primary purpose
-of **GGMnonreg** is to provide methods specifically for low-dimensional
+al. 2018), where the data is typically long or low-dimensional (*p* \<
+*n*, Williams et al. 2019, williams\_rethinking). The primary purpose of
+**GGMnonreg** is to provide methods specifically for low-dimensional
 data (e.g., those common to psychopathology networks).
 
 ## Supported Models
