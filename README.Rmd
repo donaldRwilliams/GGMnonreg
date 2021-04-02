@@ -58,4 +58,166 @@ You can install the development version from [GitHub](https://github.com/) with:
 devtools::install_github("donaldRwilliams/GGMnonreg")
 ```
 
+## Ising
+An Ising model is fitted with the following
+```{r}
+library(GGMnonreg)
+
+# make binary
+Y <- ifelse(ptsd[,1:5] == 0, 0, 1)
+
+# fit model
+fit <- ising_search(Y, IC = "BIC")
+
+fit
+```
+
+Note the same code, more or less, is also used for GGMs and mixed graphical models.
+
+## Predictability
+It is common to compute predictability, or variance explained, for each node in the network.
+An advantage of **GGMnonreg** is that a measure of uncertainty is also provided.
+
+```{r}
+# data
+Y <- na.omit(bfi[,1:5])
+
+# fit model
+fit <- ggm_inference(Y, boot = FALSE)
+
+# predictability
+predictability(fit)
+```
+
+
+## Parameter Uncertainty
+Confidence intervals for each relation are obtained with
+```{r}
+# data
+Y <- na.omit(bfi[,1:5])
+
+# fit model
+fit <- ggm_inference(Y, boot = TRUE, 
+                     method = "spearman", 
+                     B = 100)
+
+confint(fit)
+```
+These can then be plotted with, say, **ggplot2** (let to the user).
+
+## Edge Inclusion
+When mining data, or performing an automatic search, it is difficult to make inference on the
+network parameters (e.g., confidence are not easily computed). To summarize data mining,
+**GGMnonreg** provide edge inclusion "probabilities" (proportion bootstrap samples for 
+which each relation was detected)
+
+```{r}
+# data
+Y <- na.omit(bfi[,1:5])
+
+# fit model
+fit <-  eip(Y, method = "spearman", 
+            B  = 100)
+
+fit
+```
+Note in all cases, the provided estimates correspond to the upper-triangular elements
+of the network.
+
+## Expected Network Replicability
+**GGMnonreg** allows for computing expected network replicability (ENR), i.e., the number of 
+effects that will be detected in any number of replications. This is an analytic solution.
+
+The first step is defining a true network
+```{r}
+# first make the true network
+cors <- cor(GGMnonreg::ptsd)
+
+# inverse
+inv <- solve(cors)
+
+# partials
+pcors <-  -cov2cor(inv)
+
+# set values to zero
+pcors <- ifelse(abs(pcors) < 0.05, 0, pcors)
+```
+
+Then obtain ENR
+```{r}
+fit_enr <- enr(net = pcors, n = 500, replications = 2)
+
+fit_enr
+```
+Note this is inherently frequentist. As such, over the long run, 45 % of the edges will be replicated on average. Then we can further infer that, in hypothetical replication attempts, more than half of the edges
+will be replicated only 5 % of the time.
+
+### Intution
+Here is the basic idea of ENR
+```{r}
+# location of edges
+index <- which(pcors[upper.tri(diag(20))] != 0)
+
+# convert network into correlation matrix
+diag(pcors) <- 1
+cors_new <- corpcor::pcor2cor(pcors)
+
+# replicated edges
+R <- NA
+
+# increase 100 to, say, 5,000
+for(i in 1:100){
+
+  # two replications
+  Y1 <- MASS::mvrnorm(500, rep(0, 20), cors_new)
+  Y2 <- MASS::mvrnorm(500, rep(0, 20), cors_new)
+
+  # estimate network 1
+  fit1 <- ggm_inference(Y1, boot = FALSE)
+
+  # estimate network 2
+  fit2 <- ggm_inference(Y2, boot = FALSE)
+
+  # number of replicated edges (detected in both networks)
+  R[i] <- sum(
+    rowSums(
+      cbind(fit1$adj[upper.tri(diag(20))][index],
+            fit2$adj[upper.tri(diag(20))][index])
+    ) == 2)
+}
+```
+Notice that replication of two networks is being assessed over the long run. In other words,
+if we draw two random samples, what is the expected replicability.
+
+Compare analytic to simulation
+```{r}
+# combine simulation and analytic
+cbind.data.frame(
+  data.frame(simulation = sapply(seq(0, 0.9, 0.1), function(x) {
+    mean(R > round(length(index) * x) )
+  })),
+  data.frame(analytic = round(fit_enr$cdf, 3))
+)
+
+# average replicability (simulation)
+mean(R / length(index))
+
+# average replicability (analytic)
+fit_enr$ave_pwr
+```
+
+ENR works with any correlation, assuming there is an estimate of the standard error.
+
+## Network plot
+```{r}
+# data
+Y <- ptsd
+
+# estimate graph
+fit <- ggm_inference(Y, boot = FALSE)
+
+# get info for plotting
+plot(get_graph(fit), edge_magnify = 5)
+```
+
 ## References
