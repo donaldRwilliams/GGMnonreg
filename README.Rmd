@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "75%"
 )
 ```
 
@@ -67,7 +67,8 @@ library(GGMnonreg)
 Y <- ifelse(ptsd[,1:5] == 0, 0, 1)
 
 # fit model
-fit <- ising_search(Y, IC = "BIC")
+fit <- ising_search(Y, IC = "BIC", 
+                    progress = FALSE)
 
 fit
 ```
@@ -99,7 +100,7 @@ Y <- na.omit(bfi[,1:5])
 # fit model
 fit <- ggm_inference(Y, boot = TRUE, 
                      method = "spearman", 
-                     B = 100)
+                     B = 100, progress = FALSE)
 
 confint(fit)
 ```
@@ -152,6 +153,11 @@ fit_enr
 Note this is inherently frequentist. As such, over the long run, 45 % of the edges will be replicated on average. Then we can further infer that, in hypothetical replication attempts, more than half of the edges
 will be replicated only 5 % of the time.
 
+ENR can also be plotted
+```{r}
+plot(fit_enr)
+```
+
 ### Intution
 Here is the basic idea of ENR
 ```{r}
@@ -165,8 +171,8 @@ cors_new <- corpcor::pcor2cor(pcors)
 # replicated edges
 R <- NA
 
-# increase 100 to, say, 5,000
-for(i in 1:100){
+# increase 1000 to, say, 5,000
+for(i in 1:1000){
 
   # two replications
   Y1 <- MASS::mvrnorm(500, rep(0, 20), cors_new)
@@ -209,7 +215,7 @@ fit_enr$ave_pwr
 ENR works with any correlation, assuming there is an estimate of the standard error.
 
 ## Network plot
-```{r}
+```{r, message=FALSE}
 # data
 Y <- ptsd
 

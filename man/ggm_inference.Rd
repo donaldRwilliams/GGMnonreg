@@ -11,7 +11,8 @@ ggm_inference(
   boot = TRUE,
   B = 1000,
   cores = 2,
-  method = "pearson"
+  method = "pearson",
+  progress = TRUE
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ be controlled at the level alpha (defaults to \code{FALSE}) ?}
 \item{method}{Character string. Which type of correlation coefficients
 to be computed. Options include \code{"pearson"} (default),
 \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.}
+
+\item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
 An object of class \code{ggm_inference}

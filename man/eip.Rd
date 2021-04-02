@@ -4,7 +4,7 @@
 \alias{eip}
 \title{Edge Inclusion "Probability"}
 \usage{
-eip(Y, method = "pearson", B = 1000)
+eip(Y, method = "pearson", B = 1000, progress = TRUE)
 }
 \arguments{
 \item{Y}{The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).}

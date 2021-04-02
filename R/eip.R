@@ -27,19 +27,22 @@
 #' # print
 #' fit_eip
 #' }
-eip <- function(Y, method = "pearson", B = 1000) {
+eip <- function(Y, method = "pearson", B = 1000, progress = TRUE) {
 
   n <- nrow(Y)
   p <- ncol(Y)
 
+  if(progress){
   pb <- utils::txtProgressBar(max = B, style = 3)
-
+  }
   eips <- t(sapply(1:B, function(x){
 
   eips_i <-  ggm_inference(Y[sample(1:n, n, replace = T),],
                   boot = FALSE, method = method)$adj[upper.tri(diag(p))]
 
+  if(progress){
   setTxtProgressBar(pb, x)
+  }
 
   eips_i
   }))

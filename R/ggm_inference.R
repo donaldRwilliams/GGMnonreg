@@ -18,6 +18,8 @@
 #'               to be computed. Options include \code{"pearson"} (default),
 #'               \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.
 #'
+#' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
+#'
 #' @return An object of class \code{ggm_inference}
 #'
 #' @export
@@ -45,7 +47,8 @@ ggm_inference <- function(Y,
                           boot = TRUE,
                           B = 1000,
                           cores = 2,
-                          method = "pearson"){
+                          method = "pearson" ,
+                          progress = TRUE){
 
   ci_lower <- alpha / 2
 
@@ -69,11 +72,16 @@ ggm_inference <- function(Y,
 
     doSNOW::registerDoSNOW(cl)
 
+    if(progress){
     pb <- utils::txtProgressBar(max = B, style = 3)
 
     progress <- function(n) utils::setTxtProgressBar(pb, n)
 
     opts <- list(progress = progress)
+
+    } else {
+      opts <- list()
+    }
 
     boot_samps <- foreach::foreach(i = 1:B, .combine = rbind,
                                    .options.snow = opts) %dopar%{
@@ -96,6 +104,7 @@ ggm_inference <- function(Y,
                                      }
 
                                      pcors <- pcors[upper.tri(diag(p))]
+
                                      return(pcors)
 
                                    }

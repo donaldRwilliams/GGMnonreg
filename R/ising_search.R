@@ -5,6 +5,8 @@
 #' @param IC Character string. The desired information criterion. Options include
 #'           \code{"AIC"} and \code{"BIC"} (default).
 #'
+#' @param progress. Logical. Should a progress bar be included (defaults to \code{TRUE})?
+#'
 #'
 #' @details Only backwards selection is currently implemented.
 #'
@@ -21,7 +23,7 @@
 #' fit <- ising_search(Y)
 #' }
 #' @importFrom stats binomial coef glm step
-ising_search <- function(Y, IC = "BIC"){
+ising_search <- function(Y, IC = "BIC", progress = TRUE){
 
   if (!IC %in% c("AIC", "BIC")) {
     stop("IC must be 'AIC' or 'BIC'")
@@ -37,8 +39,9 @@ ising_search <- function(Y, IC = "BIC"){
 
   colnames(X) <-  paste("X", 1:p, sep = "")
 
+  if(progress){
   pb <- txtProgressBar(min = 0, max = p, style = 3)
-
+  }
   if (IC == "AIC") {
     k <- 2
   } else {
@@ -56,8 +59,9 @@ ising_search <- function(Y, IC = "BIC"){
         trace = FALSE
       ))[-1]
 
+    if(progress){
     setTxtProgressBar(pb, x)
-
+}
     est_i
   })
 
