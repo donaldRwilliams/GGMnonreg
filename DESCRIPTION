@@ -2,12 +2,14 @@ Package: GGMnonreg
 Type: Package
 Title: Non-regularized Gaussian graphical models (a.k.a., partial correlation networks)
 Version: 1.0.0
-Date: 2019-12-01
+Date: 2021-04-02
 Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
 Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
-Description: This package uses non-regularized methods to estimate partial correlation matrices. 
-  The current methods consist of multiple regression with AIC or BIC model selection, a non-parameteric 
-  bootstrap approach to directly estimate the precision matrix, and Fisher z transformed partial correlations.
+Description: Esimated non-regularized Gaussian graphical models, Ising models, 
+  and mixed graphical models. The current methods consist of multiple regression, a non-parameteric 
+  bootstrap  <doi:10.1080/00273171.2019.1575716>, and Fisher z transformed partial 
+  correlations <doi:10.1111/bmsp.12173>. Parameter uncertainty, predictability, and 
+  network replicability <doi:10.31234/osf.io/fb4sa> are also implemented.
 Depends: R (>= 4.0.0)
 License: GPL-2
 Encoding: UTF-8

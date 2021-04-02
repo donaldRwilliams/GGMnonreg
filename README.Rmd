@@ -104,7 +104,7 @@ fit <- ggm_inference(Y, boot = TRUE,
 
 confint(fit)
 ```
-These can then be plotted with, say, **ggplot2** (let to the user).
+These can then be plotted with, say, **ggplot2** (left to the user).
 
 ## Edge Inclusion
 When mining data, or performing an automatic search, it is difficult to make inference on the
