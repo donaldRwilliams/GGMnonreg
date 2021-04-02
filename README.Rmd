@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![CircleCI build status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
 
 
-The goal of **GGMnonreg** is to estimate non-regularized Gaussian graphical models. Note that 
+The goal of **GGMnonreg** is to estimate non-regularized graphical models. Note that 
 the title is a bit of a misnomer, in that Ising and mixed graphical models are also supported.
 
 Graphical modeling is quite common in fields with *wide* data, that is, when there are more 

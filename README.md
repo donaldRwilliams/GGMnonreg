@@ -8,9 +8,9 @@
 [![CircleCI build
 status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
 
-The goal of **GGMnonreg** is to estimate non-regularized Gaussian
-graphical models. Note that the title is a bit of a misnomer, in that
-Ising and mixed graphical models are also supported.
+The goal of **GGMnonreg** is to estimate non-regularized graphical
+models. Note that the title is a bit of a misnomer, in that Ising and
+mixed graphical models are also supported.
 
 Graphical modeling is quite common in fields with *wide* data, that is,
 when there are more variables than observations. Accordingly, many
@@ -121,16 +121,16 @@ fit <- ggm_inference(Y, boot = TRUE,
 
 confint(fit)
 #>              2.5%        97.5%
-#>  [1,] -0.28209839 -0.221835743
-#>  [2,] -0.14518204 -0.070989373
-#>  [3,]  0.25579255  0.328797716
-#>  [4,] -0.03960491  0.026135794
-#>  [5,]  0.12215231  0.204478744
-#>  [6,]  0.13431698  0.216145848
-#>  [7,] -0.07021953  0.009854325
-#>  [8,]  0.11074243  0.184346818
-#>  [9,]  0.34708388  0.407623009
-#> [10,]  0.08859311  0.152140837
+#>  [1,] -0.29648812 -0.219719091
+#>  [2,] -0.14815453 -0.074379965
+#>  [3,]  0.24283564  0.330728738
+#>  [4,] -0.03822524  0.031294716
+#>  [5,]  0.12686468  0.204242608
+#>  [6,]  0.13646425  0.204009212
+#>  [7,] -0.06462230  0.007534222
+#>  [8,]  0.10876260  0.187739905
+#>  [9,]  0.33821957  0.410151911
+#> [10,]  0.08414945  0.157877808
 ```
 
 These can then be plotted with, say, **ggplot2** (left to the user).
@@ -156,10 +156,10 @@ fit
 #> 1  1.00
 #> 2  1.00
 #> 3  1.00
-#> 4  0.02
+#> 4  0.01
 #> 5  1.00
 #> 6  1.00
-#> 7  0.28
+#> 7  0.24
 #> 8  1.00
 #> 9  1.00
 #> 10 1.00
@@ -289,8 +289,8 @@ cbind.data.frame(
 #> 2       1.000    1.000
 #> 3       1.000    1.000
 #> 4       1.000    1.000
-#> 5       0.910    0.912
-#> 6       0.059    0.052
+#> 5       0.887    0.912
+#> 6       0.046    0.052
 #> 7       0.000    0.000
 #> 8       0.000    0.000
 #> 9       0.000    0.000
@@ -298,7 +298,7 @@ cbind.data.frame(
 
 # average replicability (simulation)
 mean(R / length(index))
-#> [1] 0.4488205
+#> [1] 0.4453333
 
 # average replicability (analytic)
 fit_enr$ave_pwr
