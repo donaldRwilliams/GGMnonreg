@@ -25,7 +25,7 @@ Studying complex relations in multivariate datasets is a common task across the 
 Graphical modeling is quite common in fields with wide data, that is, when there are more variables ($p$) than observations ($n$). Accordingly, many regularization-based approaches have been developed for those kinds of data. There are key drawbacks of regularization, including, but not limited to, the fact that obtaining a valid measure of parameter uncertainty is very (very) difficult [@Buhlmann2014] and there can
 be an inflated false positive rate [see for example, @williams2019nonregularized].
 
-More recently, graphical modeling has emerged in psychology (Epskamp et al. 2018), where the data is typically long or low-dimensional ($p < n$; Donald R. Williams et al. 2019; Donald R. Williams and Rast 2019). The primary purpose of GGMnonreg is to provide methods that were specifically designed for low-dimensional data (e.g., those common in the social-behavioral sciences).
+More recently, graphical modeling has emerged in psychology (Epskamp et al. 2018), where the data is typically long or low-dimensional ($p < n$; @williams2019nonregularized, @williams_rethinking). The primary purpose of GGMnonreg is to provide methods that were specifically designed for low-dimensional data (e.g., those common in the social-behavioral sciences).
 
 
 # Statement of Need
