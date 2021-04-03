@@ -48,7 +48,7 @@ The following are also included
 * Compare Gaussian graphical models
 * Measure of parameter uncertainty [@williams2019nonregularized]
 * Edge inclusion "probabilities"
-* Network visualization with **ggplot2** [@ggplotpackage]
+* Network visualization
 * Constrained precision matrix (the network, given an assumed graph)
 * Predictability (variance explained)
 

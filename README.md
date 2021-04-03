@@ -43,7 +43,7 @@ The following are also included
   - Compare Gaussian graphical models
   - Measure of parameter uncertainty (Donald R. Williams et al. 2019)
   - Edge inclusion “probabilities”
-  - Network visualization with **ggplot2** (Wickham 2016)
+  - Network visualization
   - Constrained precision matrix (the network, given an assumed graph)
   - Predictability (variance explained)
 
@@ -121,16 +121,16 @@ fit <- ggm_inference(Y, boot = TRUE,
 
 confint(fit)
 #>              2.5%        97.5%
-#>  [1,] -0.29648812 -0.219719091
-#>  [2,] -0.14815453 -0.074379965
-#>  [3,]  0.24283564  0.330728738
-#>  [4,] -0.03822524  0.031294716
-#>  [5,]  0.12686468  0.204242608
-#>  [6,]  0.13646425  0.204009212
-#>  [7,] -0.06462230  0.007534222
-#>  [8,]  0.10876260  0.187739905
-#>  [9,]  0.33821957  0.410151911
-#> [10,]  0.08414945  0.157877808
+#>  [1,] -0.28844714 -0.220752713
+#>  [2,] -0.14781549 -0.073113592
+#>  [3,]  0.25289406  0.330857510
+#>  [4,] -0.04222389  0.028040478
+#>  [5,]  0.12834501  0.199016431
+#>  [6,]  0.11818500  0.208993163
+#>  [7,] -0.07206407  0.007414793
+#>  [8,]  0.10919057  0.184866714
+#>  [9,]  0.34724800  0.411433295
+#> [10,]  0.08305925  0.163373303
 ```
 
 These can then be plotted with, say, **ggplot2** (left to the user).
@@ -156,10 +156,10 @@ fit
 #> 1  1.00
 #> 2  1.00
 #> 3  1.00
-#> 4  0.01
+#> 4  0.03
 #> 5  1.00
 #> 6  1.00
-#> 7  0.24
+#> 7  0.27
 #> 8  1.00
 #> 9  1.00
 #> 10 1.00
@@ -289,8 +289,8 @@ cbind.data.frame(
 #> 2       1.000    1.000
 #> 3       1.000    1.000
 #> 4       1.000    1.000
-#> 5       0.887    0.912
-#> 6       0.046    0.052
+#> 5       0.904    0.912
+#> 6       0.059    0.052
 #> 7       0.000    0.000
 #> 8       0.000    0.000
 #> 9       0.000    0.000
@@ -298,7 +298,7 @@ cbind.data.frame(
 
 # average replicability (simulation)
 mean(R / length(index))
-#> [1] 0.4453333
+#> [1] 0.4472564
 
 # average replicability (analytic)
 fit_enr$ave_pwr
@@ -343,13 +343,6 @@ Taylor, L Waldorp, H L J van der Maas, and G Maris. 2017. “An
 Introduction to Network Psychometrics: Relating Ising Network Models to
 Item Response Theory Models.” *Taylor & Francis* 53 (1): 15–35.
 <https://doi.org/10.1080/00273171.2017.1379379>.
-
-</div>
-
-<div id="ref-ggplotpackage">
-
-Wickham, Hadley. 2016. *ggplot2: Elegant Graphics for Data Analysis*.
-Springer-Verlag New York. <http://ggplot2.org>.
 
 </div>
 

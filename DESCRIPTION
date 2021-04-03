@@ -1,6 +1,6 @@
 Package: GGMnonreg
 Type: Package
-Title: Non-regularized Gaussian Graphical Models
+Title: Non-Regularized Gaussian Graphical Models
 Version: 1.0.0
 Date: 2021-04-02
 Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
