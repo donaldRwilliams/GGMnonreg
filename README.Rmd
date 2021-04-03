@@ -228,4 +228,9 @@ fit <- ggm_inference(Y, boot = FALSE)
 plot(get_graph(fit), edge_magnify = 5)
 ```
 
+## Bug Reports, Feature Requests, and Contributing
+Bug reports and feature requests can be made by opening an issue on [Github](https://github.com/donaldRwilliams/GGMnonreg/issues). To contribute towards
+the development of **GGMnonreg**, you can start a branch with a pull request and we can 
+discuss the proposed changes there.
+
 ## References

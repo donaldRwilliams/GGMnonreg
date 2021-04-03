@@ -120,17 +120,17 @@ fit <- ggm_inference(Y, boot = TRUE,
                      B = 100, progress = FALSE)
 
 confint(fit)
-#>              2.5%        97.5%
-#>  [1,] -0.28844714 -0.220752713
-#>  [2,] -0.14781549 -0.073113592
-#>  [3,]  0.25289406  0.330857510
-#>  [4,] -0.04222389  0.028040478
-#>  [5,]  0.12834501  0.199016431
-#>  [6,]  0.11818500  0.208993163
-#>  [7,] -0.07206407  0.007414793
-#>  [8,]  0.10919057  0.184866714
-#>  [9,]  0.34724800  0.411433295
-#> [10,]  0.08305925  0.163373303
+#>              2.5%       97.5%
+#>  [1,] -0.28754928 -0.22133409
+#>  [2,] -0.14814197 -0.07708535
+#>  [3,]  0.25745801  0.32050965
+#>  [4,] -0.04829816  0.02726491
+#>  [5,]  0.12384106  0.19379349
+#>  [6,]  0.13688030  0.20747812
+#>  [7,] -0.06140196  0.01178691
+#>  [8,]  0.11399009  0.19706111
+#>  [9,]  0.33858068  0.41127422
+#> [10,]  0.08526116  0.15219698
 ```
 
 These can then be plotted with, say, **ggplot2** (left to the user).
@@ -159,7 +159,7 @@ fit
 #> 4  0.03
 #> 5  1.00
 #> 6  1.00
-#> 7  0.27
+#> 7  0.35
 #> 8  1.00
 #> 9  1.00
 #> 10 1.00
@@ -289,8 +289,8 @@ cbind.data.frame(
 #> 2       1.000    1.000
 #> 3       1.000    1.000
 #> 4       1.000    1.000
-#> 5       0.904    0.912
-#> 6       0.059    0.052
+#> 5       0.898    0.912
+#> 6       0.044    0.052
 #> 7       0.000    0.000
 #> 8       0.000    0.000
 #> 9       0.000    0.000
@@ -298,7 +298,7 @@ cbind.data.frame(
 
 # average replicability (simulation)
 mean(R / length(index))
-#> [1] 0.4472564
+#> [1] 0.4468462
 
 # average replicability (analytic)
 fit_enr$ave_pwr
@@ -322,6 +322,14 @@ plot(get_graph(fit), edge_magnify = 5)
 ```
 
 <img src="man/figures/README-unnamed-chunk-11-1.png" width="75%" />
+
+## Bug Reports, Feature Requests, and Contributing
+
+Bug reports and feature requests can be made by opening an issue on
+[Github](https://github.com/donaldRwilliams/GGMnonreg/issues). To
+contribute towards the development of **GGMnonreg**, you can start a
+branch with a pull request and we can discuss the proposed changes
+there.
 
 ## References
 
