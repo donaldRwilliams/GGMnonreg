@@ -1,5 +1,5 @@
 ---
-title: 'GGMnonreg: Non-Regularized Gaussian Graphical Models'
+title: 'GGMnonreg: Non-Regularized Gaussian Graphical Models in R'
 tags:
 - Graphical models
 - partial correlations
