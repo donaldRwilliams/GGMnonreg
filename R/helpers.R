@@ -56,6 +56,53 @@ power_z <- function(r, n, c = 0,
 
 }
 
+compare <- function (Estimate, True) {
+
+  True <- as.matrix(True)
+
+  Estimate <- as.matrix(Estimate)
+
+  TN <- ifelse(True[upper.tri(True)] == 0 & Estimate[upper.tri(Estimate)] ==
+                 0, 1, 0)
+  TN <- sum(TN)
+
+  FP <- ifelse(True[upper.tri(True)] == 0 & Estimate[upper.tri(Estimate)] !=
+                 0, 1, 0)
+
+  FP <- sum(FP)
+
+  TP <- ifelse(True[upper.tri(True)] != 0 & Estimate[upper.tri(Estimate)] !=
+                 0, 1, 0)
+
+  TP <- sum(TP)
+
+  FN <- ifelse(True[upper.tri(True)] != 0 & Estimate[upper.tri(Estimate)] ==
+                 0, 1, 0)
+  FN <- sum(FN)
+
+  Specificity <- TN/(TN + FP)
+
+  Sensitivity <- TP/(TP + FN)
+
+  Precision <- TP/(TP + FP)
+
+  Recall <- TP/(TP + FN)
+
+  F1_score <- 2 * ((Precision * Recall)/(Precision + Recall))
+
+  MCC <- (TP * TN - FP * FN)/sqrt((TP + FP) * (TP + FN) * (TN +
+                                                             FP) * (TN + FN))
+  results <- c(Specificity, Sensitivity, Precision, Recall,
+               F1_score, MCC)
+
+  results_name <- c("Specificity", "Sensitivity",
+                    "Precision", "Recall", "F1_score",
+                    "MCC")
+  results <- cbind.data.frame(measure = results_name, score = results)
+  return(results)
+}
+
+
 
 csws_labels <- ifelse(1:35 %in% c(7,10,16,24,29),
                       "Family Support",
