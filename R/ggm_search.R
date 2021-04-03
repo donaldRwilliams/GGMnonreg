@@ -1,5 +1,7 @@
 #' Gaussian graphical model: automated search
 #'
+#' @description Data mining to learn the graph.
+#'
 #' @param x  A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) or
 #'           a correlation matrix of dimensions \emph{p} by \emph{p}.
 #'

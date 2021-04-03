@@ -1,11 +1,13 @@
 #' Ising: automated search
 #'
-#' @param Y A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes)
+#' @description Data mining to learn the graph.
+#'
+#' @param Y A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).
 #'
 #' @param IC Character string. The desired information criterion. Options include
 #'           \code{"AIC"} and \code{"BIC"} (default).
 #'
-#' @param progress. Logical. Should a progress bar be included (defaults to \code{TRUE})?
+#' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
 #'
 #'
 #' @details Only backwards selection is currently implemented.

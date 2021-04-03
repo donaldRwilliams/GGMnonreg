@@ -1,5 +1,7 @@
 #' Mixed Graphical Model: automated search
 #'
+#' @description Data mining to learn the graph.
+#'
 #' @param Y A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes)
 #'
 #' @param data_type Vector of length \emph{p}. The type of data, with options of

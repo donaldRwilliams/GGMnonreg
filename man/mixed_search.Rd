@@ -19,7 +19,7 @@ mixed_search(Y, data_type = NULL, IC = "BIC")
 An object of class \code{mixed_search}
 }
 \description{
-Mixed Graphical Model: automated search
+Data mining to learn the graph.
 }
 \details{
 Only backwards selection is currently implemented.

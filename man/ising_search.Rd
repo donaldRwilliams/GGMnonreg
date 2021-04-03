@@ -7,18 +7,18 @@
 ising_search(Y, IC = "BIC", progress = TRUE)
 }
 \arguments{
-\item{Y}{A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes)}
+\item{Y}{A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).}
 
 \item{IC}{Character string. The desired information criterion. Options include
 \code{"AIC"} and \code{"BIC"} (default).}
 
-\item{progress.}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
+\item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
 An object of class \code{ising_search}
 }
 \description{
-Ising: automated search
+Data mining to learn the graph.
 }
 \details{
 Only backwards selection is currently implemented.

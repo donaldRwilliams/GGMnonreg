@@ -40,7 +40,9 @@ to be computed. Options include \code{"pearson"} (default),
 An object of class \code{ggm_inference}
 }
 \description{
-Gaussian graphical model: statistical inference
+Learn the conditional dependence structure with null hypothesis
+             significance testing. This provides a valid measure of parameter
+             uncertainty.
 }
 \examples{
 \donttest{

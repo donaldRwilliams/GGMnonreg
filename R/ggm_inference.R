@@ -1,5 +1,9 @@
 #' @title Gaussian graphical model: statistical inference
 #'
+#' @description Learn the conditional dependence structure with null hypothesis
+#'              significance testing. This provides a valid measure of parameter
+#'              uncertainty.
+#'
 #' @param Y The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).
 #'
 #' @param alpha The desired significance level (defaults to \code{0.05}). Note that

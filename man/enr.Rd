@@ -25,7 +25,10 @@ and \code{"spearman"}.}
 An object of class \code{enr}
 }
 \description{
-Expected Network Replicability
+Compute expected network replicability in any number of
+             replication attempts. This works for any kind of
+             correlation, assuming it is possible to obtain the
+             standard error (analytically or with a bootstrap).
 }
 \note{
 This method was introduced in \insertCite{williams2020learning;textual}{GGMnonreg}.

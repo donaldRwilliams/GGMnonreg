@@ -1,5 +1,10 @@
 #' Expected Network Replicability
 #'
+#' @description Compute expected network replicability in any number of
+#'              replication attempts. This works for any kind of
+#'              correlation, assuming it is possible to obtain the
+#'              standard error (analytically or with a bootstrap).
+#'
 #' @param net True network of dimensions \emph{p} by \emph{p}.
 #'
 #' @param n Integer. The samples size, assumed equal in the replication
@@ -165,9 +170,11 @@ print_enr <- function(x,...){
   }
 
 
-#' Plot \code{enr} Objects
+#' @title Plot \code{enr} Objects
 #'
-#' @param x An object of class \code{enr}
+#' @description Plot the probability mass function for ENR.
+#'
+#' @param x An object of class \code{enr}.
 #'
 #' @param iter Integer. How many draws from the
 #'             Poisson-binomial distribution (defaults to 1,000)?

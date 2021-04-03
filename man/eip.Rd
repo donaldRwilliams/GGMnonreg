@@ -15,7 +15,7 @@ to be computed. Options include \code{"pearson"} (default),
 
 \item{B}{Integer. Number of bootstrap replicates (defaults to \code{1000}).}
 
-\item{progress.}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
+\item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
 An object of class \code{eip}.

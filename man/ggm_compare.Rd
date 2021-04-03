@@ -4,7 +4,7 @@
 \alias{ggm_compare}
 \title{Compare Gaussian Graphical Models}
 \usage{
-ggm_compare(Yg1, Yg2, alpha = 0.05)
+ggm_compare(Yg1, Yg2, method = "spearman", alpha = 0.05)
 }
 \arguments{
 \item{Yg1}{The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) for
@@ -12,6 +12,10 @@ group one.}
 
 \item{Yg2}{The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) for
 group two.}
+
+\item{method}{Character string. Which type of correlation coefficients
+to be computed. Options include \code{"pearson"} (default),
+\code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.}
 
 \item{alpha}{The desired significance level (defaults to \code{0.05}). Note that
 1 - alpha corresponds to specificity.}

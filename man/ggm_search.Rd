@@ -32,7 +32,7 @@ and \code{"exhaustive"}.}
 An object of class \code{ggm_search}.
 }
 \description{
-Gaussian graphical model: automated search
+Data mining to learn the graph.
 }
 \details{
 \code{type = "neighborhood_selection"} was described in

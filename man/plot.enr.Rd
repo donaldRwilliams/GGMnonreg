@@ -7,7 +7,7 @@
 \method{plot}{enr}(x, iter = 1e+05, fill = "#009E73", alpha = 0.5, ...)
 }
 \arguments{
-\item{x}{An object of class \code{enr}}
+\item{x}{An object of class \code{enr}.}
 
 \item{iter}{Integer. How many draws from the
 Poisson-binomial distribution (defaults to 1,000)?}
@@ -23,7 +23,7 @@ for the density.}
 An object of class \code{ggplot}
 }
 \description{
-Plot \code{enr} Objects
+Plot the probability mass function for ENR.
 }
 \examples{
 \donttest{

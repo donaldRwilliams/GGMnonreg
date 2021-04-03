@@ -10,7 +10,7 @@
 #'
 #' @param B Integer. Number of bootstrap replicates (defaults to \code{1000}).
 #'
-#' @param progress. Logical. Should a progress bar be included (defaults to \code{TRUE})?
+#' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
 #'
 #' @return An object of class \code{eip}.
 #'

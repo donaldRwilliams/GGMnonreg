@@ -6,6 +6,10 @@
 #' @param Yg2 The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) for
 #'            group two.
 #'
+#' @param method Character string. Which type of correlation coefficients
+#'               to be computed. Options include \code{"pearson"} (default),
+#'               \code{"kendall"}, \code{"spearman"}, and \code{"polychoric"}.
+#'
 #' @param alpha The desired significance level (defaults to \code{0.05}). Note that
 #'              1 - alpha corresponds to specificity.
 #'
@@ -22,10 +26,11 @@
 #' # compare relations
 #' fit <- ggm_compare(Yg1, Yg2)
 #'}
-ggm_compare <- function(Yg1, Yg2, alpha = 0.05){
+ggm_compare <- function(Yg1, Yg2, method = "spearman",
+                        alpha = 0.05){
 
-  fit1 <- ggm_inference(Yg1)
-  fit2 <- ggm_inference(Yg2)
+  fit1 <- ggm_inference(Yg1, method = method)
+  fit2 <- ggm_inference(Yg2, method = method)
 
   diff <- fit1$boot_samps - fit2$boot_samps
 
