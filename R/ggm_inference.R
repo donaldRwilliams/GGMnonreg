@@ -38,7 +38,7 @@
 #' }
 #'
 #' @importFrom parallel makeCluster
-#' @importFrom doSNOW registerDoSNOW
+#' @importFrom doParallel registerDoParallel
 #' @importFrom foreach foreach `%dopar%`
 #' @importFrom corpcor cor2pcor
 #' @importFrom psych polychoric
@@ -74,22 +74,21 @@ ggm_inference <- function(Y,
     }
     cl <- parallel::makeCluster(cores)
 
-    doSNOW::registerDoSNOW(cl)
+    doParallel::registerDoParallel(cl)
 
     if(progress){
     pb <- utils::txtProgressBar(max = B, style = 3)
 
-    progress <- function(n) utils::setTxtProgressBar(pb, n)
+    # progress <- function(n) utils::setTxtProgressBar(pb, n)
+    #
+    # opts <- list(progress = progress)
 
-    opts <- list(progress = progress)
-
-    } else {
-      opts <- list()
     }
+    # else {
+      # opts <- list()
+    # }
 
-    boot_samps <- foreach::foreach(i = 1:B, .combine = rbind,
-                                   .options.snow = opts) %dopar%{
-
+    boot_samps <- foreach::foreach(i = 1:B, .combine = f(B)) %dopar%{
 
                                      if(method == "polychoric"){
 

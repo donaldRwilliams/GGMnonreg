@@ -3,8 +3,8 @@ Type: Package
 Title: Non-Regularized Gaussian Graphical Models
 Version: 1.0.0
 Date: 2021-04-02
-Author: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
-Maintainer: Donald R. Williams <drwwilliams@ucdavis.edu>
+Authors@R:  person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
+Maintainer: Donald Williams <drwwilliams@ucdavis.edu>
 Description: Estimate non-regularized Gaussian graphical models, Ising models, 
   and mixed graphical models. The current methods consist of multiple regression, 
   a non-parametric bootstrap  <doi:10.1080/00273171.2019.1575716>, and Fisher z 
@@ -22,7 +22,7 @@ Imports:
   Matrix,
   poibin,
   parallel,
-  doSNOW,
+  doParallel,
   foreach,
   corpcor,
   psych,

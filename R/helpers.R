@@ -1,5 +1,5 @@
 #' @importFrom stats na.omit quantile cov2cor pnorm qnorm sd var
-#' @importFrom utils setTxtProgressBar txtProgressBar
+#' @importFrom utils setTxtProgressBar txtProgressBar flush.console
 symm_mat <- function (x) {
   x[lower.tri(x)] <- t(x)[lower.tri(x)]
   x
@@ -144,3 +144,14 @@ rsa_labels <- ifelse(1:33 %in% c(1, 4, 5, 32),
 
 globalVariables(c("p", "n"))
 
+f <- function(B){
+  iterator <- B
+  pb <- txtProgressBar(min = 1, max = iterator - 1, style = 3)
+  count <- 0
+  function(...) {
+    count <<- count + length(list(...)) - 1
+    setTxtProgressBar(pb, count)
+    flush.console()
+    rbind(...) # this can feed into .combine option of foreach
+  }
+}

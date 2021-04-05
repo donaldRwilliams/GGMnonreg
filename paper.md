@@ -5,17 +5,16 @@ tags:
 - partial correlations
 - Mixed graphical model
 - Ising model
-date: "03 April 2021"
-output: pdf_document
-affiliations:
-- name: Department of Psychology, University of California, Davis
-index: 1
-citation_author: Williams
 authors:
-- name: Donald R. Williams
+  - name: Donald R. Williams
+    affiliation: 1 # (Multiple affiliations must be quoted)
+affiliations:
+ - name: Department of Psychology, University of California, Davis
+   index: 1
+citation_author: Williams
+date: 05 April 2021
 year: 2021
 bibliography: inst/REFERENCES.bib
-affiliation: 1
 ---
   
 # Summary
