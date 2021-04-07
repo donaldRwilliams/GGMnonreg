@@ -22,7 +22,8 @@
 #' @references
 #' \insertAllCited{}
 #'
-#' @return An object of class \code{enr}
+#' @return An list of class \code{enr}, including a variety of information used
+#'         by other functions (e.g., to plot the results).
 #'
 #' @note This method was introduced in \insertCite{williams2020learning;textual}{GGMnonreg}.
 #'

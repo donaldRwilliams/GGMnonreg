@@ -22,7 +22,8 @@ to be computed. Options include \code{"pearson"} (default)
 and \code{"spearman"}.}
 }
 \value{
-An object of class \code{enr}
+An list of class \code{enr}, including a variety of information used
+        by other functions (e.g., to plot the results).
 }
 \description{
 Compute expected network replicability in any number of

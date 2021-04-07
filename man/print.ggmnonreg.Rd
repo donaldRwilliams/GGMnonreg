@@ -11,6 +11,9 @@
 
 \item{...}{Currently ignored}
 }
+\value{
+No return value.
+}
 \description{
 Print \code{ggmnonreg} Object
 }

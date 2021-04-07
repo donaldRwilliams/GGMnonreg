@@ -21,7 +21,8 @@
 #' @references
 #' \insertAllCited{}
 #'
-#' @return An object of class \code{ggm_search}.
+#' @return An object of class \code{ggm_search}, including \code{wadj} (weighted adjacency matrix)
+#'         and \code{adj} (adjacency matrix).
 #'
 #'
 #' @note \code{type = "neighborhood_selection"} employs multiple regression to estimate

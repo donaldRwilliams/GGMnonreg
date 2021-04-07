@@ -15,7 +15,8 @@ ising_search(Y, IC = "BIC", progress = TRUE)
 \item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
-An object of class \code{ising_search}
+An object of class \code{ising_search}, including \code{wadj} (weighted adjacency matrix)
+        and \code{adj} (adjacency matrix).
 }
 \description{
 Data mining to learn the graph.

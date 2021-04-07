@@ -16,7 +16,8 @@ mixed_search(Y, data_type = NULL, IC = "BIC")
 \code{"AIC"} and \code{"BIC"} (default).}
 }
 \value{
-An object of class \code{mixed_search}
+An object of class \code{mixed_search}, including \code{wadj} (weighted adjacency matrix)
+        and \code{adj} (adjacency matrix).
 }
 \description{
 Data mining to learn the graph.

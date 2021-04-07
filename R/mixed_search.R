@@ -11,7 +11,8 @@
 #'           \code{"AIC"} and \code{"BIC"} (default).
 #'
 #'
-#' @return An object of class \code{mixed_search}
+#' @return An object of class \code{mixed_search}, including \code{wadj} (weighted adjacency matrix)
+#'         and \code{adj} (adjacency matrix).
 #'
 #' @details Only backwards selection is currently implemented.
 #'          Only an adjacency matrix is provided.

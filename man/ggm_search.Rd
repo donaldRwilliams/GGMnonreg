@@ -29,7 +29,8 @@ and \code{"exhaustive"}.}
 \item{n}{Integer. Sample size. Required if a correlation matrix is provided.}
 }
 \value{
-An object of class \code{ggm_search}.
+An object of class \code{ggm_search}, including \code{wadj} (weighted adjacency matrix)
+        and \code{adj} (adjacency matrix).
 }
 \description{
 Data mining to learn the graph.

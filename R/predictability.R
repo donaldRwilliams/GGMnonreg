@@ -4,7 +4,7 @@
 #'
 #' @param ci Numeric. The confidence interval to be computed (defaults to \code{0.95}).
 #'
-#' @return An object of class \code{predictability}
+#' @return An object of class \code{predictability}, including a matrix of R2.
 #'
 #' @references
 #' \insertAllCited{}

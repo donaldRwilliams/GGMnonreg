@@ -4,6 +4,7 @@
 #'
 #' @param ... Currently ignored
 #'
+#' @return No return value.
 #' @export
 #' @importFrom methods is
 print.ggmnonreg <- function(x,...){

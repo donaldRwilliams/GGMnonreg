@@ -12,7 +12,7 @@
 #'
 #' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
 #'
-#' @return An object of class \code{eip}.
+#' @return An object of class \code{eip}, including a matrix of edge inclusions.
 #'
 #' @details The order is the upper-triangular.
 #'

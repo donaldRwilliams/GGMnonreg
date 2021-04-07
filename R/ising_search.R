@@ -12,7 +12,8 @@
 #'
 #' @details Only backwards selection is currently implemented.
 #'
-#' @return An object of class \code{ising_search}
+#' @return An object of class \code{ising_search}, including \code{wadj} (weighted adjacency matrix)
+#'         and \code{adj} (adjacency matrix).
 #'
 #' @export
 #'

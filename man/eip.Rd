@@ -18,7 +18,7 @@ to be computed. Options include \code{"pearson"} (default),
 \item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
-An object of class \code{eip}.
+An object of class \code{eip}, including a matrix of edge inclusions.
 }
 \description{
 Compute the proportion of bootstrap samples that each relation was selected.
