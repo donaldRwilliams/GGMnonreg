@@ -54,8 +54,13 @@ The following are also included
 * Predictability (variance explained)
 
 ## Installation
-You can install the development version from [GitHub](https://github.com/) with:
+To install the latest release version (2.0.0) from CRAN use
 
+```r
+install.packages("GGMnonreg")    
+```
+
+You can install the development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("donaldRwilliams/GGMnonreg")
