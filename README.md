@@ -9,7 +9,7 @@
 Version](http://www.r-pkg.org/badges/version/GGMnonreg)](https://cran.r-project.org/package=GGMnonreg)
 [![Downloads](https://cranlogs.r-pkg.org/badges/GGMnonreg)](https://cran.r-project.org/package=GGMnonreg)
 [![CircleCI build
-status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=svg)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
+status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=shield)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
 
 The goal of **GGMnonreg** is to estimate non-regularized graphical
 models. Note that the title is a bit of a misnomer, in that Ising and
@@ -131,16 +131,16 @@ fit <- ggm_inference(Y, boot = TRUE,
 
 confint(fit)
 #>              2.5%        97.5%
-#>  [1,] -0.29767331 -0.213161936
-#>  [2,] -0.14495762 -0.078757052
-#>  [3,]  0.25689212  0.331357554
-#>  [4,] -0.04647112  0.028173576
-#>  [5,]  0.12102776  0.203929183
-#>  [6,]  0.13649686  0.206390457
-#>  [7,] -0.07925096  0.005588186
-#>  [8,]  0.10031299  0.193512433
-#>  [9,]  0.35044479  0.419958754
-#> [10,]  0.09322360  0.161286689
+#>  [1,] -0.28986230 -0.220159797
+#>  [2,] -0.15195946 -0.067920611
+#>  [3,]  0.25471799  0.326892397
+#>  [4,] -0.03563033  0.036784498
+#>  [5,]  0.13659742  0.200947295
+#>  [6,]  0.13102537  0.208514266
+#>  [7,] -0.07539727  0.006897514
+#>  [8,]  0.11035928  0.184802692
+#>  [9,]  0.34736929  0.410414759
+#> [10,]  0.08170543  0.156450883
 ```
 
 These can then be plotted with, say, **ggplot2** (left to the user).
@@ -166,10 +166,10 @@ fit
 #> 1  1.00
 #> 2  1.00
 #> 3  1.00
-#> 4  0.10
+#> 4  0.04
 #> 5  1.00
 #> 6  1.00
-#> 7  0.35
+#> 7  0.27
 #> 8  1.00
 #> 9  1.00
 #> 10 1.00
@@ -299,8 +299,8 @@ cbind.data.frame(
 #> 2       1.000    1.000
 #> 3       1.000    1.000
 #> 4       1.000    1.000
-#> 5       0.895    0.912
-#> 6       0.050    0.052
+#> 5       0.893    0.912
+#> 6       0.064    0.052
 #> 7       0.000    0.000
 #> 8       0.000    0.000
 #> 9       0.000    0.000
@@ -308,7 +308,7 @@ cbind.data.frame(
 
 # average replicability (simulation)
 mean(R / length(index))
-#> [1] 0.4464103
+#> [1] 0.4467265
 
 # average replicability (analytic)
 fit_enr$ave_pwr
