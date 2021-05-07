@@ -31,12 +31,6 @@ defaults: &steps
     - run:
         name: Check package
         command: R CMD check "${PKG_TARBALL}" --as-cran --no-manual
-    - run:
-        name: Check failures
-        command: |
-          Rscript -e "message(devtools::check_failures(path = '${RCHECK_DIR}'))"
-          # warnings are errors
-          # - run: if grep -q -R "WARNING" "${RCHECK_DIR}/00check.log"; then exit 1; fi
 
     ## store artifacts -----------------
 
