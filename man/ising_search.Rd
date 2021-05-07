@@ -19,10 +19,14 @@ An object of class \code{ising_search}, including \code{wadj} (weighted adjacenc
         and \code{adj} (adjacency matrix).
 }
 \description{
-Data mining to learn the graph.
+Data mining to learn the graph of binary variables with an Ising model
+             \insertCite{lenz1920beitrvsge,ising1925beitrag}{GGMnonreg}.
 }
 \details{
-Only backwards selection is currently implemented.
+Currently only backwards selection is currently implemented.
+}
+\note{
+For an excellent overview of the Ising model see \insertCite{marsman2018introduction;textual}{GGMnonreg}.
 }
 \examples{
 \donttest{
@@ -32,4 +36,7 @@ Y <- ifelse( ptsd[,1:5] == 0, 0, 1)
 # search data
 fit <- ising_search(Y)
 }
+}
+\references{
+\insertAllCited{}
 }

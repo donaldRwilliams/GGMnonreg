@@ -1,6 +1,7 @@
 #' Ising: automated search
 #'
-#' @description Data mining to learn the graph.
+#' @description Data mining to learn the graph of binary variables with an Ising model
+#'              \insertCite{lenz1920beitrvsge,ising1925beitrag}{GGMnonreg}.
 #'
 #' @param Y A data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).
 #'
@@ -9,8 +10,12 @@
 #'
 #' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
 #'
+#' @references
+#' \insertAllCited{}
 #'
-#' @details Only backwards selection is currently implemented.
+#' @details Currently only backwards selection is currently implemented.
+#'
+#' @note For an excellent overview of the Ising model see \insertCite{marsman2018introduction;textual}{GGMnonreg}.
 #'
 #' @return An object of class \code{ising_search}, including \code{wadj} (weighted adjacency matrix)
 #'         and \code{adj} (adjacency matrix).
