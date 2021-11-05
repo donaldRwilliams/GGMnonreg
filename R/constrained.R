@@ -1,19 +1,30 @@
 #' Constrained Precision Matrix
 #'
-#' @description Compute the maximum likelihood estimate, given certain elements are constrained to zero
-#' (e.g., an adjacency matrix). This approach is described in \insertCite{hastie2009elements;textual}{GGMnonreg}.
+#' @description Compute the maximum likelihood estimate of the precision matrix,
+#' given a known graphical structure (i.e., an adjacency matrix).
+#' This approach was originally described in
+#' "The Elements of Statistical Learning"
+#' \insertCite{@see pg. 631, @hastie2009elements}{GGMnonreg}.
 #'
 #' @param Sigma Covariance matrix
 #'
 #' @param adj Matrix with constraints. A zero indicates that element
 #'            should be constrained to zero.
 #'
-#' @references
-#' \insertAllCited{}
 #'
 #' @return  A list containing the inverse covariance matrix and the covariance matrix.
 #'
-#' @note The algorithm is written in \code{c++}.
+#' @references
+#' \insertAllCited{}
+#'
+#' @note
+#'
+#' The algorithm is written in \code{c++}, and should scale to high dimensions.
+#'
+#' Note there are a variety of algorithms for this purpose. Simulation
+#' studies indicated that this approach is both accurate and computationally
+#' efficient \insertCite{@HFT therein, @emmert2019constrained}{GGMnonreg}
+
 #'
 #' @examples
 #' # data

@@ -42,7 +42,7 @@ NULL
 
 
 
-#' Data: Post-Traumatic Stress Disorder (Sample # 1)
+#' Cor: Post-Traumatic Stress Disorder (Sample # 1)
 #'
 #' A correlation matrix that includes 16 variables. The correlation matrix was estimated from 526
 #' individuals \insertCite{fried2018replicability}{GGMnonreg}.
@@ -88,7 +88,7 @@ NULL
 #' @format A correlation matrix with 16 variables
 NULL
 
-#' Data: Post-Traumatic Stress Disorder (Sample # 2)
+#' Cor: Post-Traumatic Stress Disorder (Sample # 2)
 #'
 #' A correlation matrix that includes 16 variables. The correlation matrix
 #' was estimated from 365 individuals \insertCite{fried2018replicability}{GGMnonreg}.
@@ -131,7 +131,7 @@ NULL
 #' @format A correlation matrix with 16 variables
 NULL
 
-#'  Data: Post-Traumatic Stress Disorder  (Sample # 3)
+#'  Cor: Post-Traumatic Stress Disorder  (Sample # 3)
 #'
 #' A correlation matrix that includes 16 variables. The correlation matrix
 #' was estimated from 926 individuals \insertCite{fried2018replicability}{GGMnonreg}.
@@ -177,7 +177,7 @@ NULL
 #'
 NULL
 
-#' Data: Post-Traumatic Stress Disorder  (Sample # 4)
+#' Cor: Post-Traumatic Stress Disorder  (Sample # 4)
 #'
 #' A correlation matrix that includes 16 variables. The correlation matrix
 #' was estimated from 965 individuals \insertCite{fried2018replicability}{GGMnonreg}.

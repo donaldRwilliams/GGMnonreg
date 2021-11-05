@@ -3,7 +3,7 @@
 \docType{data}
 \name{ptsd_cor4}
 \alias{ptsd_cor4}
-\title{Data: Post-Traumatic Stress Disorder  (Sample # 4)}
+\title{Cor: Post-Traumatic Stress Disorder  (Sample # 4)}
 \format{
 A correlation matrix with 16 variables
 }

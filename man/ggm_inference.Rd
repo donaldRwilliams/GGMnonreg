@@ -10,7 +10,7 @@ ggm_inference(
   control_precision = FALSE,
   boot = TRUE,
   B = 1000,
-  cores = 2,
+  cores = 1,
   method = "pearson",
   progress = TRUE
 )
@@ -28,7 +28,8 @@ be controlled at the level alpha (defaults to \code{FALSE}) ?}
 
 \item{B}{Integer. Number of bootstrap replicates (defaults to \code{1000}).}
 
-\item{cores}{Integer. Number of cores to be used when executing in parallel.}
+\item{cores}{Integer. Number of cores to be used when executing in parallel
+(defaults to 1).}
 
 \item{method}{Character string. Which type of correlation coefficients
 to be computed. Options include \code{"pearson"} (default),

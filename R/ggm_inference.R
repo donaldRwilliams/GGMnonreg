@@ -16,7 +16,8 @@
 #'
 #' @param B Integer. Number of bootstrap replicates (defaults to \code{1000}).
 #'
-#' @param cores Integer. Number of cores to be used when executing in parallel.
+#' @param cores Integer. Number of cores to be used when executing in parallel
+#'              (defaults to 1).
 #'
 #' @param method Character string. Which type of correlation coefficients
 #'               to be computed. Options include \code{"pearson"} (default),
@@ -50,7 +51,7 @@ ggm_inference <- function(Y,
                           control_precision = FALSE,
                           boot = TRUE,
                           B = 1000,
-                          cores = 2,
+                          cores = 1,
                           method = "pearson" ,
                           progress = TRUE){
 
@@ -77,16 +78,8 @@ ggm_inference <- function(Y,
     doParallel::registerDoParallel(cl)
 
     if(progress){
-    pb <- utils::txtProgressBar(max = B, style = 3)
-
-    # progress <- function(n) utils::setTxtProgressBar(pb, n)
-    #
-    # opts <- list(progress = progress)
-
+      pb <- utils::txtProgressBar(max = B, style = 3)
     }
-    # else {
-      # opts <- list()
-    # }
 
     boot_samps <- foreach::foreach(i = 1:B, .combine = f(B)) %dopar%{
 
