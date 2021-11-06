@@ -1,5 +1,8 @@
 #' Compare Gaussian Graphical Models
 #'
+#' @description Establish whether each of the corresponding edges
+#'              are significantly different in two groups
+#'
 #' @param Yg1 The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes) for
 #'            group one.
 #'
@@ -26,11 +29,15 @@
 #' # compare relations
 #' fit <- ggm_compare(Yg1, Yg2)
 #'}
-ggm_compare <- function(Yg1, Yg2, method = "spearman",
+ggm_compare <- function(Yg1, Yg2,
+                        method = "spearman",
                         alpha = 0.05){
 
-  fit1 <- ggm_inference(Yg1, method = method)
-  fit2 <- ggm_inference(Yg2, method = method)
+  fit1 <- ggm_inference(Y = Yg1,
+                        method = method)
+
+  fit2 <- ggm_inference(Y = Yg2,
+                        method = method)
 
   diff <- fit1$boot_samps - fit2$boot_samps
 

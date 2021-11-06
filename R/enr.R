@@ -1,9 +1,8 @@
 #' Expected Network Replicability
 #'
-#' @description Compute expected network replicability in any number of
-#'              replication attempts. This works for any kind of
-#'              correlation, assuming it is possible to obtain the
-#'              standard error (analytically or with a bootstrap).
+#' @description Investigate network replicability for any kind of
+#'              partial correlation, assuming there is an analytic
+#'              solution for the standard error (e.g., Pearson's or Spearman's).
 #'
 #' @param net True network of dimensions \emph{p} by \emph{p}.
 #'
@@ -16,8 +15,8 @@
 #' @param replications Integer. The desired number of replications.
 #'
 #' @param type Character string. Which type of correlation coefficients
-#'               to be computed. Options include \code{"pearson"} (default)
-#'               and \code{"spearman"}.
+#'             to be computed. Options include \code{"pearson"} (default)
+#'             and \code{"spearman"}.
 #'
 #' @references
 #' \insertAllCited{}
@@ -25,13 +24,23 @@
 #' @return An list of class \code{enr}, including a variety of information used
 #'         by other functions (e.g., to plot the results).
 #'
-#' @note This method was introduced in \insertCite{williams2020learning;textual}{GGMnonreg}.
+#' @note This method was introduced in
+#' \insertCite{williams2020learning;textual}{GGMnonreg}.
+#'
+#' The basic idea is to determine the replicability of edges in a
+#' partial correlation network. This requires defining the true
+#' network, which can include edges of various sizes, and then
+#' solving for the proportion of edges that are expected
+#' to be replicated (e.g. in two, three, or four replication attempt).
+#'
 #'
 #' @export
 #'
 #' @examples
 #' \donttest{
-#' # correlations
+#' # (1) define partial correlation network
+#'
+#' # correlations from ptsd symptoms
 #' cors <- cor(GGMnonreg::ptsd)
 #'
 #' # inverse
@@ -41,24 +50,35 @@
 #' pcors <-  -cov2cor(inv)
 #'
 #' # set values to zero
+#' # (this is the partial correlation network)
 #' pcors <- ifelse(abs(pcors) < 0.05, 0, pcors)
 #'
-#' fit_enr <- enr(net = pcors, n = 500, replications = 2)
+#'
+#' # compute ENR in two replication attempts
+#' fit_enr <- enr(net = pcors,
+#'                n = 500,
+#'                replications = 2)
 #'
 #'
-#'# intuition for the method
+#' # intuition for the method:
+#' # The above did not require simulation, and here I use simulation
+#' # for the same purpose.
 #'
 #' # location of edges
+#' # (where the edges are located in the network)
 #' index <- which(pcors[upper.tri(diag(20))] != 0)
 #'
-#' # convert network into correlation matrix
+#' # convert network a into correlation matrix
+#' # (this is needed to simulate data)
 #' diag(pcors) <- 1
 #' cors_new <- corpcor::pcor2cor(pcors)
 #'
 #' # replicated edges
+#' # (store the number of edges that were replicated)
 #' R <- NA
 #'
-#' # increase 100 to, say, 5,000
+#' # simulate how many edges replicate in two attempts
+#' # (increase 100 to, say, 5,000)
 #' for(i in 1:100){
 #'
 #'   # two replications
@@ -88,12 +108,12 @@
 #'   data.frame(analytic = round(fit_enr$cdf, 3))
 #' )
 #'
+#' # now compare simulation to the analytic solution
 #' # average replicability (simulation)
 #' mean(R / length(index))
 #'
 #' # average replicability (analytic)
 #' fit_enr$ave_pwr
-#'
 #' }
 #'
 #' @importFrom poibin ppoibin
@@ -149,11 +169,15 @@ enr <- function(net, n, alpha = 0.05, replications = 2, type = "pearson"){
 }
 
 print_enr <- function(x,...){
+
   cat("Average Replicability:", round(x$ave_pwr, 2), "\n")
+
   cat("Average Number of Edges:",
       round(round(x$ave_pwr, 2) * x$n_nonzero),
       paste0( "(SD = ", round(sqrt(x$var_pwr), 2), ")"), "\n\n")
+
   cat("----\n\n")
+
   cat("Cumulative Probability:" , "\n\n")
 
   dat <- data.frame(prop = seq(0, .90, .10),
@@ -163,9 +187,11 @@ print_enr <- function(x,...){
                     prob = round(x$cdf, 2))
 
   colnames(dat) <- c("prop.edges", "edges", "Pr(R > prop.edges)")
+
   print(dat, row.names = F, right = T)
 
   cat("----\n")
+
   cat(paste0("Pr(R > prop.edges):\n", "probability of replicating more than the\n",
   "correpsonding proportion (and number) of edges"))
   }

@@ -1,4 +1,4 @@
-#' Generate True Partial Correlation Matrix
+#' Simulate a Partial Correlation Matrix
 #'
 #' @param p number of variables (nodes)
 #'

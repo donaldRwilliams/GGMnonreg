@@ -2,7 +2,7 @@
 % Please edit documentation in R/gen_pcors.R
 \name{gen_net}
 \alias{gen_net}
-\title{Generate True Partial Correlation Matrix}
+\title{Simulate a Partial Correlation Matrix}
 \usage{
 gen_net(p = 20, edge_prob = 0.3, lb = 0.05, ub = 0.3)
 }
@@ -19,7 +19,7 @@ gen_net(p = 20, edge_prob = 0.3, lb = 0.05, ub = 0.3)
 A list with the true structure, adjacency matrix, and correlation matrix.
 }
 \description{
-Generate True Partial Correlation Matrix
+Simulate a Partial Correlation Matrix
 }
 \note{
 The function checks for a valid matrix (positive definite),

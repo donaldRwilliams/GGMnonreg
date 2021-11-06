@@ -24,7 +24,8 @@ to be computed. Options include \code{"pearson"} (default),
 An object of class \code{ggm_compare}
 }
 \description{
-Compare Gaussian Graphical Models
+Establish whether each of the corresponding edges
+             are significantly different in two groups
 }
 \examples{
 \donttest{
