@@ -1,6 +1,7 @@
 #' Edge Inclusion "Probability"
 #'
-#'  Compute the proportion of bootstrap samples that each relation was selected.
+#'  Compute the proportion of bootstrap samples that each relation was selected,
+#'  corresponding to an edge inclusion "probability".
 #'
 #' @param Y The data matrix of dimensions \emph{n} (observations) by \emph{p} (nodes).
 #'
@@ -16,7 +17,14 @@
 #'
 #' @details The order is the upper-triangular.
 #'
+#' @note  In the context of regression, this general approach was described in
+#' see Figure 6.4. \insertCite{@see Figure 6.4, @Hastie2015;textual}{GGMnonreg}. In this case,
+#' the selection is based on classical hypothesis testing instead of L1-regularization.
+#'
 #' @export
+#'
+#' @references
+#' \insertAllCited{}
 #'
 #' @examples
 #' \donttest{

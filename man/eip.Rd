@@ -21,10 +21,16 @@ to be computed. Options include \code{"pearson"} (default),
 An object of class \code{eip}, including a matrix of edge inclusions.
 }
 \description{
-Compute the proportion of bootstrap samples that each relation was selected.
+Compute the proportion of bootstrap samples that each relation was selected,
+ corresponding to an edge inclusion "probability".
 }
 \details{
 The order is the upper-triangular.
+}
+\note{
+In the context of regression, this general approach was described in
+see Figure 6.4. \insertCite{@see Figure 6.4, @Hastie2015;textual}{GGMnonreg}. In this case,
+the selection is based on classical hypothesis testing instead of L1-regularization.
 }
 \examples{
 \donttest{
@@ -37,4 +43,7 @@ fit_eip <- eip(Y, method = "spearman")
 # print
 fit_eip
 }
+}
+\references{
+\insertAllCited{}
 }

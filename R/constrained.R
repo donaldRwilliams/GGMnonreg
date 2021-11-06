@@ -12,7 +12,8 @@
 #'            should be constrained to zero.
 #'
 #'
-#' @return  A list containing the inverse covariance matrix and the covariance matrix.
+#' @return  A list containing the inverse covariance matrix
+#' (i.e., precision matrix) and the covariance matrix.
 #'
 #' @references
 #' \insertAllCited{}

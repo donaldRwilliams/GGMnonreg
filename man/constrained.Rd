@@ -13,7 +13,8 @@ constrained(Sigma, adj)
 should be constrained to zero.}
 }
 \value{
-A list containing the inverse covariance matrix and the covariance matrix.
+A list containing the inverse covariance matrix
+(i.e., precision matrix) and the covariance matrix.
 }
 \description{
 Compute the maximum likelihood estimate of the precision matrix,
