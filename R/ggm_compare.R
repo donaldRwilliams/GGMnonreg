@@ -16,7 +16,21 @@
 #' @param alpha The desired significance level (defaults to \code{0.05}). Note that
 #'              1 - alpha corresponds to specificity.
 #'
-#' @return An object of class \code{ggm_compare}
+#' @return An object of class \code{ggm_compare} including:
+#'
+#' \itemize{
+#'
+#' \item{\strong{adj}}: Adjacency matrix, where a 1
+#' indicates a difference.
+#'
+#' \item{\strong{wadj}}: Weighted adjacency matrix
+#' (partial correlation differences that were significantly different)
+#'
+#' \item{\strong{cis}}: Confidence intervals for the partial correlation
+#' differences.
+#'
+#' }
+#'
 #' @export
 #'
 #' @examples

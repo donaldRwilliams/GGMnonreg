@@ -17,8 +17,24 @@
 #'
 #' @note For an excellent overview of the Ising model see \insertCite{marsman2018introduction;textual}{GGMnonreg}.
 #'
-#' @return An object of class \code{ising_search}, including \code{wadj} (weighted adjacency matrix)
-#'         and \code{adj} (adjacency matrix).
+#' @return An object of class \code{ising_search} including:
+#'
+#' \itemize{
+#'
+#' \item{\strong{wadj}}: Weighted adjacency matrix, corresponding
+#' to the partial correlation network.
+#'
+#' \item{\strong{adj}}: Adjacency matrix (detected effects).
+#'
+#' \item{\strong{pcors}}: Partial correlations.
+#'
+#' \item{\strong{n}}: Sample size.
+#'
+#' \item{\strong{p}}: Number of nodes.
+#'
+#' \item{\strong{Y}}: Data.
+#'
+#' }
 #'
 #' @export
 #'

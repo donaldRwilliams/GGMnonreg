@@ -54,7 +54,7 @@ The following are also included
 * Predictability (variance explained)
 
 ## Installation
-To install the latest release version (2.0.0) from CRAN use
+To install the latest release version (1.1.0) from CRAN use
 
 ```r
 install.packages("GGMnonreg")    

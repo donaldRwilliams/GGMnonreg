@@ -38,7 +38,24 @@ to be computed. Options include \code{"pearson"} (default),
 \item{progress}{Logical. Should a progress bar be included (defaults to \code{TRUE})?}
 }
 \value{
-An object of class \code{ggm_inference}
+An object of class \code{ggm_inference} including:
+
+\itemize{
+
+\item{\strong{wadj}}: Weighted adjacency matrix, corresponding
+to the partial correlation network.
+
+\item{\strong{adj}}: Adjacency matrix (detected effects).
+
+\item{\strong{pcors}}: Partial correlations.
+
+\item{\strong{n}}: Sample size.
+
+\item{\strong{p}}: Number of nodes.
+
+\item{\strong{Y}}: Data.
+
+}
 }
 \description{
 Learn the conditional dependence structure with null hypothesis

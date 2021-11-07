@@ -21,8 +21,30 @@
 #' @references
 #' \insertAllCited{}
 #'
-#' @return An list of class \code{enr}, including a variety of information used
-#'         by other functions (e.g., to plot the results).
+#' @return An list of class \code{enr} including the following:
+#'
+#' \itemize{
+#'
+#' \item{\strong{ave_power}}: Average power.
+#'
+#' \item{\strong{cdf}}: cumulative distribution function.
+#'
+#' \item{\strong{p_s}}: Power for each edge, or the probability
+#' of success for a given trial.
+#'
+#' \item{\strong{p}}: Number of nodes.
+#'
+#' \item{\strong{n_nonzero}}: Number of edges.
+#'
+#' \item{\strong{n}}: Sample size.
+#'
+#' \item{\strong{replication}}: Replication attempts.
+#'
+#' \item{\strong{var_pwr}}: Variance of power.
+#'
+#' \item{\strong{type}}: Type of correlation coefficient.
+#'
+#' }
 #'
 #' @note This method was introduced in
 #' \insertCite{williams2020learning;textual}{GGMnonreg}.
@@ -117,7 +139,10 @@
 #' }
 #'
 #' @importFrom poibin ppoibin
-enr <- function(net, n, alpha = 0.05, replications = 2, type = "pearson"){
+enr <- function(net, n,
+                alpha = 0.05,
+                replications = 2,
+                type = "pearson"){
 
   # variables
   p <- ncol(net)
@@ -182,8 +207,6 @@ print_enr <- function(x,...){
 
   dat <- data.frame(prop = seq(0, .90, .10),
                     round(x$n_nonzero *  seq(0, 0.9, 0.1)),
-                    # round(quantile(1:x$n_nonzero,
-                                   # probs = seq(0, 0.9, 0.1))),
                     prob = round(x$cdf, 2))
 
   colnames(dat) <- c("prop.edges", "edges", "Pr(R > prop.edges)")

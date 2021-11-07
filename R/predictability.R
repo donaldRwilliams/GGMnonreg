@@ -4,7 +4,8 @@
 #'
 #' @param ci Numeric. The confidence interval to be computed (defaults to \code{0.95}).
 #'
-#' @return An object of class \code{predictability}, including a matrix of R2.
+#' @return An object of class \code{predictability}, including a matrix of R2
+#' for each node.
 #'
 #' @references
 #' \insertAllCited{}
@@ -74,7 +75,8 @@ predictability <- function(x, ci = 0.95) {
     )
   }
 
-  returned_object <- list(r2 = do.call(rbind.data.frame,  r2_ls))
+  returned_object <- list(r2 = do.call(rbind.data.frame,
+                                       r2_ls))
 
   class(returned_object) <- c("ggmnonreg",
                               "predictability")

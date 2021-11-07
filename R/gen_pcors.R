@@ -9,12 +9,27 @@
 #' @param ub upper bound for the partial correlations
 #'
 #' @note The function checks for a valid matrix (positive definite),
-#' but sometimes this will
-#' still fail. For example, for larger \code{p}, to have
-#' large partial correlations this requires a sparse GGM
-#' (accomplished by setting \code{edge_prob} to a small value).
+#' but sometimes this will still fail. For example, for
+#' larger \code{p}, to have large partial correlations this
+#' requires a sparse GGM
+#' (accomplished by setting \code{edge_prob}
+#' to a small value).
 #'
-#' @return A list with the true structure, adjacency matrix, and correlation matrix.
+#' @return A list containing the following:
+#'
+#' \itemize{
+#'
+#' \item{\strong{pcor}}: Partial correlation matrix, encoding
+#' the conditional (in)dependence structure.
+#'
+#' \item{\strong{cors}}: Correlation matrix.
+#'
+#' \item{\strong{adj}}: Adjacency matrix.
+#'
+#' \item{\strong{trys}}: Number of attempts to obtain a
+#' positive definite matrix.
+#'
+#' }
 #'
 #' @export
 #'
@@ -23,7 +38,8 @@
 #' @examples
 #'
 #' true_net <- gen_net(p = 10)
-gen_net <- function(p = 20, edge_prob = 0.3,
+gen_net <- function(p = 20,
+                    edge_prob = 0.3,
                     lb = 0.05,
                     ub = 0.3) {
   d <- -1
@@ -68,8 +84,8 @@ gen_net <- function(p = 20, edge_prob = 0.3,
   returned_object <- list(
     pcors = pcors * adj,
     cors = cors,
-    trys = trys,
-    adj = adj
+    adj = adj,
+    trys = trys
   )
 
   returned_object

@@ -22,8 +22,30 @@ to be computed. Options include \code{"pearson"} (default)
 and \code{"spearman"}.}
 }
 \value{
-An list of class \code{enr}, including a variety of information used
-        by other functions (e.g., to plot the results).
+An list of class \code{enr} including the following:
+
+\itemize{
+
+\item{\strong{ave_power}}: Average power.
+
+\item{\strong{cdf}}: cumulative distribution function.
+
+\item{\strong{p_s}}: Power for each edge, or the probability
+of success for a given trial.
+
+\item{\strong{p}}: Number of nodes.
+
+\item{\strong{n_nonzero}}: Number of edges.
+
+\item{\strong{n}}: Sample size.
+
+\item{\strong{replication}}: Replication attempts.
+
+\item{\strong{var_pwr}}: Variance of power.
+
+\item{\strong{type}}: Type of correlation coefficient.
+
+}
 }
 \description{
 Investigate network replicability for any kind of

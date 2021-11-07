@@ -13,7 +13,8 @@
 #'
 #' @param progress Logical. Should a progress bar be included (defaults to \code{TRUE})?
 #'
-#' @return An object of class \code{eip}, including a matrix of edge inclusions.
+#' @return An object of class \code{eip}, including a matrix of edge inclusion
+#' "probabilities".
 #'
 #' @details The order is the upper-triangular.
 #'
@@ -37,31 +38,32 @@
 #' # print
 #' fit_eip
 #' }
-eip <- function(Y, method = "pearson", B = 1000, progress = TRUE) {
-
+eip <- function(Y,
+                method = "pearson",
+                B = 1000,
+                progress = TRUE) {
   n <- nrow(Y)
   p <- ncol(Y)
 
-  if(progress){
-  pb <- utils::txtProgressBar(max = B, style = 3)
+  if (progress) {
+    pb <- utils::txtProgressBar(max = B, style = 3)
   }
-  eips <- t(sapply(1:B, function(x){
+  eips <- t(sapply(1:B, function(x) {
+    eips_i <-  ggm_inference(Y[sample(1:n, n, replace = T), ],
+                             boot = FALSE, method = method)$adj[upper.tri(diag(p))]
 
-  eips_i <-  ggm_inference(Y[sample(1:n, n, replace = T),],
-                  boot = FALSE, method = method)$adj[upper.tri(diag(p))]
+    if (progress) {
+      setTxtProgressBar(pb, x)
+    }
 
-  if(progress){
-  setTxtProgressBar(pb, x)
-  }
-
-  eips_i
+    eips_i
   }))
 
-  returned_object <- list(eip =  data.frame( eip = colMeans( eips)))
+  returned_object <- list(eip =  data.frame(eip = colMeans(eips)))
   class(returned_object) <- c("ggmnonreg", "eip")
   return(returned_object)
 }
 
-print_eip <- function(x,...){
-  print(x$eip,...)
+print_eip <- function(x, ...) {
+  print(x$eip, ...)
 }

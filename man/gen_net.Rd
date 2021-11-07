@@ -16,17 +16,32 @@ gen_net(p = 20, edge_prob = 0.3, lb = 0.05, ub = 0.3)
 \item{ub}{upper bound for the partial correlations}
 }
 \value{
-A list with the true structure, adjacency matrix, and correlation matrix.
+A list containing the following:
+
+\itemize{
+
+\item{\strong{pcor}}: Partial correlation matrix, encoding
+the conditional (in)dependence structure.
+
+\item{\strong{cors}}: Correlation matrix.
+
+\item{\strong{adj}}: Adjacency matrix.
+
+\item{\strong{trys}}: Number of attempts to obtain a
+positive definite matrix.
+
+}
 }
 \description{
 Simulate a Partial Correlation Matrix
 }
 \note{
 The function checks for a valid matrix (positive definite),
-but sometimes this will
-still fail. For example, for larger \code{p}, to have
-large partial correlations this requires a sparse GGM
-(accomplished by setting \code{edge_prob} to a small value).
+but sometimes this will still fail. For example, for
+larger \code{p}, to have large partial correlations this
+requires a sparse GGM
+(accomplished by setting \code{edge_prob}
+to a small value).
 }
 \examples{
 

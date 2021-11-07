@@ -16,8 +16,24 @@ mixed_search(Y, data_type = NULL, IC = "BIC")
 \code{"AIC"} and \code{"BIC"} (default).}
 }
 \value{
-An object of class \code{mixed_search}, including \code{wadj} (weighted adjacency matrix)
-        and \code{adj} (adjacency matrix).
+An object of class \code{mixed_search} including
+
+\itemize{
+
+\item{\strong{wadj}}: Weighted adjacency matrix, corresponding
+to the partial correlation network.
+
+\item{\strong{adj}}: Adjacency matrix (detected effects).
+
+\item{\strong{pcors}}: Partial correlations.
+
+\item{\strong{n}}: Sample size.
+
+\item{\strong{p}}: Number of nodes.
+
+\item{\strong{Y}}: Data.
+
+}
 }
 \description{
 Data mining to learn the graph.

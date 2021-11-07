@@ -12,7 +12,8 @@ predictability(x, ci = 0.95)
 \item{ci}{Numeric. The confidence interval to be computed (defaults to \code{0.95}).}
 }
 \value{
-An object of class \code{predictability}, including a matrix of R2.
+An object of class \code{predictability}, including a matrix of R2
+for each node.
 }
 \description{
 Network Predictability (R2)

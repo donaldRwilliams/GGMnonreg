@@ -2,19 +2,31 @@
 % Please edit documentation in R/constrained.R
 \name{constrained}
 \alias{constrained}
-\title{Constrained Precision Matrix}
+\title{Precision Matrix with Known Graph}
 \usage{
 constrained(Sigma, adj)
 }
 \arguments{
 \item{Sigma}{Covariance matrix}
 
-\item{adj}{Matrix with constraints. A zero indicates that element
-should be constrained to zero.}
+\item{adj}{An adjacency matrix that encodes the constraints,
+where a zero indicates that element should be zero.}
 }
 \value{
-A list containing the inverse covariance matrix
-(i.e., precision matrix) and the covariance matrix.
+A list containing the following:
+
+\itemize{
+
+\item{\strong{Theta}}: Inverse of the covariance matrix
+(precision matrix), that encodes the conditional
+(in)dependence structure.
+
+\item{\strong{Sigma}}: Covariance matrix.
+
+\item{\strong{wadj}}: Weighted adjacency matrix, corresponding
+to the partial correlation network.
+
+}
 }
 \description{
 Compute the maximum likelihood estimate of the precision matrix,

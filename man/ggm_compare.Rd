@@ -21,7 +21,20 @@ to be computed. Options include \code{"pearson"} (default),
 1 - alpha corresponds to specificity.}
 }
 \value{
-An object of class \code{ggm_compare}
+An object of class \code{ggm_compare} including:
+
+\itemize{
+
+\item{\strong{adj}}: Adjacency matrix, where a 1
+indicates a difference.
+
+\item{\strong{wadj}}: Weighted adjacency matrix
+(partial correlation differences that were significantly different)
+
+\item{\strong{cis}}: Confidence intervals for the partial correlation
+differences.
+
+}
 }
 \description{
 Establish whether each of the corresponding edges
