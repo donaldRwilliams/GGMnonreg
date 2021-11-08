@@ -7,12 +7,10 @@ tags:
 - Ising model
 authors:
   - name: Donald R. Williams
-    affiliation: "1", "2"
+    affiliation: 1
 affiliations:
  - name: Department of Psychology, University of California, Davis
    index: 1
- - name: NWEA, Portland, USA
-   index: 2
 citation_author: Williams
 date: 08 November 2021
 year: 2021
