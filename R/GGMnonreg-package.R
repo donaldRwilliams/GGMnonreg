@@ -1,0 +1,56 @@
+#' GGMnonreg:  Non-Regularized Gaussian Graphical Models
+#'
+#' @description The goal of \strong{GGMnonreg} is to estimate non-regularized
+#' graphical models. Note that the title is a bit of a misnomer, in that Ising
+#' and mixed graphical models are also supported. Graphical modeling is quite
+#' common in fields with \emph{wide} data, that is, when there are more variables
+#' than observations. Accordingly, many regularization-based approaches have been
+#' developed for those kinds of data. There are key drawbacks of regularization
+#' when the goal is inference, including, but not limited to, the fact that
+#' obtaining a valid measure of parameter uncertainty is very (very) difficult.
+#'
+#' More recently, graphical modeling has emerged in psychology,
+#' where the data are typically long or low-dimensional
+#' \insertCite{williams_rethinking,williams2019nonregularized}{GGMnonreg}.
+#' The primary purpose of  \strong{GGMnonreg} is to provide methods specifically
+#' for low-dimensional data
+#'
+#'
+#' \strong{Supported Models}
+#'
+#' \itemize{
+#'  \item{Gaussian graphical model. The following data types are supported.}
+#'  \itemize{
+#'  \item{Gaussian}
+#'  \item{Ordinal}
+#'  \item{Binary}
+#'  }
+#'  \item{Ising model}
+#'  \item{Mixed graphical model}
+#' }
+#'
+#' \strong{Additional Methods}
+#'
+#' \itemize{
+#' \item{Expected network replicability} \insertCite{williams2020learning}{GGMnonreg}
+#'
+#' \item{Compare Gaussian graphical models}
+#'
+#' \item{Measure of uncertainty} \insertCite{williams_2021_conf}{GGMnonreg}
+#'
+#' \item{Edge inclusion "probabilities"}
+#'
+#' \item{Network visualization}
+#'
+#' \item{Constrained precision matrix (the network, given an assumed graph)}
+#'
+#' \item{Predictability (variance explained)}
+#' }
+#'
+#' @references
+#' \insertAllCited{}
+#'
+#' @docType package
+#'
+#' @name GGMnonreg-package
+NULL

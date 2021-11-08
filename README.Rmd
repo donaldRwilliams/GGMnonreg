@@ -163,10 +163,10 @@ will be replicated only 5 % of the time.
 
 ENR can also be plotted
 ```{r}
-plot(fit_enr)
+plot_enr(fit_enr)
 ```
 
-### Intution
+### Intuition
 Here is the basic idea of ENR
 ```{r}
 # location of edges
@@ -231,7 +231,7 @@ Y <- ptsd
 fit <- ggm_inference(Y, boot = FALSE)
 
 # get info for plotting
-plot(get_graph(fit), edge_magnify = 5)
+plot(fit, edge_magnify = 5)
 ```
 
 ## Bug Reports, Feature Requests, and Contributing

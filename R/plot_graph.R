@@ -46,9 +46,9 @@
 #' # estimate graph
 #' fit <- ggm_inference(Y, boot = FALSE)
 #'
-#' # get info for plotting
-#' plot(get_graph(fit))
-plot.graph <- function(x,
+#' # plot graph
+#' plot(fit)
+plot.ggmnonreg <- function(x,
                        layout = "circle",
                        neg_col = "#D55E00",
                        pos_col = "#009E73",
@@ -59,6 +59,7 @@ plot.graph <- function(x,
                        node_groups = NULL,
                        ...){
 
+  x <- get_graph(x)
 
   x$pcor_adj <- x$P
 
@@ -101,8 +102,10 @@ plot.graph <- function(x,
 
   } else {
 
-    plt <-  plt + geom_point(aes(color = node_groups, group = node_groups),
-                             size = node_size + 1, alpha = 0.5) +
+    plt <-  plt + geom_point(aes(color = node_groups,
+                                 group = node_groups),
+                             size = node_size + 1,
+                             alpha = 0.5) +
       geom_point(size = node_size, aes(color = node_groups)) +
       geom_text(label = cn)  +
       scale_color_brewer(palette = palette)

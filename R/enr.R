@@ -257,12 +257,12 @@ print_enr <- function(x,...){
 #' est <- enr(net = pcors, n = 500, replications = 2)
 #'
 #' # plot
-#' plot(est)
+#' plot_enr(est)
 #'}
 #'
 #' @importFrom ggplot2 ggplot aes geom_vline geom_density scale_x_continuous xlab scale_y_continuous
 #'
-plot.enr <- function(x, iter = 100000,
+plot_enr <- function(x, iter = 100000,
                      fill = "#009E73",
                      alpha = 0.5, ...){
 
