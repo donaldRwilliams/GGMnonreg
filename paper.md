@@ -12,7 +12,7 @@ affiliations:
  - name: Department of Psychology, University of California, Davis
    index: 1
  - name: NWEA, Portland, USA
-   index:
+   index: 2
 citation_author: Williams
 date: 08 November 2021
 year: 2021
