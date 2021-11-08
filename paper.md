@@ -43,7 +43,7 @@ The following are also included
 
 * Expected network replicability [@williams2020learning]
 * Compare Gaussian graphical models
-* Measure of parameter uncertainty [@williams2019nonregularized]
+* Measure of parameter uncertainty [@williams_2021_conf]
 * Edge inclusion "probabilities" [e.g., Figure 6.4 in  @Hastie2015]
 * Network visualization
 * Constrained precision matrix [the network, given an assumed graph, see p. 631 in @hastie2009elements]
