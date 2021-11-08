@@ -11,7 +11,8 @@ authors:
 affiliations:
  - name: Department of Psychology, University of California, Davis
    index: 1
- - name: NWEA, Portland, USA  
+ - name: NWEA, Portland, USA
+   index: 2
 citation_author: Williams
 date: 08 November 2021
 year: 2021
@@ -105,7 +106,7 @@ fit
 
 ## Network Replicability
 Recently, the topic of replicability has captivated the network literature. 
-To this end, I developed an analytic solution to estimate replicability [@williams2020learning].
+To this end, I developed an analytic solution to estimate network replicability [@williams2020learning].
 
 The first step is to define a "true" partial correlation network. As an example, 
 I generate a synthetic partial correlation matrix, and then compute expected
