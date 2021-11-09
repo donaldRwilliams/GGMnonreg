@@ -146,7 +146,7 @@ Pr(R > prop.edges):
 probability of replicating more than the
 correpsonding proportion (and number) of edges
 ```
-On average, we see that we can expect to replicate roughly half of the 
+On average, we can expect to replicate roughly half of the 
 edges in four replication attempts, where replication is defined as detecting 
 a given edge in each attempt. Further, the probability of replicating more than 
 70% of the edges is zero.
