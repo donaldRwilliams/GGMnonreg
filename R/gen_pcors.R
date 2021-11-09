@@ -47,7 +47,6 @@ gen_net <- function(p = 20,
   trys <- 0
 
   while (d < 0) {
-
     trys <- trys + 1
 
     effects <- p * (p - 1) * 0.5

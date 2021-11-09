@@ -197,9 +197,12 @@ print_enr <- function(x,...){
 
   cat("Average Replicability:", round(x$ave_pwr, 2), "\n")
 
-  cat("Average Number of Edges:",
-      round(round(x$ave_pwr, 2) * x$n_nonzero),
-      paste0( "(SD = ", round(sqrt(x$var_pwr), 2), ")"), "\n\n")
+  cat(
+    "Average Number of Edges:",
+    round(round(x$ave_pwr, 2) * x$n_nonzero),
+    paste0("(SD = ", round(sqrt(x$var_pwr), 2), ")"),
+    "\n\n"
+  )
 
   cat("----\n\n")
 
@@ -215,8 +218,13 @@ print_enr <- function(x,...){
 
   cat("----\n")
 
-  cat(paste0("Pr(R > prop.edges):\n", "probability of replicating more than the\n",
-  "correpsonding proportion (and number) of edges"))
+  cat(
+    paste0(
+      "Pr(R > prop.edges):\n",
+      "probability of replicating more than the\n",
+      "correpsonding proportion (and number) of edges"
+    )
+  )
   }
 
 
@@ -273,17 +281,23 @@ plot_enr <- function(x, iter = 100000,
   dat <- data.frame(y = y)
 
   # plot
-  ggplot(dat, aes(x = y )) +
+  ggplot(dat, aes(x = y)) +
     geom_vline(xintercept = mean(y),
                linetype = "dotted") +
     geom_density(adjust = 2,
-                 fill =  fill, alpha = alpha) +
-    scale_x_continuous(limits = c(min(y), max(y) ),
-                       breaks = seq(min(y), max(y), length.out = 5),
-                       labels = paste0(round(seq(min(y), max(y),
-                                                  length.out = 5) / x$n_nonzero, 2)*100, "%")) +
-  xlab("Replicated Edges") +
-  scale_y_continuous(expand = c(0,0))
+                 fill =  fill,
+                 alpha = alpha) +
+    scale_x_continuous(
+      limits = c(min(y), max(y)),
+      breaks = seq(min(y), max(y),
+                   length.out = 5),
+      labels = paste0(round(
+        seq(min(y), max(y),
+            length.out = 5) / x$n_nonzero, 2
+      ) * 100, "%")
+    ) +
+    xlab("Replicated Edges") +
+    scale_y_continuous(expand = c(0, 0))
 
 }
 

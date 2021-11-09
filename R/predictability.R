@@ -30,12 +30,12 @@
 #'
 #' @importFrom corpcor pcor2cor
 predictability <- function(x, ci = 0.95) {
-
   if (!is(x, "ggm_inference")) {
     stop("must be a 'ggm_inference' object")
   }
 
   p <- x$p
+
   n <- x$n
 
   # scale y
@@ -43,19 +43,20 @@ predictability <- function(x, ci = 0.95) {
 
   # pcor to cor to inverse
   diag(x$pcors) <- 1
+
   cors <- corpcor::pcor2cor(x$pcors)
+
   inv <- solve(cors)
 
   crt <- qnorm((1 - ci) / 2, lower.tail = F)
 
   r2_ls <- list()
 
-  for(i in 1:p){
-
+  for (i in 1:p) {
     # var of y 1 by construction
-    r2 <- var(ynew[,-i] %*%  inv[i,-i] / inv[i, i])
+    r2 <- var(ynew[, -i] %*%  inv[i, -i] / inv[i, i])
 
-    num <- 4 * r2 * (1 - r2)^2 * (n - p - 1)^2
+    num <- 4 * r2 * (1 - r2) ^ 2 * (n - p - 1) ^ 2
 
     den <- (n ^ 2 - 1) * (n + 3)
 
@@ -67,7 +68,7 @@ predictability <- function(x, ci = 0.95) {
     lower <- r2 - se * crt
 
 
-   r2_ls[[i]] <- data.frame(
+    r2_ls[[i]] <- data.frame(
       Estimate = r2,
       Est.Error =  se,
       Ci.lb = lower,

@@ -21,8 +21,10 @@
 #'
 #' }
 confint.ggm_inference <- function(object, ...){
+
   if(is.null(object$boot_samps)) {
     stop("currently only implemented for 'boot = TRUE'")
   }
+
   return(object$cis)
 }

@@ -65,7 +65,7 @@ plot.ggmnonreg <- function(x,
 
   p <- ncol(x$P)
 
-  if(is.null(node_names)){
+  if (is.null(node_names)) {
     cn <- 1:p
   } else {
     cn <- node_names
@@ -75,24 +75,34 @@ plot.ggmnonreg <- function(x,
 
   net <- network::network(x$pcor_adj)
 
-  network::set.edge.value(x = net, attrname = "weights",
+  network::set.edge.value(x = net,
+                          attrname = "weights",
                           value = x$pcor_adj)
 
-  network::set.edge.value(x = net, attrname = "abs_weights",
-                          value = abs(x$pcor_adj) * edge_magnify)
+  network::set.edge.value(
+    x = net,
+    attrname = "abs_weights",
+    value = abs(x$pcor_adj) * edge_magnify
+  )
 
-  network::set.edge.attribute(x = net, attrname = "edge_color",
-                              value = ifelse(net %e% "weights" < 0, neg_col,
-                                             pos_col))
+  network::set.edge.attribute(
+    x = net,
+    attrname = "edge_color",
+    value = ifelse(net %e% "weights" < 0, neg_col,
+                   pos_col)
+  )
   e <- abs(as.numeric(x$pcor_adj))
 
-  plt <-GGally::ggnet2(net, edge.alpha = e[e != 0]/max(e),
-                       edge.size = "abs_weights",
-                       edge.color = "edge_color",
-                       node.size = 1,
-                       mode = layout)
+  plt <- GGally::ggnet2(
+    net,
+    edge.alpha = e[e != 0] / max(e),
+    edge.size = "abs_weights",
+    edge.color = "edge_color",
+    node.size = 1,
+    mode = layout
+  )
 
-  if(is.null(node_groups)){
+  if (is.null(node_groups)) {
     plt <- plt + geom_point(color = "black",
                             size = node_size + 1) +
       geom_point(size = node_size,
@@ -101,7 +111,6 @@ plot.ggmnonreg <- function(x,
       geom_text(label = cn)
 
   } else {
-
     plt <-  plt + geom_point(aes(color = node_groups,
                                  group = node_groups),
                              size = node_size + 1,
@@ -136,7 +145,7 @@ plot.ggmnonreg <- function(x,
 #'
 #' # get info for plotting
 #' get_graph(fit)
-get_graph <- function(x){
+get_graph <- function(x) {
   returned_object <- list(P = x$wadj, adj = x$adj)
   class(returned_object) <- "graph"
   return(returned_object)

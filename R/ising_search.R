@@ -47,14 +47,15 @@
 #' fit <- ising_search(Y)
 #' }
 #' @importFrom stats binomial coef glm step
-ising_search <- function(Y, IC = "BIC", progress = TRUE){
-
+ising_search <- function(Y, IC = "BIC", progress = TRUE) {
   if (!IC %in% c("AIC", "BIC")) {
     stop("IC must be 'AIC' or 'BIC'")
   }
 
   X <- Y
+
   n <- nrow(X)
+
   p <- ncol(X)
 
   betas <- matrix(0, p, p)
@@ -63,9 +64,12 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE){
 
   colnames(X) <-  paste("X", 1:p, sep = "")
 
-  if(progress){
-  pb <- txtProgressBar(min = 0, max = p, style = 3)
+  if (progress) {
+    pb <- txtProgressBar(min = 0,
+                         max = p,
+                         style = 3)
   }
+
   if (IC == "AIC") {
     k <- 2
   } else {
@@ -73,7 +77,7 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE){
   }
 
   estimates <- lapply(1:p, function(x) {
-    dat <- cbind.data.frame(X[,-x], y = X[, x])
+    dat <- cbind.data.frame(X[, -x], y = X[, x])
     fit <- glm(y ~ ., data = dat, family = binomial())
     est_i <-
       coef(step(
@@ -83,9 +87,9 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE){
         trace = FALSE
       ))[-1]
 
-    if(progress){
-    setTxtProgressBar(pb, x)
-}
+    if (progress) {
+      setTxtProgressBar(pb, x)
+    }
     est_i
   })
 
@@ -96,12 +100,19 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE){
 
   # taken from isingFit
   adj <- betas
+
   adj <- (adj != 0) * 1
+
   EN.weights <- adj * t(adj)
+
   EN.weights <- EN.weights * betas
+
   meanweights.opt <- (EN.weights + t(EN.weights)) / 2
+
   diag(meanweights.opt) <- 0
+
   wadj <- meanweights.opt
+
   adj <- ifelse(wadj == 0, 0, 1)
 
 
@@ -118,5 +129,3 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE){
 
   return(returned_object)
 }
-
-

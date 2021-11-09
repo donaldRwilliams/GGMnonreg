@@ -80,7 +80,7 @@ ggm_search <- function(x, IC = "BIC",
     stop("IC must be 'AIC' or 'BIC'")
   }
 
-  if(type == "neighborhood_selection") {
+  if (type == "neighborhood_selection") {
     if (isSymmetric(as.matrix(x))) {
       stop("data required for 'neighborhood_selection'")
     }
@@ -105,7 +105,7 @@ ggm_search <- function(x, IC = "BIC",
 
     estimates <- lapply(1:p, function(x) {
       est_i <- bestglm::bestglm(
-        cbind.data.frame(X[,-x], X[, x]),
+        cbind.data.frame(X[, -x], X[, x]),
         method = method,
         IC = IC,
         intercept = F
@@ -122,15 +122,14 @@ ggm_search <- function(x, IC = "BIC",
     }
 
     # taken from parcor (not on CRAN)
-    Dummy=betas*t(betas)
-    Dummy[Dummy<0] <- 0
-    Dummy[Dummy>1] <- 1
-    wadj <- sign(betas)*sqrt(Dummy)
+    Dummy = betas * t(betas)
+    Dummy[Dummy < 0] <- 0
+    Dummy[Dummy > 1] <- 1
+    wadj <- sign(betas) * sqrt(Dummy)
     adj <- ifelse(wadj == 0, 0, 1)
 
 
   } else if (type == "approx_L0") {
-
     p <- ncol(x)
 
     if (!isSymmetric(as.matrix(x))) {
@@ -163,7 +162,7 @@ ggm_search <- function(x, IC = "BIC",
     wadj <- fit$P
     adj <- fit$adj
 
-    }
+  }
 
   returned_object <- list(
     wadj = wadj,
@@ -178,7 +177,3 @@ ggm_search <- function(x, IC = "BIC",
   return(returned_object)
 
 }
-
-
-
-
