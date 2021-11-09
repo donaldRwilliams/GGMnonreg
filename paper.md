@@ -157,7 +157,7 @@ A key aspect of graphical modeling is visualizing the conditional dependence str
 **GGMnonreg** makes network plots with **ggplot2** [@ggplotpackage].
 
 ```
-plot(get_graph(fit), 
+plot(fit, 
      node_names = colnames(Y), 
      edge_magnify = 2)
 ```
