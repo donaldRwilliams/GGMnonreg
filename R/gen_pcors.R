@@ -42,11 +42,16 @@ gen_net <- function(p = 20,
                     edge_prob = 0.3,
                     lb = 0.05,
                     ub = 0.3) {
+
+  # negative determinant
   d <- -1
 
+  # number of trys
   trys <- 0
 
+  # until d is positive
   while (d < 0) {
+
     trys <- trys + 1
 
     effects <- p * (p - 1) * 0.5
@@ -63,9 +68,13 @@ gen_net <- function(p = 20,
     }
 
     mat[upper.tri(mat)] <- sample(pool, size = effects)
+
     pcs <- symm_mat(mat)
+
     pcs <- -pcs
+
     diag(pcs) <- -diag(pcs)
+
     d <- det(pcs)
 
   }
@@ -87,6 +96,6 @@ gen_net <- function(p = 20,
     trys = trys
   )
 
-  returned_object
+  return(returned_object)
 
 }
