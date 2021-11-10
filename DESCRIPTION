@@ -2,7 +2,7 @@ Package: GGMnonreg
 Type: Package
 Title: Non-Regularized Gaussian Graphical Models
 Version: 1.1.0
-Date: 2021-05-07
+Date: 2021-11-10
 Authors@R: person("Donald", "Williams", email = "drwwilliams@ucdavis.edu", role = c("aut", "cre"))
 Maintainer: Donald Williams <drwwilliams@ucdavis.edu>
 Description: Estimate non-regularized Gaussian graphical models, Ising models, 
