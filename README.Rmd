@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img src="man/figures/nonreg_hex.png" width = 200 />
+<img src="man/figures/nonreg_hex.png" width = 250 />
 
 # GGMnonreg: Non-regularized Gaussian Graphical Models
 
