@@ -14,13 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img src="man/figures/imgfile.png" width = 200 />
+<img src="man/figures/nonreg_hex.png" width = 200 />
 
 # GGMnonreg: Non-regularized Gaussian Graphical Models
 
 [![CRAN Version](http://www.r-pkg.org/badges/version/GGMnonreg)](https://cran.r-project.org/package=GGMnonreg)
 [![Downloads](https://cranlogs.r-pkg.org/badges/GGMnonreg)](https://cran.r-project.org/package=GGMnonreg)
 [![CircleCI build status](https://circleci.com/gh/donaldRwilliams/GGMnonreg.svg?style=shield)](https://circleci.com/gh/donaldRwilliams/GGMnonreg)
+[![zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.5668161.svg)](https://doi.org/10.5281/zenodo.5668161)
 
 
 The goal of **GGMnonreg** is to estimate non-regularized graphical models. Note that 
