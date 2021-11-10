@@ -78,7 +78,9 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE) {
 
   estimates <- lapply(1:p, function(x) {
     dat <- cbind.data.frame(X[, -x], y = X[, x])
+
     fit <- glm(y ~ ., data = dat, family = binomial())
+
     est_i <-
       coef(step(
         fit,
@@ -90,7 +92,9 @@ ising_search <- function(Y, IC = "BIC", progress = TRUE) {
     if (progress) {
       setTxtProgressBar(pb, x)
     }
+
     est_i
+
   })
 
   for (i in 1:p) {

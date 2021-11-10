@@ -69,16 +69,25 @@ mixed_search <- function(Y, data_type = NULL, IC = "BIC"){
   }
 
   estimates <- lapply(1:p, function(x) {
-    dat <- cbind.data.frame(X[, -x], y = X[, x])
+
+    dat <- cbind.data.frame(X[,-x], y = X[, x])
 
     if (data_type[x] == "b") {
+
       fit <- glm(y ~ ., data = dat, family = binomial())
+
     } else if (data_type[x] == "p") {
+
       fit <- glm(y ~ ., data = dat, family = poisson())
+
     } else if (data_type[x] == "g") {
+
       fit <- glm(y ~ ., data = dat, family = gaussian())
+
     } else {
+
       stop("'data_type' must be 'b', 'p' or 'g'")
+
     }
 
     est_i <-
@@ -101,14 +110,20 @@ mixed_search <- function(Y, data_type = NULL, IC = "BIC"){
 
   # taken from isingFit
   adj <- betas
-  adj <- (adj != 0) * 1
-  EN.weights <- adj * t(adj)
-  EN.weights <- EN.weights * betas
-  meanweights.opt <- (EN.weights + t(EN.weights)) / 2
-  diag(meanweights.opt) <- 0
-  wadj <- meanweights.opt
-  adj <- ifelse(wadj == 0, 0, 1)
 
+  adj <- (adj != 0) * 1
+
+  EN.weights <- adj * t(adj)
+
+  EN.weights <- EN.weights * betas
+
+  meanweights.opt <- (EN.weights + t(EN.weights)) / 2
+
+  diag(meanweights.opt) <- 0
+
+  wadj <- meanweights.opt
+
+  adj <- ifelse(wadj == 0, 0, 1)
 
   returned_object <- list(
     wadj  = wadj,
