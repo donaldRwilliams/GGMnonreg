@@ -102,9 +102,18 @@ ggm_inference <- function(Y,
 
                                      if(method == "polychoric"){
 
-                                       pcors <-  corpcor::cor2pcor(
-                                         psych::polychoric(Y[sample(1:n, size = n, replace = TRUE),])$rho
-                                       )
+                                       # Check for {EGAnet}
+                                       if("EGAnet" %in% installed.packages()[,"Package"]){
+                                         pcors <-  corpcor::cor2pcor(
+                                           EGAnet::polychoric.matrix(Y[sample(1:n, size = n, replace = TRUE),])
+                                         )
+                                       }else{
+                                         pcors <-  corpcor::cor2pcor(
+                                           psych::polychoric(Y[sample(1:n, size = n, replace = TRUE),])$rho
+                                         )
+                                       }
+
+
 
                                      } else {
 
